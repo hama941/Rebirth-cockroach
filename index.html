@@ -3,148 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ゴキブリ駆除2,980円〜 | 害虫レスキュー隊【株式会社Re:birth】</title>
+    <title>【公式】害虫駆除の99サービス | 最短15分で駆けつけ</title>
     <style>
-        :root {
-            --main-navy: #003366;
-            --sub-yellow: #ffcc00;
-            --alert-red: #d32f2f;
-            --bg-gray: #f8f9fa;
-        }
+        /* --- 基本設定 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif; line-height: 1.6; color: #333; background: #fff; padding-bottom: 100px; }
+        
+        /* --- 共通パーツ --- */
+        .section-title { text-align: center; font-size: 1.8rem; color: #e60012; margin-bottom: 30px; position: relative; font-weight: bold; }
+        .section-title::after { content: ""; display: block; width: 60px; height: 3px; background: #ffcc00; margin: 10px auto 0; }
+        .inner { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-            margin: 0; color: #333; line-height: 1.8; background-color: #fff;
-        }
+        /* --- ヘッダー --- */
+        header { background: #fff; border-bottom: 3px solid #e60012; position: sticky; top: 0; z-index: 1000; padding: 10px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: bold; font-size: 1.4rem; line-height: 1.2; }
+        .logo span { color: #e60012; font-size: 1.6rem; }
+        .header-right { text-align: right; }
+        .header-right p { font-size: 0.7rem; font-weight: bold; color: #666; }
+        .tel-link { color: #e60012; font-size: 1.5rem; font-weight: bold; text-decoration: none; display: block; }
 
-        /* ヘッダー */
-        .site-header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: #fff; border-bottom: 3px solid var(--sub-yellow);
-        }
-        .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--main-navy); }
-        .header-contact { text-align: right; }
-        .header-contact .tel { font-size: 1.4rem; color: var(--alert-red); font-weight: bold; text-decoration: none; }
+        /* --- メインビジュアル (FV) --- */
+        .fv { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80') center/cover; padding: 60px 0; text-align: center; }
+        .fv-badge { background: #ffcc00; color: #000; display: inline-block; padding: 5px 15px; font-weight: bold; transform: rotate(-2deg); margin-bottom: 10px; border: 2px solid #000; }
+        .fv h1 { font-size: 2.2rem; margin-bottom: 15px; line-height: 1.3; }
+        .fv h1 .price { color: #e60012; font-size: 3.5rem; display: block; font-weight: 900; text-shadow: 2px 2px 0 #fff; }
+        .speed-tag { background: #e60012; color: #fff; display: inline-block; padding: 8px 25px; font-weight: bold; border-radius: 50px; margin-bottom: 20px; font-size: 1.2rem; }
+        .fv-points { display: flex; justify-content: center; list-style: none; gap: 10px; }
+        .fv-points li { background: #fff; border: 2px solid #e60012; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
 
-        /* メインビジュアル */
-        .main-visual {
-            background: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), url('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover; background-position: center;
-            color: #fff; text-align: center; padding: 100px 20px;
-        }
-        .main-visual h1 { font-size: 2.8rem; margin: 0; line-height: 1.2; }
-        .main-visual p { font-size: 1.2rem; margin: 20px 0; }
-        .price-badge {
-            background: var(--alert-red); display: inline-block; padding: 10px 30px;
-            border-radius: 5px; font-size: 1.5rem; font-weight: bold;
-        }
-        .price-badge span { font-size: 3.5rem; }
+        /* --- 料金表 --- */
+        .price-section { padding: 60px 0; background: #fdfdfd; }
+        .price-table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 20px; }
+        .price-table th, .price-table td { border: 1px solid #ddd; padding: 15px; text-align: left; }
+        .price-table th { background: #eee; width: 40%; font-weight: bold; }
+        .price-table td { color: #e60012; font-weight: bold; text-align: right; font-size: 1.2rem; }
 
-        /* メリット・選ばれる理由 */
-        .section-padding { padding: 60px 5%; text-align: center; }
-        .section-title { font-size: 2rem; color: var(--main-navy); margin-bottom: 40px; position: relative; padding-bottom: 10px; }
-        .section-title::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--sub-yellow); }
+        /* --- お客様の声 --- */
+        .voice-section { padding: 60px 0; background: #fff8f8; }
+        .voice-card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .voice-header { display: flex; align-items: center; margin-bottom: 15px; }
+        .voice-img { width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; border: 2px solid #e60012; }
+        .voice-name { font-weight: bold; font-size: 0.9rem; }
+        .voice-stars { color: #ffcc00; font-size: 1.2rem; }
+        .voice-body h3 { font-size: 1.1rem; margin-bottom: 10px; color: #e60012; }
+        .voice-body p { font-size: 0.9rem; color: #555; }
 
-        .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .merit-card { background: var(--bg-gray); padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .merit-number { font-size: 3rem; color: var(--sub-yellow); font-weight: bold; display: block; }
-        .merit-card h3 { color: var(--main-navy); margin: 15px 0; }
+        /* --- 下部固定CTA (スマホ) --- */
+        .fixed-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: #e60012; z-index: 2000; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); }
+        .fixed-cta-inner { display: flex; text-decoration: none; align-items: center; justify-content: center; padding: 12px; color: #fff; }
+        .cta-icon { font-size: 1.8rem; margin-right: 10px; }
+        .cta-text { text-align: center; }
+        .cta-text .small { font-size: 0.7rem; display: block; }
+        .cta-text .large { font-size: 1.4rem; font-weight: bold; }
 
-        /* お客様の声 */
-        .voice-section { background: #eee; padding: 60px 5%; }
-        .voice-card { background: #fff; padding: 25px; margin-bottom: 20px; border-radius: 8px; border-left: 8px solid var(--sub-yellow); }
-        .voice-info { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
-        .voice-text { font-weight: bold; }
-
-        /* 会社概要テーブル */
-        .info-table { width: 100%; max-width: 800px; margin: 0 auto; border-collapse: collapse; }
-        .info-table th, .info-table td { padding: 15px; border-bottom: 1px solid #ddd; text-align: left; }
-        .info-table th { background: #f0f4f8; width: 30%; color: var(--main-navy); }
-
-        /* 固定電話ボタン (スマホ専用) */
-        .floating-cta {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: var(--alert-red);
-            color: #fff; text-align: center; padding: 15px 0; font-size: 1.5rem; font-weight: bold;
-            text-decoration: none; z-index: 2000; box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
-        }
-
-        footer { background: #333; color: #fff; text-align: center; padding: 40px 0 100px; font-size: 0.8rem; }
-
+        /* --- レスポンシブ --- */
         @media (max-width: 768px) {
-            .main-visual h1 { font-size: 1.8rem; }
-            .price-badge span { font-size: 2.5rem; }
+            .fv h1 { font-size: 1.6rem; }
+            .fv h1 .price { font-size: 2.5rem; }
+            .header-right { display: none; }
+            .fv-points { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="logo-text">害虫レスキュー隊</div>
-    <div class="header-contact">
-        <span style="font-size: 0.7rem; display: block;">24時間365日受付</span>
-        <a href="tel:05035280140" class="tel">050-3528-0140</a>
-    </div>
-</header>
-
-<section class="main-visual">
-    <h1>ゴキブリの悩み、即日解決！</h1>
-    <p>最短15分で急行。プロの技術で再発を徹底防止します。</p>
-    <div class="price-badge">
-        駆除費用 <span>2,980</span>円〜(税込)
-    </div>
-    <p>現地調査・お見積もりは完全無料！</p>
-</section>
-
-<section class="section-padding">
-    <h2 class="section-title">選ばれる3つの理由</h2>
-    <div class="merit-grid">
-        <div class="merit-card">
-            <span class="merit-number">01</span>
-            <h3>圧倒的なスピード対応</h3>
-            <p>大阪全域にスタッフが待機中。お電話から最短15分で現場へお伺いします。</p>
+    <header>
+        <div class="inner header-inner">
+            <div class="logo">害虫駆除の<br><span>99サービス</span></div>
+            <div class="header-right">
+                <p>24時間365日受付中・通話料無料</p>
+                <a href="tel:0120-000-000" class="tel-link">0120-000-000</a>
+            </div>
         </div>
-        <div class="merit-card">
-            <span class="merit-number">02</span>
-            <h3>明朗会計で安心</h3>
-            <p>作業前に必ずお見積もりを提示。承諾なしの追加費用は1円もいただきません。</p>
-        </div>
-        <div class="merit-card">
-            <span class="merit-number">03</span>
-            <h3>最高水準の駆除技術</h3>
-            <p>市販薬では効かない隙間の奥まで徹底処置。侵入経路も確実に封鎖します。</p>
-        </div>
-    </div>
-</section>
+    </header>
 
-<section class="voice-section">
-    <h2 class="section-title" style="text-align: center;">お客様のお喜びの声</h2>
-    <div class="voice-card">
-        <div class="voice-info">大阪市北区 A様 / 30代女性 / 満足度：★★★★★</div>
-        <div class="voice-text">「深夜に出てしまいパニックでしたが、20分で来てくれました。料金も電話通りで助かりました！」</div>
-    </div>
-    <div class="voice-card">
-        <div class="voice-info">吹田市 S様 / 40代男性 / 満足度：★★★★★</div>
-        <div class="voice-text">「自分でやってもダメでしたが、プロにお願いして正解。1ヶ月経ちますが一度も見ていません。」</div>
-    </div>
+    <section class="fv">
+        <div class="inner">
+            <div class="fv-badge">他社より1円でも高ければご相談ください</div>
+            <h1>ゴキブリ・害虫駆除が<br><span class="price">550円〜(税込)</span></h1>
+            <div class="speed-tag">最短15分で現場へ急行！</div>
+            <ul class="fv-points">
+                <li>出張見積もり完全無料</li>
+                <li>追加料金一切なし</li>
+                <li>最長5年の安心保証</li>
+            </ul>
+        </div>
     </section>
 
-<section class="section-padding">
-    <h2 class="section-title">会社概要</h2>
-    <table class="info-table">
-        <tr><th>会社名</th><td>株式会社Re:birth</td></tr>
-        <tr><th>所在地</th><td>〒530-0035 大阪府大阪市北区同心２丁目１３ー１８ ５０２</td></tr>
-        <tr><th>電話番号</th><td>050-3528-0140</td></tr>
-        <tr><th>対応可能エリア</th><td>大阪府全域・兵庫県・京都府（一部）</td></tr>
-    </table>
-</section>
+    <section class="price-section">
+        <div class="inner">
+            <h2 class="section-title">作業料金一覧</h2>
+            <table class="price-table">
+                <tr><th>ゴキブリ駆除</th><td>550円〜</td></tr>
+                <tr><th>ハチ駆除</th><td>4,400円〜</td></tr>
+                <tr><th>シロアリ駆除</th><td>見積もり無料</td></tr>
+                <tr><th>ネズミ対策</th><td>8,800円〜</td></tr>
+                <tr><th>その他害虫</th><td>3,300円〜</td></tr>
+            </table>
+        </div>
+    </section>
 
-<footer>
-    &copy; 2024 害虫レスキュー隊（株式会社Re:birth） All Rights Reserved.
-</footer>
+    <section class="voice-section">
+        <div class="inner">
+            <h2 class="section-title">お客様の声</h2>
+            
+            <div class="voice-card">
+                <div class="voice-header">
+                    <img src="https://placehold.jp/100x100.png" class="voice-img" alt="ユーザー">
+                    <div class="voice-info">
+                        <div class="voice-name">東京都練馬区 A様（30代女性）</div>
+                        <div class="voice-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="voice-body">
+                    <h3>「夜中の救世主でした！」</h3>
+                    <p>深夜に突然現れた大きなゴキブリ。自分ではどうしようもできず、電話したら15分で来てくれました。手際よく駆除して侵入経路も塞いでくれたので、今は安心して眠れます。</p>
+                </div>
+            </div>
 
-<a href="tel:05035280140" class="floating-cta">
-    📞 050-3528-0140（24時間受付）
-</a>
+            <div class="voice-card">
+                <div class="voice-header">
+                    <img src="https://placehold.jp/100x100.png" class="voice-img" alt="ユーザー">
+                    <div class="voice-info">
+                        <div class="voice-name">神奈川県横浜市 B様（40代男性）</div>
+                        <div class="voice-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="voice-body">
+                    <h3>「料金が明瞭で助かりました」</h3>
+                    <p>以前別の業者に頼んだ時は見積もりより高くなりましたが、こちらは電話での説明通り。非常に丁寧な対応で、次も何かあればお願いしたいです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed-cta">
+        <a href="tel:0120-000-000" class="fixed-cta-inner">
+            <span class="cta-icon">📞</span>
+            <div class="cta-text">
+                <span class="small">24時間受付中 / 見積もり無料</span>
+                <span class="large">電話で無料相談する</span>
+            </div>
+        </a>
+    </div>
 
 </body>
 </html>
