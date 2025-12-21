@@ -3,149 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【公式】害虫駆除の99サービス | 最短15分で駆けつけ</title>
+    <title>Pest Control Banner</title>
     <style>
-        /* --- 基本設定 --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif; line-height: 1.6; color: #333; background: #fff; padding-bottom: 100px; }
-        
-        /* --- 共通パーツ --- */
-        .section-title { text-align: center; font-size: 1.8rem; color: #e60012; margin-bottom: 30px; position: relative; font-weight: bold; }
-        .section-title::after { content: ""; display: block; width: 60px; height: 3px; background: #ffcc00; margin: 10px auto 0; }
-        .inner { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- ヘッダー --- */
-        header { background: #fff; border-bottom: 3px solid #e60012; position: sticky; top: 0; z-index: 1000; padding: 10px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: bold; font-size: 1.4rem; line-height: 1.2; }
-        .logo span { color: #e60012; font-size: 1.6rem; }
-        .header-right { text-align: right; }
-        .header-right p { font-size: 0.7rem; font-weight: bold; color: #666; }
-        .tel-link { color: #e60012; font-size: 1.5rem; font-weight: bold; text-decoration: none; display: block; }
-
-        /* --- メインビジュアル (FV) --- */
-        .fv { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80') center/cover; padding: 60px 0; text-align: center; }
-        .fv-badge { background: #ffcc00; color: #000; display: inline-block; padding: 5px 15px; font-weight: bold; transform: rotate(-2deg); margin-bottom: 10px; border: 2px solid #000; }
-        .fv h1 { font-size: 2.2rem; margin-bottom: 15px; line-height: 1.3; }
-        .fv h1 .price { color: #e60012; font-size: 3.5rem; display: block; font-weight: 900; text-shadow: 2px 2px 0 #fff; }
-        .speed-tag { background: #e60012; color: #fff; display: inline-block; padding: 8px 25px; font-weight: bold; border-radius: 50px; margin-bottom: 20px; font-size: 1.2rem; }
-        .fv-points { display: flex; justify-content: center; list-style: none; gap: 10px; }
-        .fv-points li { background: #fff; border: 2px solid #e60012; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
-
-        /* --- 料金表 --- */
-        .price-section { padding: 60px 0; background: #fdfdfd; }
-        .price-table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 20px; }
-        .price-table th, .price-table td { border: 1px solid #ddd; padding: 15px; text-align: left; }
-        .price-table th { background: #eee; width: 40%; font-weight: bold; }
-        .price-table td { color: #e60012; font-weight: bold; text-align: right; font-size: 1.2rem; }
-
-        /* --- お客様の声 --- */
-        .voice-section { padding: 60px 0; background: #fff8f8; }
-        .voice-card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
-        .voice-header { display: flex; align-items: center; margin-bottom: 15px; }
-        .voice-img { width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; border: 2px solid #e60012; }
-        .voice-name { font-weight: bold; font-size: 0.9rem; }
-        .voice-stars { color: #ffcc00; font-size: 1.2rem; }
-        .voice-body h3 { font-size: 1.1rem; margin-bottom: 10px; color: #e60012; }
-        .voice-body p { font-size: 0.9rem; color: #555; }
-
-        /* --- 下部固定CTA (スマホ) --- */
-        .fixed-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: #e60012; z-index: 2000; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); }
-        .fixed-cta-inner { display: flex; text-decoration: none; align-items: center; justify-content: center; padding: 12px; color: #fff; }
-        .cta-icon { font-size: 1.8rem; margin-right: 10px; }
-        .cta-text { text-align: center; }
-        .cta-text .small { font-size: 0.7rem; display: block; }
-        .cta-text .large { font-size: 1.4rem; font-weight: bold; }
-
-        /* --- レスポンシブ --- */
-        @media (max-width: 768px) {
-            .fv h1 { font-size: 1.6rem; }
-            .fv h1 .price { font-size: 2.5rem; }
-            .header-right { display: none; }
-            .fv-points { flex-direction: column; align-items: center; }
+        /* 全体のスタイル */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #333; /* 背景の暗い部分 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        /* メインコンテナ */
+        .banner {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(to bottom, #222, #000);
+            position: relative;
+            padding: 40px 20px;
+            color: white;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* ヘッダー部分 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .header .highlight {
+            color: #ffcc00; /* 黄色の強調文字 */
+            font-size: 1.2em;
+        }
+
+        .header p {
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* 女性の画像（右上） */
+        .woman-img {
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 180px;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        /* チェックリストの外枠 */
+        .checklist-container {
+            background-color: #eee; /* 薄いグレーの背景 */
+            border: 3px solid #000;
+            border-radius: 5px;
+            padding: 20px 15px;
+            position: relative;
+            z-index: 2;
+            color: #333;
+        }
+
+        /* 各リスト項目 */
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .check-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* チェックボックスのアイコン */
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            background-color: #fff;
+            border: 2px solid #333;
+            margin-right: 10px;
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* 赤いチェック（擬似要素で作成） */
+        .checkbox::after {
+            content: "L";
+            position: absolute;
+            top: -2px;
+            left: 6px;
+            font-size: 22px;
+            color: #c00;
+            transform: scaleX(-1) rotate(-45deg);
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+        }
+
+        /* 赤字の強調部分 */
+        .text-red {
+            color: #c00;
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="inner header-inner">
-            <div class="logo">害虫駆除の<br><span>99サービス</span></div>
-            <div class="header-right">
-                <p>24時間365日受付中・通話料無料</p>
-                <a href="tel:0120-000-000" class="tel-link">0120-000-000</a>
-            </div>
-        </div>
-    </header>
+    <div class="banner">
+        <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400" alt="不安な女性" class="woman-img">
 
-    <section class="fv">
-        <div class="inner">
-            <div class="fv-badge">他社より1円でも高ければご相談ください</div>
-            <h1>ゴキブリ・害虫駆除が<br><span class="price">550円〜(税込)</span></h1>
-            <div class="speed-tag">最短15分で現場へ急行！</div>
-            <ul class="fv-points">
-                <li>出張見積もり完全無料</li>
-                <li>追加料金一切なし</li>
-                <li>最長5年の安心保証</li>
-            </ul>
+        <div class="header">
+            <h1>こんな<span class="highlight">症状</span>、出ていませんか？</h1>
+            <p>一つでもチェックが付く方は、<br>今すぐご相談ください</p>
         </div>
-    </section>
 
-    <section class="price-section">
-        <div class="inner">
-            <h2 class="section-title">作業料金一覧</h2>
-            <table class="price-table">
-                <tr><th>ゴキブリ駆除</th><td>550円〜</td></tr>
-                <tr><th>ハチ駆除</th><td>4,400円〜</td></tr>
-                <tr><th>シロアリ駆除</th><td>見積もり無料</td></tr>
-                <tr><th>ネズミ対策</th><td>8,800円〜</td></tr>
-                <tr><th>その他害虫</th><td>3,300円〜</td></tr>
-            </table>
-        </div>
-    </section>
-
-    <section class="voice-section">
-        <div class="inner">
-            <h2 class="section-title">お客様の声</h2>
-            
-            <div class="voice-card">
-                <div class="voice-header">
-                    <img src="https://placehold.jp/100x100.png" class="voice-img" alt="ユーザー">
-                    <div class="voice-info">
-                        <div class="voice-name">東京都練馬区 A様（30代女性）</div>
-                        <div class="voice-stars">★★★★★</div>
-                    </div>
-                </div>
-                <div class="voice-body">
-                    <h3>「夜中の救世主でした！」</h3>
-                    <p>深夜に突然現れた大きなゴキブリ。自分ではどうしようもできず、電話したら15分で来てくれました。手際よく駆除して侵入経路も塞いでくれたので、今は安心して眠れます。</p>
-                </div>
+        <div class="checklist-container">
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div><span class="text-red">ゴキブリ</span>が出た...</div>
             </div>
 
-            <div class="voice-card">
-                <div class="voice-header">
-                    <img src="https://placehold.jp/100x100.png" class="voice-img" alt="ユーザー">
-                    <div class="voice-info">
-                        <div class="voice-name">神奈川県横浜市 B様（40代男性）</div>
-                        <div class="voice-stars">★★★★★</div>
-                    </div>
-                </div>
-                <div class="voice-body">
-                    <h3>「料金が明瞭で助かりました」</h3>
-                    <p>以前別の業者に頼んだ時は見積もりより高くなりましたが、こちらは電話での説明通り。非常に丁寧な対応で、次も何かあればお願いしたいです。</p>
-                </div>
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div>市販の駆除グッズを使っても<span class="text-red">なかなか減らない...</span></div>
+            </div>
+
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div>一度駆除したのに、<span class="text-red">また出た...</span></div>
+            </div>
+
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div>夏になる前に<span class="text-red">なんとかしたい...</span></div>
+            </div>
+
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div>店舗なので、<span class="text-red">定期的な駆除と対策</span>をお願いしたい</div>
+            </div>
+
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div>駆除後の<span class="text-red">予防方法</span>も教えてほしい...</div>
+            </div>
+
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div>他で見積りしたけど、<span class="text-red">費用が高くて頼めない...</span></div>
+            </div>
+
+            <div class="check-item">
+                <div class="checkbox"></div>
+                <div><span class="text-red">どのような対策をするのか</span>話だけでも聞いてみたい...</div>
             </div>
         </div>
-    </section>
-
-    <div class="fixed-cta">
-        <a href="tel:0120-000-000" class="fixed-cta-inner">
-            <span class="cta-icon">📞</span>
-            <div class="cta-text">
-                <span class="small">24時間受付中 / 見積もり無料</span>
-                <span class="large">電話で無料相談する</span>
-            </div>
-        </a>
     </div>
 
 </body>
