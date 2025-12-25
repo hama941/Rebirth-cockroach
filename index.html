@@ -1,8 +1,9 @@
 <?php
-// --- 送信処理の設定 ---
+// --- 送信処理 ---
 $message_sent = false;
 $error_message = "";
 
+// フォームが「投稿（POST）」された時だけ実行する
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $to = "uchi2022.official@gmail.com";
     $subject = "【HPより】お問い合わせがありました";
@@ -14,20 +15,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = htmlspecialchars($_POST['address'] ?? '');
     $content = htmlspecialchars($_POST['content'] ?? '');
 
-    // 全項目必須チェック
+    // 全項目必須チェック（サーバー側でも念のため実施）
     if (!empty($name) && !empty($tel) && !empty($email) && !empty($address) && !empty($content)) {
         
         $body = "ホームページからのお問い合わせ内容：\n\n";
         $body .= "【お名前】: $name\n";
         $body .= "【電話番号】: $tel\n";
-        $body .= "プライベート【メール】: $email\n";
+        $body .= "【メール】: $email\n";
         $body .= "【住所】: $address\n";
         $body .= "【お問い合わせ内容】:\n$content\n";
 
         $headers = "From: $email";
 
+        // メール送信実行
         if (mail($to, $subject, $body, $headers)) {
-            $message_sent = true;
+            $message_sent = true; // 送信成功フラグを立てる
         } else {
             $error_message = "サーバーのエラーにより送信できませんでした。";
         }
@@ -44,35 +46,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせフォーム</title>
     <style>
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; }
+        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f4f4f4; }
         .container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #007bff; }
-        .status-msg { padding: 15px; margin-bottom: 20px; border-radius: 4px; text-align: center; }
+        h2 { text-align: center; color: #333; margin-bottom: 25px; }
+        .status-msg { padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: center; font-weight: bold; }
         .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
         label span { color: red; font-size: 0.8em; margin-left: 5px; }
         input[type="text"], input[type="email"], input[type="tel"], textarea {
-            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px;
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px;
         }
-        textarea { resize: vertical; }
-        button { width: 100%; padding: 15px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background 0.3s; }
-        button:hover { background: #0056b3; }
+        button { width: 100%; padding: 15px; background: #28a745; color: #fff; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #218838; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #007bff; text-decoration: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>お問い合わせ</h2>
-
     <?php if ($message_sent): ?>
+        <h2>送信完了</h2>
         <div class="status-msg success">
-            送信が完了しました。お問い合わせありがとうございます。
+            送信が完了しました。<br>お問い合わせありがとうございます。
         </div>
-        <p style="text-align:center;"><a href="">フォームに戻る</a></p>
+        <a href="index.php" class="back-link">フォームに戻る</a>
+
     <?php else: ?>
-        
+        <h2>お問い合わせ</h2>
+
         <?php if ($error_message): ?>
             <div class="status-msg error"><?php echo $error_message; ?></div>
         <?php endif; ?>
@@ -80,27 +83,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="" method="post">
             <div class="form-group">
                 <label>お名前<span>(必須)</span></label>
-                <input type="text" name="name" required placeholder="山田 太郎">
+                <input type="text" name="name" required placeholder="例：山田 太郎">
             </div>
 
             <div class="form-group">
                 <label>電話番号<span>(必須)</span></label>
-                <input type="tel" name="tel" required placeholder="090-1234-5678">
+                <input type="tel" name="tel" required placeholder="例：09012345678">
             </div>
 
             <div class="form-group">
                 <label>メールアドレス<span>(必須)</span></label>
-                <input type="email" name="email" required placeholder="example@mail.com">
+                <input type="email" name="email" required placeholder="例：abc@example.com">
             </div>
 
             <div class="form-group">
                 <label>住所<span>(必須)</span></label>
-                <input type="text" name="address" required placeholder="東京都〇〇区...">
+                <input type="text" name="address" required placeholder="例：東京都渋谷区1-2-3">
             </div>
 
             <div class="form-group">
                 <label>お問い合わせ内容<span>(必須)</span></label>
-                <textarea name="content" rows="6" required placeholder="ご自由に入力してください"></textarea>
+                <textarea name="content" rows="6" required placeholder="ご質問などをご記入ください"></textarea>
             </div>
 
             <button type="submit">この内容で送信する</button>
