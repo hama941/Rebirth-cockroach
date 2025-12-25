@@ -3,180 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #fff;
-            margin: 0;
-            padding: 20px;
-            color: #333;
+        /* デザインの基本設定 */
+        :root {
+            --main-color: #ff9800; /* ロゴやテーマに合わせやすいオレンジ */
+            --bg-color: #fcfcfc;
+            --text-dark: #333;
         }
 
-        .lp-container {
-            max-width: 600px;
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f4f4f4;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px 10px;
+        }
+
+        .faq-section {
+            max-width: 700px; /* PCでも横に広がりすぎず読みやすい幅 */
             margin: 0 auto;
         }
 
-        /* 施工の流れ タイトル */
-        .main-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffeb00;
-            padding: 15px;
-            font-size: 22px;
-            font-weight: bold;
+        .faq-header {
+            text-align: center;
             margin-bottom: 30px;
-            border-radius: 5px;
         }
 
-        /* 黄色の太枠ボックス */
-        .step-box {
-            background-color: #ffeb00;
-            padding: 12px;
-            margin-bottom: 0;
-            border-radius: 10px;
+        /* アコーディオンの外枠 */
+        .faq-container {
+            display: flex;
+            flex-direction: column; /* 常に縦一列に並べる */
+            gap: 12px;
         }
 
-        .step-content {
+        /* 各質問のカード */
+        .faq-item {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        /* 質問部分（ボタン） */
+        .faq-question {
+            width: 100%;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-dark);
+            position: relative;
+            transition: background 0.2s;
+            outline: none;
+        }
+
+        .faq-question:hover {
+            background-color: #fff9f0;
+        }
+
+        /* Qアイコン */
+        .faq-question::before {
+            content: "Q";
+            color: var(--main-color);
+            font-size: 20px;
+            margin-right: 15px;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        /* 矢印アイコン */
+        .faq-question::after {
+            content: "＋";
+            position: absolute;
+            right: 20px;
+            color: #ccc;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg); /* ＋を×に変える演出 */
+            color: var(--main-color);
+        }
+
+        /* 回答部分（隠れている場所） */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            display: flex; /* 横並びにする */
-            align-items: flex-start;
-            gap: 20px;
         }
 
-        /* イラストアイコン部分 */
-        .step-icon-area {
-            flex-shrink: 0;
-            width: 70px;
-            height: 70px;
-            background-color: #fff9c4; /* アイコンの背景を薄い黄色に */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            color: #fbc02d; /* アイコンの色 */
+        .faq-item.open .faq-answer {
+            max-height: 1000px; /* 十分な高さ */
         }
 
-        /* テキスト部分 */
-        .step-text-area {
-            flex: 1;
-        }
-
-        .step-title {
-            font-size: 19px;
-            font-weight: bold;
-            margin: 0 0 10px 0;
-            color: #000;
-            line-height: 1.4;
-        }
-
-        .step-desc {
+        .answer-inner {
+            padding: 0 20px 20px 52px; /* Qの文字位置に合わせる */
+            line-height: 1.8;
             font-size: 15px;
-            line-height: 1.7;
-            margin: 0;
+            color: #555;
+            border-top: 1px solid #fafafa;
+            padding-top: 15px;
         }
 
-        .note {
-            font-size: 13px;
-            color: #666;
-            display: block;
-            margin-top: 8px;
-        }
-
-        /* 下向き矢印 */
-        .arrow-divider {
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 15px solid #ffeb00;
-        }
-
-        .payment-bold {
-            font-weight: bold;
+        /* スマホ向け調整 */
+        @media (max-width: 480px) {
+            .faq-question { font-size: 15px; padding: 15px; }
+            .answer-inner { padding-left: 45px; font-size: 14px; }
         }
     </style>
 </head>
 <body>
 
-<div class="lp-container">
-
-    <div class="main-header">施工の流れ</div>
-
-    <div class="step-box">
-        <div class="step-content">
-            <div class="step-icon-area">
-                <i class="fas fa-phone-alt"></i> </div>
-            <div class="step-text-area">
-                <h3 class="step-title">1.まずはお気軽にお電話ください</h3>
-                <p class="step-desc">
-                    お電話にて現状の到着時間と概算お見積りをさせていただきます。内容がよろしければ、ご発注ください。
-                    <span class="note">※品質向上の為、通話内容は録音させていただいております。</span>
-                </p>
-            </div>
-        </div>
+<div class="faq-section">
+    <div class="faq-header">
+        <h2>よくあるご質問</h2>
     </div>
 
-    <div class="arrow-divider"><div class="arrow-down"></div></div>
-
-    <div class="step-box">
-        <div class="step-content">
-            <div class="step-icon-area">
-                <i class="fas fa-search"></i> </div>
-            <div class="step-text-area">
-                <h3 class="step-title">2.到着後、侵入経路調査と駆除作業</h3>
-                <p class="step-desc">
-                    到着後は、担当者のご挨拶と内容に相違がないかもう一度ご説明。害虫・害獣の発生源やスポットを徹底調査し、施工経路や有効成分の選定から薬剤散布・トラップ設置などの駆除作業で解決いたします。
-                </p>
+    <div class="faq-container">
+        
+        <div class="faq-item">
+            <button class="faq-question">駆除薬剤による小さなお子様への影響はありますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    人体に無害な薬剤を厳選して使用しております。また、強力な薬剤が必要な場合でも、施工後の適切な後始末と安全確認を最優先に行いますので、小さなお子様やペットがいるご家庭でもご安心ください。
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="arrow-divider"><div class="arrow-down"></div></div>
-
-    <div class="step-box">
-        <div class="step-content">
-            <div class="step-icon-area">
-                <i class="fas fa-clipboard-check"></i> </div>
-            <div class="step-text-area">
-                <h3 class="step-title">3.施工箇所のご確認と再発防止レクチャー</h3>
-                <p class="step-desc">
-                    作業箇所を一緒にご確認いただき、ご説明させていただきます。再発を最小限にするために、今後気を付けなければいけない点などわかりやすくレクチャーさせていただきます。
-                </p>
+        <div class="faq-item">
+            <button class="faq-question">市販の薬剤では完全に駆除できないのでしょうか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    市販薬は一時的な効果はありますが、卵には効かないものが多く、時間が経つと再発してしまいます。また、侵入口の封鎖など根本的な原因を解決しない限り、いたちごっこになるのが現状です。プロの技術で原因から断ち切ります。
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="arrow-divider"><div class="arrow-down"></div></div>
-
-    <div class="step-box">
-        <div class="step-content">
-            <div class="step-icon-area">
-                <i class="fas fa-wallet"></i> </div>
-            <div class="step-text-area">
-                <h3 class="step-title">4.お支払い</h3>
-                <p class="step-desc">
-                    施工完了引渡書にサインしていただき、料金のお支払いになります。<br>
-                    <span class="payment-bold">現金・クレジットカード</span><br>
-                    からお好きな決済方法でお支払いください。
-                </p>
+        <div class="faq-item">
+            <button class="faq-question">施工後、どれくらいで効果が出ますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    即効性を重視した施工を行っておりますが、環境や発生状況により異なります。具体的な見通しについては、現地調査の際にお客様の状況に合わせて詳しくご説明させていただきます。
+                </div>
             </div>
         </div>
-    </div>
 
+        <div class="faq-item">
+            <button class="faq-question">作業後に見積もりより高い金額を請求されることはありますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    いいえ、ございません。作業前に施工内容と料金の詳細を明確にご説明し、ご納得いただいてから作業に入りますので、どうぞご安心ください。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">クレジットカードでの支払いは可能ですか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    はい、各種クレジットカード決済に対応しております（VISA・MasterCard・American Expressなど）。お気軽にご利用ください。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">法人の依頼ですが、後日請求書払いは可能ですか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    法人様のご依頼も柔軟に対応しております。後日の請求書払いについても、お電話や現地調査の際にお申し付けいただければ調整可能です。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">作業にあたって、こちらで準備することはありますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    お客様にご準備いただくことは一切ございません。事前の準備から作業後の片付けまで、すべて弊社の専門スタッフが責任を持って行います。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">予約のキャンセルはできますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    可能です。お見積もり内容をしっかりご確認いただいた上で、ご納得いただけない場合は取り掛かる前にキャンセルいただけます。まずは安心してお見積もりをご依頼ください。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">どのエリアまで対応していますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    大阪、兵庫、奈良、和歌山、京都の各府県に対応しております。詳細な訪問時間などは、お電話の際にお伝えいたします。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">駆除後の清掃や消毒、糞尿の除去もお願いできますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    はい、お任せください。ゴキブリ等の駆除後の清掃・消毒はプランに含まれております。糞尿の除去など、菌による二次被害対策も徹底して行います。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">出張料や見積もり料はいくらですか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    弊社では、出張料およびお見積もり料はすべて「0円」です。お客様にご提示するのは作業料金のみですので、ご安心ください。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">予算が決まっているのですが、その範囲内で駆除できますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    はい、お客様のご予算に合わせて最適なプランをご提案いたします。現地調査の結果を踏まえ、ご予算内で最大限の効果が出せる方法を一緒に検討させていただきます。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">他社の見積もりが高額でした。安くできますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    ぜひご相談ください！地域最安値を目指しておりますので、他社様のお見積もり内容を教えていただければ、それよりも低価格でご案内できるよう最大限努力いたします。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">今すぐ駆除してほしいのですが、可能ですか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    対応エリアを絞ることで、迅速な訪問を可能にしています。現場の状況によりますが、最短即日でお伺いいたしますので、まずはお電話で現在の状況をお聞かせください。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">一度駆除しても、また出てくることはありますか？</button>
+            <div class="faq-answer">
+                <div class="answer-inner">
+                    害虫の巣は屋根裏や床下など見えない場所にあります。弊社では「完全駆除＆徹底対策」を大切にしており、目に見える個体だけでなく侵入口の封鎖までしっかり行い、再発を防止します。
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<script>
+    // クリックイベントの登録
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+
+            // 他の項目を閉じたい場合は以下の3行を有効化（お好みで）
+            /* document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) item.classList.remove('open');
+            }); */
+
+            faqItem.classList.toggle('open');
+        });
+    });
+</script>
 
 </body>
 </html>
