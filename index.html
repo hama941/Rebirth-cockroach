@@ -1,4 +1,165 @@
-<section style="background-color: #f9f7f2; padding: 60px 20px; font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>施工の流れ</title>
+    <style>
+        :root {
+            --primary-yellow: #ffeb00;
+            --text-dark: #333;
+            --bg-gray: #f9f9f9;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: var(--primary-yellow);
+            padding: 15px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+        }
+
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .flow-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flow-card {
+            border: 15px solid var(--primary-yellow);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            position: relative;
+        }
+
+        .flow-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .flow-number-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .flow-text {
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            color: #666;
+            display: block;
+        }
+
+        /* 下向き矢印（PC用） */
+        .flow-card::after {
+            content: "▼";
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary-yellow);
+            font-size: 2rem;
+        }
+
+        /* 最後のカードには矢印を表示しない */
+        .flow-grid div:nth-last-child(-n+2)::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+             .flow-grid div:nth-last-child(2)::after {
+                display: block;
+            }
+            .flow-grid div:last-child::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="section-container">
+    <h2 class="section-title">施工の流れ</h2>
+
+    <div class="flow-grid">
+        <div class="flow-card">
+            <img src="step1.jpg" alt="お問い合わせ" class="flow-image">
+            <div class="flow-number-title">1.まずはお気軽にお問合せください</div>
+            <p class="flow-text">
+                お電話・LINE・メールフォームからお問合せいただき、弊社にて現状の到着時間と概算お見積りをさせていただきます。内容がよろしければ、ご発注ください。<br>
+                <span class="note">※品質向上の為、通話内容は録音させていただいております。</span>
+            </p>
+        </div>
+
+        <div class="flow-card">
+            <img src="step2.jpg" alt="調査と駆除" class="flow-image">
+            <div class="flow-number-title">2.到着後、侵入経路調査と駆除作業</div>
+            <p class="flow-text">
+                到着後は、担当者のご挨拶と内容に相違がないかもう一度ご説明。トコジラミの発生源やスポットを徹底調査し、施工経路や有効成分の選定から薬剤散布・トラップ設置などの駆除作業で解決いたします。
+            </p>
+        </div>
+
+        <div class="flow-card">
+            <img src="step3.jpg" alt="再発防止レクチャー" class="flow-image">
+            <div class="flow-number-title">3.施工箇所のご確認と再発防止レクチャー</div>
+            <p class="flow-text">
+                作業箇所を一緒にご確認いただき、ご説明させていただきます。再発を最小限にするために、今後気を付けなければいけない点などわかりやすくレクチャーさせていただきます。他にお聞きしたいことなどあれば、ご遠慮なく担当作業員にお聞きください。
+            </p>
+        </div>
+
+        <div class="flow-card">
+            <img src="step4.jpg" alt="お支払い" class="flow-image">
+            <div class="flow-number-title">4.お支払い</div>
+            <p class="flow-text">
+                施工完了引渡書にサインしていただき、料金のお支払いになります。<br>
+                <strong>対応決済：</strong>現金・クレジットカード・NP後払いAIR・LINE Pay・N Pay・PayPay・We Chat Pay<br>
+                <span class="note">※提携管理会社コード・割引クーポンをお持ちの方はご提示ください。</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html><section style="background-color: #f9f7f2; padding: 60px 20px; font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;">
   <div style="max-width: 1100px; margin: 0 auto;">
     <h2 style="text-align: center; margin-bottom: 40px; color: #333; font-size: 28px;">お客様からの喜びの声</h2>
     
@@ -167,3 +328,4 @@
     </div>
   </div>
 </section>
+
