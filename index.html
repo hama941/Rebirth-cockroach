@@ -96,4 +96,140 @@
         }
 
         .caution-header {
-            background-color: #1a237e
+            background-color: #1a237e;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+        }
+
+        .caution-body {
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .caution-title-red {
+            color: #d32f2f;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .bad-list {
+            text-align: left;
+            display: inline-block;
+        }
+
+        .bad-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+
+        .cross-mark {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="lp-section">
+    <div class="header-yellow">施工の流れ</div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="illust-container" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#FFF9C4"/>
+                <path d="M35 40 Q50 30 65 40 L65 70 Q50 80 35 70 Z" fill="#FBC02D"/>
+                <circle cx="50" cy="55" r="8" fill="white"/>
+            </svg>
+            <div class="step-text">
+                <h3>1.まずはお気軽にお電話ください</h3>
+                <p>お電話にて現状の到着時間と概算お見積りをさせていただきます。</p>
+                <span class="note">※品質向上の為、通話内容は録音させていただいております。</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-box"><div class="arrow-down"></div></div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="illust-container" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#E3F2FD"/>
+                <circle cx="45" cy="45" r="18" stroke="#1976D2" stroke-width="6" fill="white"/>
+                <line x1="58" y1="58" x2="75" y2="75" stroke="#1976D2" stroke-width="8" stroke-linecap="round"/>
+            </svg>
+            <div class="step-text">
+                <h3>2.到着後、侵入経路調査と駆除作業</h3>
+                <p>到着後は害虫・害獣の発生源を徹底調査し、最適な薬剤やトラップで解決いたします。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-box"><div class="arrow-down"></div></div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="illust-container" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#E8F5E9"/>
+                <rect x="35" y="30" width="30" height="40" rx="3" fill="white" stroke="#388E3C" stroke-width="4"/>
+                <path d="M42 52 L48 58 L60 45" stroke="#388E3C" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="step-text">
+                <h3>3.ご確認と再発防止レクチャー</h3>
+                <p>作業箇所を確認いただき、再発を最小限にするためのアドバイスをさせていただきます。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-box"><div class="arrow-down"></div></div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="illust-container" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#FFF3E0"/>
+                <rect x="30" y="40" width="40" height="25" rx="3" fill="#F57C00"/>
+                <circle cx="50" cy="52" r="6" fill="white"/>
+            </svg>
+            <div class="step-text">
+                <h3>4.お支払い</h3>
+                <p><b>現金・クレジットカード</b>にてお支払いいただけます。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lp-section">
+    <div class="caution-area">
+        <div class="caution-header">害虫駆除のプロである当社は</div>
+        <div class="caution-body">
+            <div class="caution-title-red">悪徳業者撲滅を目指します！</div>
+            <div style="font-weight: bold; margin-bottom: 20px; color: #1a237e;">悪徳業者を許しません</div>
+            
+            <div class="bad-list">
+                <div class="bad-item">
+                    <svg class="cross-mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#ffebee"/><path d="M30 30 L70 70 M70 30 L30 70" stroke="#d32f2f" stroke-width="12" stroke-linecap="round"/></svg>
+                    会社情報がない業者は悪徳業者です！
+                </div>
+                <div class="bad-item">
+                    <svg class="cross-mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#ffebee"/><path d="M30 30 L70 70 M70 30 L30 70" stroke="#d32f2f" stroke-width="12" stroke-linecap="round"/></svg>
+                    見積もりが曖昧な業者は悪徳業者です！
+                </div>
+                <div class="bad-item">
+                    <svg class="cross-mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#ffebee"/><path d="M30 30 L70 70 M70 30 L30 70" stroke="#d32f2f" stroke-width="12" stroke-linecap="round"/></svg>
+                    調査結果が不明瞭な業者は悪徳業者です！
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
