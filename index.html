@@ -6,111 +6,92 @@
     <style>
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
 
         .lp-container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #fff;
         }
 
-        /* 共通：黄色の外枠スタイル */
-        .step-box {
-            background-color: #ffeb00; /* 鮮やかな黄色 */
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .step-content {
-            background-color: #fff;
-            padding: 20px;
-        }
-
-        /* 見出しデザイン */
+        /* 施工の流れ タイトル */
         .main-header {
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #ffeb00;
-            padding: 20px;
-            font-size: 28px;
+            padding: 15px;
+            font-size: 24px;
             font-weight: bold;
-        }
-        .main-header span::before {
-            content: "✎";
-            margin-right: 10px;
-        }
-
-        /* 画像スタイル */
-        .step-image {
-            width: 100%;
-            height: auto;
-            display: block;
             margin-bottom: 20px;
+            border-radius: 4px;
         }
 
-        /* テキストスタイル */
+        /* 黄色の外枠デザイン */
+        .step-box {
+            background-color: #ffeb00;
+            padding: 12px; /* 黄色の枠線の太さ */
+            margin-bottom: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .step-content {
+            background-color: #fff;
+            padding: 25px;
+        }
+
+        /* ステップ見出し */
         .step-title {
-            font-size: 20px;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin-bottom: 15px;
-            line-height: 1.4;
+            margin: 0 0 15px 0;
             color: #000;
+            border-bottom: 2px solid #ffeb00;
+            padding-bottom: 8px;
+            display: inline-block;
         }
 
+        /* 説明文 */
         .step-desc {
             font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 0;
+            line-height: 1.7;
+            margin: 0;
             color: #333;
+            text-align: justify;
         }
 
         .note {
             font-size: 14px;
-            margin-top: 10px;
+            color: #666;
             display: block;
-            color: #333;
+            margin-top: 12px;
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
         }
 
-        /* 下向き矢印（縞模様再現） */
+        /* 矢印エリア */
         .arrow-divider {
-            height: 60px;
-            background-color: #ffeb00;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-        }
-        .arrow-divider::after {
-            content: "";
-            width: 0;
-            height: 0;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
-            border-top: 25px solid #fff; /* 上の要素の背景色に合わせる */
-            position: absolute;
-            top: 0;
-        }
-        /* 斜めストライプの矢印を簡易再現 */
-        .stripe-arrow {
-            width: 60px;
-            height: 30px;
-            background: repeating-linear-gradient(
-                45deg,
-                #fff,
-                #fff 5px,
-                #ffeb00 5px,
-                #ffeb00 10px
-            );
-            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
         }
 
-        .payment-methods {
+        /* 黄色の下向き三角形 */
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #ffeb00;
+        }
+
+        /* 強調テキスト */
+        .bold {
             font-weight: bold;
-            word-break: break-all;
         }
     </style>
 </head>
@@ -118,14 +99,11 @@
 
 <div class="lp-container">
 
-    <div class="main-header">
-        <span>施工の流れ</span>
-    </div>
+    <div class="main-header">施工の流れ</div>
 
     <div class="step-box">
         <div class="step-content">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/9170214760093697225_0" alt="お問い合わせ" class="step-image">
-            <h3 class="step-title">1.まずはお気軽にお問合せください</h3>
+            <h3 class="step-title">1. まずはお気軽にお問合せください</h3>
             <p class="step-desc">
                 お電話・LINE・メールフォームからお問合せいただき、弊社にて現状の到着時間と概算お見積りをさせていただきます。内容がよろしければ、ご発注ください。
                 <span class="note">※品質向上の為、通話内容は録音させていただいております。</span>
@@ -133,46 +111,10 @@
         </div>
     </div>
 
-    <div class="arrow-divider"><div class="stripe-arrow"></div></div>
+    <div class="arrow-divider"><div class="arrow-down"></div></div>
 
     <div class="step-box">
         <div class="step-content">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/6861142683828156458_0" alt="調査と駆除" class="step-image">
-            <h3 class="step-title">2.到着後、侵入経路調査と駆除作業</h3>
+            <h3 class="step-title">2. 到着後、侵入経路調査と駆除作業</h3>
             <p class="step-desc">
-                到着後は、担当者のご挨拶と内容に相違がないかもう一度ご説明。トコジラミの発生源やスポットを徹底調査し、施工経路や有効成分の選定から薬剤散布・トラップ設置などの駆除作業で解決いたします。
-            </p>
-        </div>
-    </div>
-
-    <div class="arrow-divider"><div class="stripe-arrow"></div></div>
-
-    <div class="step-box">
-        <div class="step-content">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/6232679316826646811_0" alt="再発防止" class="step-image">
-            <h3 class="step-title">3.施工箇所のご確認と再発防止レクチャー</h3>
-            <p class="step-desc">
-                作業箇所を一緒にご確認いただき、ご説明させていただきます。再発を最小限にするために、今後気を付けなければいけない点などわかりやすくレクチャーさせていただきます。他にお聞きしたいことなどあれば、ご遠慮なく担当作業員にお聞きください。
-            </p>
-        </div>
-    </div>
-
-    <div class="arrow-divider"><div class="stripe-arrow"></div></div>
-
-    <div class="step-box">
-        <div class="step-content">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/2453476084044410168_0" alt="お支払い" class="step-image">
-            <h3 class="step-title">4.お支払い</h3>
-            <p class="step-desc">
-                施工完了引渡書にサインしていただき、料金のお支払いになります。<br>
-                <span class="payment-methods">現金・クレジットカード・NP後払いAIR・LINE Pay・N Pay・PayPay・We Chat Pay</span><br>
-                からお好きな決済方法でお支払いください。<br>
-                <span class="note">※提携管理会社コード・割引クーポンをお持ちの方はご提示ください。</span>
-            </p>
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
+                到着後は、担当者のご挨拶と内容に相違がないかもう一度ご説明。トコジラミの発生源やスポットを徹底調査し、施工経路や有効成分の選定から薬剤散布・トラ
