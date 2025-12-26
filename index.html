@@ -4,78 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        :root {
-            --primary-color: #00a0e9;
-            --accent-orange: #f39800;
-            --danger-red: #e60012;
-            --bg-light-blue: #f0f8ff;
-            --bg-gray: #f4f4f4;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* 1. 比較表セクション */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-            margin-bottom: 30px;
-        }
-        .comparison-table th, .comparison-table td {
-            border: 1px solid #ccc;
-            padding: 8px 4px;
-            text-align: center;
-        }
-        .comparison-table th { background: #eee; }
-        .highlight-col { background: #fff0f0; border: 2px solid var(--danger-red) !important; }
-        .status-red { color: var(--danger-red); font-weight: bold; }
-        .icon-maru { color: var(--danger-red); font-size: 1.5rem; }
-
-        /* 2. 注意喚起セクション（お面の人） */
-        .warning-section {
+        .warning-container {
             display: flex;
-            background: #6085a5;
-            color: white;
-            min-height: 300px;
-            align-items: stretch;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: #6085a5; /* 画像の背景色 */
+            color: #ffffff;
+            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            overflow: hidden;
         }
-        .warning-img {
+
+        /* 左側：人物画像エリア */
+        .warning-image {
             flex: 1;
-            background: url('mask-man.jpg') center/cover; /* ここに人物画像をセット */
-            background-color: #ddd;
+            min-width: 300px;
+            background-image: url('person-mask.jpg'); /* ここにマスクの人物画像をセット */
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
         }
+
+        /* 右側：テキストエリア */
         .warning-content {
             flex: 1;
-            padding: 20px;
-            position: relative;
+            min-width: 300px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
         }
-        .warning-title {
-            color: #ffeb3b;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px #000;
-        }
-        .warning-text { font-size: 0.85rem; }
 
-        /* 3. お約束セクション */
-        .promise-section {
-            padding: 40px 20px;
-            text-align: center;
-            background: #fff;
-        }
-        .promise-title {
-            color: var(--danger-red);
-            font-size: 1.8rem;
-            font-weight: 900;
+        /* 警告アイコン */
+        .warning-icon {
+            width: 80px;
             margin-bottom: 20px;
-            display: inline-block
+        }
 
+        /* 悪徳業者にご注意 タイトル */
+        .warning-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #f39800; /* オレンジ */
+            margin-bottom: 30px;
+            text-align: center;
+            /* 文字の縁取りを再現 */
+            text-shadow: 
+                2px 2px 0 #fff, -2px -2px 0 #fff,
+                2px -2px 0 #fff, -2px 2px 0 #fff,
+                0 2px 0 #fff, 0 -2px 0 #fff,
+                2px 0 0 #fff, -2px 0 0 #fff;
+        }
 
+        /* 説明文 */
+        .warning-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        /* スマホ向けの調整 */
+        @media (max-width: 768px) {
+            .warning-container {
+                flex-direction: column;
+            }
+            .warning-image {
+                height: 250px;
+                min-height: auto;
+            }
+            .warning-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="warning-container">
+    <div class="warning-image"></div>
+
+    <div class="warning-content">
+        <svg class="warning-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10L5 90H95L50 10Z" fill="#ffeb3b" stroke="#333" stroke-width="5"/>
+            <rect x="46" y="40" width="8" height="25" fill="#333"/>
+            <circle cx="50" cy="75" r="5" fill="#333"/>
+        </svg>
+
+        <h2 class="warning-title">悪徳業者にご注意</h2>
+
+        <div class="warning-text">
+            最近、無料見積りと謳って依頼すると、何度ももしつこい営業が行われたり、別途費用が発生したといった被害の話が絶えません。<br><br>
+            当社では、お客様のご要望に応じて誠実に対応し、説明した料金を超える費用は一切発生しません。無料見積りの後に、しつこい営業を行うことはありませんのでご安心ください。
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
