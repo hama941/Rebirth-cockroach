@@ -3,163 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>選ばれる理由 | 害虫害獣駆除サービス</title>
     <style>
-        /* 基本設定 */
+        /* リセット・共通設定 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f0f7ff;
+            background-color: #fcfcfc;
             color: #333;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 20px 10px;
         }
+        .lp-content { max-width: 600px; margin: 0 auto; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* セクションタイトル */
-        .section-title {
+        /* --- 施工の流れ セクション --- */
+        .section-header {
+            background-color: #ffeb00;
             text-align: center;
-            background-color: #1a365d;
-            color: white;
             padding: 15px;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
+            border-radius: 4px;
             margin-bottom: 30px;
-            position: relative;
-        }
-        .section-title::before, .section-title::after {
-            content: "";
-            display: inline-block;
-            width: 20px;
-            height: 2px;
-            background: white;
-            vertical-align: middle;
-            margin: 0 15px;
-            transform: rotate(-45deg);
-        }
-
-        /* カード共通デザイン */
-        .reason-card {
-            background: white;
-            border: 4px double #1a365d;
-            margin-bottom: 40px;
-            position: relative;
-            padding: 20px;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
-        /* 理由ラベル */
-        .reason-label {
-            position: absolute;
-            top: -15px;
-            left: -10px;
-            background-color: #d4af37;
-            color: white;
-            padding: 5px 15px;
-            font-weight: bold;
+        .step-container { margin-bottom: 40px; }
+
+        .step-card {
+            background-color: #ffeb00; /* 画像と同じ黄色の外枠 */
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 0;
+        }
+
+        .step-inner {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .step-illust { width: 80px; height: 80px; flex-shrink: 0; }
+
+        .step-text { flex: 1; }
+        .step-text h3 {
             font-size: 18px;
-            z-index: 10;
-        }
-
-        /* コンテンツ配置 */
-        .reason-image {
-            flex: 1;
-            min-width: 250px;
-            padding: 10px;
-            text-align: center;
-        }
-        .reason-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .reason-text {
-            flex: 1.5;
-            min-width: 280px;
-            padding: 10px;
-        }
-
-        /* テキスト装飾 */
-        .reason-text h3 {
-            color: #1a365d;
-            margin-top: 0;
-            font-size: 22px;
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 10px;
-        }
-        .highlight {
-            color: #e53e3e;
             font-weight: bold;
-            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #000;
+            line-height: 1.3;
         }
-        .small-note {
-            font-size: 0.85em;
-            color: #e53e3e;
-            margin-top: 10px;
+        .step-text p { font-size: 15px; line-height: 1.6; margin-bottom: 0; }
+        .note { font-size: 12px; color: #666; display: block; margin-top: 8px; }
+
+        .arrow-divider { text-align: center; padding: 10px 0; }
+        .arrow-svg { width: 40px; height: 25px; fill: #ffeb00; }
+
+        /* --- 悪徳業者撲滅 セクション --- */
+        .caution-section {
+            border: 4px solid #1a237e;
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+
+        .caution-top {
+            background-color: #1a237e;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .caution-body { padding: 30px 20px; text-align: center; }
+
+        .caution-main-title {
+            color: #d32f2f;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .caution-sub-title {
+            color: #1a237e;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 25px;
             display: block;
         }
 
-        /* スマホ対応 */
-        @media (max-width: 600px) {
-            .reason-card {
-                flex-direction: column;
-                padding-top: 30px;
-            }
-            .section-title {
-                font-size: 20px;
-            }
-            .reason-text h3 {
-                font-size: 18px;
-            }
+        .bad-list { text-align: left; display: inline-block; width: 100%; }
+        .bad-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 8px;
         }
+
+        .no-icon { width: 28px; height: 28px; flex-shrink: 0; }
+
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="section-title">＼ 選ばれる理由 ／</div>
+<div class="lp-content">
+    <div class="section-header">
+        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        施工の流れ
+    </div>
 
-    <div class="reason-card">
-        <div class="reason-label">理由 1</div>
-        <div class="reason-image">
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&q=80" alt="無料見積もり">
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="step-illust" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#FFF9C4"/><path d="M30 45 Q50 35 70 45 L70 70 Q50 80 30 70 Z" fill="#FBC02D"/><circle cx="50" cy="58" r="8" fill="white"/></svg>
+            <div class="step-text">
+                <h3>1. まずはお気軽にお電話ください</h3>
+                <p>お電話にて現状の到着時間と概算お見積りをさせていただきます。</p>
+                <span class="note">※品質向上の為、通話内容は録音させていただいております。</span>
+            </div>
         </div>
-        <div class="reason-text">
-            <h3><span class="highlight">お見積りは完全無料！</span><br>明朗会計で安心です</h3>
-            <p>お客様にお立ち会いいただき、現地にて詳細な状況を調査。その場で正確なお見積りをご提示します。追加費用は一切かかりませんので、安心してご相談ください。</p>
-            <span class="small-note">※別途、遠方出張費が発生する場合は事前にお伝えします。</span>
+    </div>
+    <div class="arrow-divider"><svg class="arrow-svg" viewBox="0 0 100 50"><path d="M0 0 L100 0 L50 50 Z"/></svg></div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="step-illust" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#E3F2FD"/><circle cx="45" cy="45" r="18" stroke="#1976D2" stroke-width="6" fill="white"/><line x1="58" y1="58" x2="78" y2="78" stroke="#1976D2" stroke-width="8" stroke-linecap="round"/></svg>
+            <div class="step-text">
+                <h3>2. 到着後、侵入経路調査と駆除作業</h3>
+                <p>害虫・害獣の発生源を徹底調査し、最適な薬剤散布やトラップ設置で解決いたします。</p>
+            </div>
+        </div>
+    </div>
+    <div class="arrow-divider"><svg class="arrow-svg" viewBox="0 0 100 50"><path d="M0 0 L100 0 L50 50 Z"/></svg></div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="step-illust" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#E8F5E9"/><path d="M35 30h30v40H35z" fill="white" stroke="#388E3C" stroke-width="4"/><path d="M42 50 L50 58 L63 43" stroke="#388E3C" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+            <div class="step-text">
+                <h3>3. 施工箇所のご確認と再発防止レクチャー</h3>
+                <p>作業箇所を一緒にご確認いただき、再発防止のポイントをレクチャーいたします。</p>
+            </div>
+        </div>
+    </div>
+    <div class="arrow-divider"><svg class="arrow-svg" viewBox="0 0 100 50"><path d="M0 0 L100 0 L50 50 Z"/></svg></div>
+
+    <div class="step-card">
+        <div class="step-inner">
+            <svg class="step-illust" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#FFF3E0"/><rect x="30" y="42" width="40" height="25" rx="3" fill="#f57c00"/><circle cx="50" cy="54" r="5" fill="white"/></svg>
+            <div class="step-text">
+                <h3>4. お支払い</h3>
+                <p>施工完了後のお支払いとなります。<br><b>【現金・クレジットカード】</b>がご利用いただけます。</p>
+            </div>
         </div>
     </div>
 
-    <div class="reason-card">
-        <div class="reason-label">理由 2</div>
-        <div class="reason-image">
-            <img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=300&q=80" alt="24時間365日対応">
+    <section class="caution-section">
+        <div class="caution-top">害虫駆除のプロである当社は</div>
+        <div class="caution-body">
+            <h2 class="caution-main-title">悪徳業者撲滅を目指します！</h2>
+            <span class="caution-sub-title">悪徳業者を許しません</span>
+            
+            <div class="bad-list">
+                <div class="bad-item">
+                    <svg class="no-icon" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#d32f2f" stroke-width="8"/><line x1="25" y1="25" x2="75" y2="75" stroke="#d32f2f" stroke-width="8"/><line x1="75" y1="25" x2="25" y2="75" stroke="#d32f2f" stroke-width="8"/></svg>
+                    会社情報がない業者は悪徳業者です！
+                </div>
+                <div class="bad-item">
+                    <svg class="no-icon" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#d32f2f" stroke-width="8"/><line x1="25" y1="25" x2="75" y2="75" stroke="#d32f2f" stroke-width="8"/><line x1="75" y1="25" x2="25" y2="75" stroke="#d32f2f" stroke-width="8"/></svg>
+                    見積もりが曖昧な業者は悪徳業者です！
+                </div>
+                <div class="bad-item">
+                    <svg class="no-icon" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#d32f2f" stroke-width="8"/><line x1="25" y1="25" x2="75" y2="75" stroke="#d32f2f" stroke-width="8"/><line x1="75" y1="25" x2="25" y2="75" stroke="#d32f2f" stroke-width="8"/></svg>
+                    調査結果が不明瞭な業者は悪徳業者です！
+                </div>
+            </div>
         </div>
-        <div class="reason-text">
-            <h3>24時間365日<br><span class="highlight">即日対応いたします！</span></h3>
-            <p>深夜や早朝に発生したトラブルも、専門スタッフが迅速に駆けつけます！最短15分で現場到着。お困りごとは、今すぐお電話でご相談ください。</p>
-        </div>
-    </div>
-
-    <div class="reason-card">
-        <div class="reason-label">理由 3</div>
-        <div class="reason-image">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&w=300&q=80" alt="アフターサービス">
-        </div>
-        <div class="reason-text">
-            <h3>充実の<span class="highlight">アフターサービス</span></h3>
-            <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。お客様の安心を第一に、最後までしっかり支えます！</p>
-        </div>
-    </div>
+    </section>
 </div>
 
 </body>
 </html>
+
