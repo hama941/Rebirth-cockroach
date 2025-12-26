@@ -5,102 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
-            --bg-dark-blue: #1a2a4e;
-            --accent-yellow: #ffff00;
-            --text-white: #ffffff;
-            --danger-red: #d32f2f;
+            --primary-color: #00a0e9;
+            --accent-orange: #f39800;
+            --danger-red: #e60012;
+            --bg-light-blue: #f0f8ff;
+            --bg-gray: #f4f4f4;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            color: #333;
+            line-height: 1.6;
         }
 
-        /* メインのコンテナ（斜めの背景） */
-        .banner {
+        /* 1. 比較表セクション */
+        .comparison-table {
             width: 100%;
-            max-width: 800px;
-            background: var(--bg-dark-blue);
-            padding: 40px 20px;
-            position: relative;
-            overflow: hidden;
-            /* 上部のギザギザ・斜め感を再現 */
-            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-            transform: skewY(-1deg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .content-inner {
-            transform: skewY(1deg); /* 本体の歪みを戻す */
-            padding: 10px;
-        }
-
-        /* メインタイトル */
-        .main-title {
-            font-size: 3rem;
-            font-weight: 900;
-            font-style: italic;
+            border-collapse: collapse;
+            font-size: 12px;
             margin-bottom: 30px;
-            letter-spacing: 2px;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ccc;
+            padding: 8px 4px;
+            text-align: center;
+        }
+        .comparison-table th { background: #eee; }
+        .highlight-col { background: #fff0f0; border: 2px solid var(--danger-red) !important; }
+        .status-red { color: var(--danger-red); font-weight: bold; }
+        .icon-maru { color: var(--danger-red); font-size: 1.5rem; }
+
+        /* 2. 注意喚起セクション（お面の人） */
+        .warning-section {
             display: flex;
-            align-items: center;
-            flex-wrap: wrap;
+            background: #6085a5;
+            color: white;
+            min-height: 300px;
+            align-items: stretch;
         }
-
-        .highlight-yellow {
-            color: var(--accent-yellow);
-            /* 黒い縁取りを再現 */
-            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 4px 4px 0 #000;
+        .warning-img {
+            flex: 1;
+            background: url('mask-man.jpg') center/cover; /* ここに人物画像をセット */
+            background-color: #ddd;
         }
-
-        .title-sub {
-            color: var(--text-white);
-            font-size: 2.5rem;
-            margin-left: 10px;
-            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-        }
-
-        /* リストアイテム */
-        .check-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: center;
-            border-bottom: 2px dashed rgba(255,255,255,0.5);
-            padding: 15px 0;
-            color: var(--text-white);
-            font-size: 1.6rem;
-            font-weight: bold;
-            font-style: italic;
-        }
-
-        /* 禁止マークの再現 */
-        .icon-no {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--danger-red);
-            border-radius: 50%;
+        .warning-content {
+            flex: 1;
+            padding: 20px;
             position: relative;
-            margin-right: 15px;
-            flex-shrink: 0;
-            background: white;
         }
-        .icon-no::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 4px;
-            background: var(--danger-red);
-            transform: translate(-50%, -50%) rotate(-
+        .warning-title {
+            color: #ffeb3b;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .warning-text { font-size: 0.85rem; }
+
+        /* 3. お約束セクション */
+        .promise-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: #fff;
+        }
+        .promise-title {
+            color: var(--danger-red);
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            display: inline-block
+
 
