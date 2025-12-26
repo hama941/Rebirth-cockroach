@@ -4,102 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .warning-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 40px auto;
-            background-color: #6085a5; /* 画像の背景色 */
-            color: #ffffff;
+        /* 全体のリセット */
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
             font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-            overflow: hidden;
         }
 
-        /* 左側：人物画像エリア */
-        .warning-image {
-            flex: 1;
-            min-width: 300px;
-            background-image: url('person-mask.jpg'); /* ここにマスクの人物画像をセット */
-            background-size: cover;
-            background-position: center;
-            min-height: 400px;
-        }
-
-        /* 右側：テキストエリア */
-        .warning-content {
-            flex: 1;
-            min-width: 300px;
+        /* メインコンテナ：全幅表示 */
+        .warning-section-full {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #6085a5; /* 画像と同じ青背景 */
             padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center; /* 中央揃え */
+            box-sizing: border-box;
         }
 
         /* 警告アイコン */
-        .warning-icon {
+        .alert-icon {
             width: 80px;
+            height: auto;
             margin-bottom: 20px;
         }
 
-        /* 悪徳業者にご注意 タイトル */
-        .warning-title {
-            font-size: 2.2rem;
+        /* 悪徳業者にご注意（縁取りタイトル） */
+        .title-warning {
+            color: #f39800; /* オレンジ色 */
+            font-size: 2.5rem;
             font-weight: 900;
-            color: #f39800; /* オレンジ */
-            margin-bottom: 30px;
-            text-align: center;
-            /* 文字の縁取りを再現 */
+            margin: 0 0 25px 0;
+            line-height: 1.3;
+            display: inline-block;
+            /* 白い太い縁取りをCSSで再現 */
             text-shadow: 
-                2px 2px 0 #fff, -2px -2px 0 #fff,
-                2px -2px 0 #fff, -2px 2px 0 #fff,
-                0 2px 0 #fff, 0 -2px 0 #fff,
-                2px 0 0 #fff, -2px 0 0 #fff;
+                3px 3px 0 #fff, -3px -3px 0 #fff,
+                3px -3px 0 #fff, -3px 3px 0 #fff,
+                0 3px 0 #fff, 0 -3px 0 #fff,
+                3px 0 0 #fff, -3px 0 0 #fff;
         }
 
         /* 説明文 */
-        .warning-text {
-            font-size: 1rem;
+        .description-text {
+            font-size: 1.1rem;
             line-height: 1.8;
-            letter-spacing: 0.05em;
+            text-align: left; /* 文章は左揃えが見やすい */
+            max-width: 600px;
+            margin: 0 auto;
+            word-break: break-all;
         }
 
-        /* スマホ向けの調整 */
-        @media (max-width: 768px) {
-            .warning-container {
-                flex-direction: column;
+        /* スマホ向けの微調整 */
+        @media (max-width: 600px) {
+            .warning-section-full {
+                padding: 30px 20px;
             }
-            .warning-image {
-                height: 250px;
-                min-height: auto;
+            .title-warning {
+                font-size: 1.8rem;
+                text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
             }
-            .warning-title {
-                font-size: 1.6rem;
+            .description-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .alert-icon {
+                width: 60px;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="warning-container">
-    <div class="warning-image"></div>
+<section class="warning-section-full">
+    <svg class="alert-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10L5 90H95L50 10Z" fill="#ffeb3b" stroke="#333" stroke-width="5"/>
+        <text x="50" y="78" fill="#333" font-size="50" font-weight="bold" text-anchor="middle">!</text>
+    </svg>
 
-    <div class="warning-content">
-        <svg class="warning-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 10L5 90H95L50 10Z" fill="#ffeb3b" stroke="#333" stroke-width="5"/>
-            <rect x="46" y="40" width="8" height="25" fill="#333"/>
-            <circle cx="50" cy="75" r="5" fill="#333"/>
-        </svg>
+    <h2 class="title-warning">悪徳業者にご注意</h2>
 
-        <h2 class="warning-title">悪徳業者にご注意</h2>
-
-        <div class="warning-text">
-            最近、無料見積りと謳って依頼すると、何度ももしつこい営業が行われたり、別途費用が発生したといった被害の話が絶えません。<br><br>
-            当社では、お客様のご要望に応じて誠実に対応し、説明した料金を超える費用は一切発生しません。無料見積りの後に、しつこい営業を行うことはありませんのでご安心ください。
-        </div>
+    <div class="description-text">
+        最近、無料見積りと謳って依頼すると、何度ももしつこい営業が行われたり、別途費用が発生したといった被害の話が絶えません。<br><br>
+        当社では、お客様のご要望に応じて誠実に対応し、説明した料金を超える費用は一切発生しません。無料見積りの後に、しつこい営業を行うことはありませんのでご安心ください。
     </div>
-</div>
+</section>
 
 </body>
 </html>
