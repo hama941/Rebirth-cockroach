@@ -3,55 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お問い合わせフォーム</title>
+    <title>選ばれる理由 | 害虫害獣駆除サービス</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f4f4f4; }
-        .container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #333; margin-bottom: 25px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; }
-        label span { color: red; font-size: 0.8em; margin-left: 5px; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
-        button { width: 100%; padding: 15px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; font-weight: bold; }
-        button:hover { background: #0056b3; }
+        /* 基本設定 */
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f0f7ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            text-align: center;
+            background-color: #1a365d;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .section-title::before, .section-title::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: white;
+            vertical-align: middle;
+            margin: 0 15px;
+            transform: rotate(-45deg);
+        }
+
+        /* カード共通デザイン */
+        .reason-card {
+            background: white;
+            border: 4px double #1a365d;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* 理由ラベル */
+        .reason-label {
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            background-color: #d4af37;
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 10;
+        }
+
+        /* コンテンツ配置 */
+        .reason-image {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px;
+            text-align: center;
+        }
+        .reason-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .reason-text {
+            flex: 1.5;
+            min-width: 280px;
+            padding: 10px;
+        }
+
+        /* テキスト装飾 */
+        .reason-text h3 {
+            color: #1a365d;
+            margin-top: 0;
+            font-size: 22px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+        .highlight {
+            color: #e53e3e;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .small-note {
+            font-size: 0.85em;
+            color: #e53e3e;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 600px) {
+            .reason-card {
+                flex-direction: column;
+                padding-top: 30px;
+            }
+            .section-title {
+                font-size: 20px;
+            }
+            .reason-text h3 {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>お問い合わせ</h2>
+    <div class="section-title">＼ 選ばれる理由 ／</div>
 
-    <form action="https://formspree.io/f/xwvkkqkq" method="POST">
-        
-        <div class="form-group">
-            <label>お名前<span>(必須)</span></label>
-            <input type="text" name="name" required placeholder="例：山田 太郎">
+    <div class="reason-card">
+        <div class="reason-label">理由 1</div>
+        <div class="reason-image">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&q=80" alt="無料見積もり">
         </div>
-
-        <div class="form-group">
-            <label>電話番号<span>(必須)</span></label>
-            <input type="tel" name="tel" required placeholder="例：09012345678">
+        <div class="reason-text">
+            <h3><span class="highlight">お見積りは完全無料！</span><br>明朗会計で安心です</h3>
+            <p>お客様にお立ち会いいただき、現地にて詳細な状況を調査。その場で正確なお見積りをご提示します。追加費用は一切かかりませんので、安心してご相談ください。</p>
+            <span class="small-note">※別途、遠方出張費が発生する場合は事前にお伝えします。</span>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label>メールアドレス<span>(必須)</span></label>
-            <input type="email" name="_replyto" required placeholder="例：abc@example.com">
+    <div class="reason-card">
+        <div class="reason-label">理由 2</div>
+        <div class="reason-image">
+            <img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=300&q=80" alt="24時間365日対応">
         </div>
-
-        <div class="form-group">
-            <label>住所<span>(必須)</span></label>
-            <input type="text" name="address" required placeholder="例：東京都渋谷区...">
+        <div class="reason-text">
+            <h3>24時間365日<br><span class="highlight">即日対応いたします！</span></h3>
+            <p>深夜や早朝に発生したトラブルも、専門スタッフが迅速に駆けつけます！最短15分で現場到着。お困りごとは、今すぐお電話でご相談ください。</p>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label>お問い合わせ内容<span>(必須)</span></label>
-            <textarea name="message" rows="6" required placeholder="ご質問などをご記入ください"></textarea>
+    <div class="reason-card">
+        <div class="reason-label">理由 3</div>
+        <div class="reason-image">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&w=300&q=80" alt="アフターサービス">
         </div>
-
-        <button type="submit">この内容で送信する</button>
-    </form>
+        <div class="reason-text">
+            <h3>充実の<span class="highlight">アフターサービス</span></h3>
+            <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。お客様の安心を第一に、最後までしっかり支えます！</p>
+        </div>
+    </div>
 </div>
 
 </body>
 </html>
-
