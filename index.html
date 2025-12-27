@@ -3,236 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>害虫駆除サービス</title>
     <style>
-        :root {
-            --primary-blue: #00a0e9;
-            --danger-red: #e60012;
-            --accent-orange: #f39800;
-            --bg-gray: #f9f9f9;
-            --text-main: #333333;
-        }
-
+        /* ベーススタイル */
         body {
             margin: 0;
             padding: 0;
+            background-color: #ffffff;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: var(--bg-gray);
-            color: var(--text-main);
-            line-height: 1.6;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            padding-bottom: 100px; /* フッター用余白 */
-        }
-
-        /* 1. 比較表セクション */
-        .table-section {
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            overflow-x: auto;
-        }
-        table {
+        /* 全体コンテナ */
+        .lp-container {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-            min-width: 450px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px 4px;
+            max-width: 500px;
+            padding: 20px;
+            box-sizing: border-box;
             text-align: center;
         }
-        th { background: #f2f2f2; }
-        .our-service { background: #fff0f0; border: 2px solid var(--danger-red); font-weight: bold; }
-        .red-bold { color: var(--danger-red); font-weight: bold; }
 
-        /* 2. 注意喚起セクション */
-        .warning-box {
-            background-color: #6085a5;
-            color: #fff;
-            padding: 30px 20px;
-            border-radius: 5px;
-            text-align: center;
+        /* セクションタイトル */
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
             margin-bottom: 30px;
-        }
-        .warning-title {
-            color: var(--accent-orange);
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+            color: #333;
         }
 
-        /* 3. 駆除サービスカード (はち.jpg 再現) */
+        /* サービスカード */
         .service-card {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            background: #ffffff;
+            border-radius: 12px;
+            /* 非常に薄い影で清潔感を出す */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
             padding: 40px 25px;
-            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* アイコン画像エリア */
+        .icon-box {
             margin-bottom: 30px;
         }
-        .service-card img {
-            width: 80px;
-            margin-bottom: 20px;
+        .icon-box img {
+            width: 100px; /* アイコンのサイズ */
+            height: auto;
         }
+
+        /* サービス名 */
         .service-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* 価格表示 */
+        .price-tag {
+            color: #e63946; /* 赤色 */
             font-size: 1.6rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
-        .price {
-            color: var(--danger-red);
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-        .check-list {
+
+        /* リストスタイル */
+        .feature-list {
             text-align: left;
             list-style: none;
             padding: 0;
-            font-size: 0.95rem;
+            margin: 0;
         }
-        .check-list li {
+
+        .feature-item {
             position: relative;
             padding-left: 25px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #444;
         }
-        .check-list li::before {
-            content: '●';
-            color: #4caf50;
+
+        /* 緑色のドットを再現 */
+        .feature-item::before {
+            content: "";
             position: absolute;
             left: 0;
-        }
-
-        /* 4. 固定フッター */
-        .footer-cta {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 600px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            padding: 10px;
-            background: rgba(255,255,255,0.95);
-            box-sizing: border-box;
-            gap: 8px;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        .btn-tel {
-            flex: 1;
-            background: var(--accent-orange);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        .btn-web {
-            flex: 1.2;
-            background: #fff;
-            border: 2px solid var(--accent-orange);
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            position: relative;
-        }
-        .badge-60 {
-            background: var(--danger-red);
-            color: #fff;
-            font-size: 10px;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80; /* 黄緑色 */
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 8px;
-            line-height: 1.1;
         }
-        .web-text { font-size: 0.75rem; font-weight: bold; }
-        .web-text span { color: var(--danger-red); display: block; font-size: 0.9rem; }
 
+        /* スマホ向けの微調整 */
+        @media (max-width: 480px) {
+            .section-title { font-size: 1.6rem; }
+            .service-name { font-size: 1.5rem; }
+            .price-tag { font-size: 1.4rem; }
+            .feature-item { font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <div class="table-section">
-        <h3 style="text-align: center; font-size: 0.9rem;">他社との比較</h3>
-        <table>
-            <tr>
-                <th>項目</th>
-                <td>他社A</td>
-                <td>他社B</td>
-                <td class="our-service">当社</td>
-            </tr>
-            <tr>
-                <th>カスタマー</th>
-                <td>なし</td>
-                <td>営業時間内</td>
-                <td class="our-service red-bold">24時間対応</td>
-            </tr>
-            <tr>
-                <th>満足度</th>
-                <td>4.0/5.0</td>
-                <td>4.2/5.0</td>
-                <td class="our-service">4.8/5.0</td>
-            </tr>
-        </table>
-    </div>
+<div class="lp-container">
+    <h1 class="section-title">害虫駆除</h1>
 
-    <div class="warning-box">
-        <div style="font-size: 3rem; margin-bottom: 10px;">⚠️</div>
-        <h2 class="warning-title">悪徳業者にご注意</h2>
-        <p style="text-align: left; font-size: 0.9rem;">
-            最近、無料見積りと謳って依頼すると、何度ももしつこい営業が行われたり、別途費用が発生したといった被害の話が絶えません。当社では、説明した料金を超える費用は一切発生しません。
-        </p>
-    </div>
-
-    <h2 style="text-align: center;">害虫駆除</h2>
     <div class="service-card">
-        <div style="font-size: 50px;">🪳</div>
+        <div class="icon-box">
+            <img src="https://via.placeholder.com/100?text=Icon" alt="ゴキブリ駆除アイコン">
+        </div>
+
         <div class="service-name">ゴキブリ駆除</div>
-        <div class="price">18,000円〜</div>
         
-        <ul class="check-list">
-            <li>市販の駆除剤が効かない</li>
-            <li>一度業者に頼んだのにまた発生した</li>
-            <li>部屋で見かける不快感は精神的なストレスとなり、生活の質を低下させます</li>
-            <li>糞や脱皮した皮はアレルギー性鼻炎や喘息の発症リスクが高まります</li>
+        <div class="price-tag">18,000円〜</div>
+
+        <ul class="feature-list">
+            <li class="feature-item">市販の駆除剤が効かない</li>
+            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
+            <li class="feature-item">部屋で見かけることによる不快感や恐怖感は、精神的なストレスとなり、生活の質を低下させる可能性があります</li>
+            <li class="feature-item">糞や脱皮した皮はアレルギー性鼻炎、気管支喘息、アトピー性皮膚炎などの発症リスクが高まります</li>
         </ul>
     </div>
-
-</div>
-
-<div class="footer-cta">
-    <a href="tel:0335288090" class="btn-tel">
-        <span style="font-size: 0.7rem;">お電話でのご相談</span>
-        03-3528-8090
-    </a>
-    <a href="#contact" class="btn-web">
-        <div class="badge-60">簡単<br>60秒</div>
-        <div class="web-text">
-            <span>無料調査・無料相談をする</span>
-            年中無休・24時間受付
-        </div>
-    </a>
 </div>
 
 </body>
