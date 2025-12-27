@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>害虫・害獣駆除 相談センター | 株式会社Re:birth</title>
+    <title>ムカデ・害虫駆除 相談センター | 株式会社Re:birth</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -246,12 +246,29 @@
             width: 10px; height: 10px; background-color: var(--dot-green); border-radius: 50%;
         }
 
+        /* --- 5. プロのアピール --- */
+        .pro-banner {
+            background: linear-gradient(135deg, #fff 0%, #fff9c4 100%);
+            border: 4px solid var(--accent-yellow);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .pro-banner-text { flex: 1; min-width: 280px; }
+        .pro-banner-text h4 { color: var(--danger-red); font-size: 1.5rem; margin-top: 0; }
+        .pro-banner-img { flex: 0 0 120px; text-align: right; }
+        .pro-banner-img i { font-size: 80px; color: var(--bg-dark-blue); }
+
         .list-box {
             background: #fff; border: 1px solid #ddd; border-radius: 12px;
             margin: 40px 0; padding: 30px; text-align: center;
         }
 
-        /* --- 追加：施工の流れ スタイル --- */
+        /* --- 施工の流れ --- */
         .process-section {
             padding: 60px 20px;
             max-width: 640px;
@@ -272,9 +289,7 @@
         .step-box {
             background-color: #ffeb00;
             padding: 12px;
-            margin-bottom: 0;
             border-radius: 10px;
-            box-sizing: border-box;
         }
         .step-content {
             background-color: #fff;
@@ -285,157 +300,47 @@
             gap: 20px;
         }
         .step-icon-area {
-            flex-shrink: 0;
-            width: 70px;
-            height: 70px;
-            background-color: #fff9c4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            color: #fbc02d;
+            flex-shrink: 0; width: 70px; height: 70px;
+            background-color: #fff9c4; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 35px; color: #fbc02d;
         }
         .step-text-area { flex: 1; }
-        .step-title {
-            font-size: 19px;
-            font-weight: bold;
-            margin: 0 0 10px 0;
-            color: #000;
-            line-height: 1.4;
-            text-align: left;
-        }
-        .step-desc {
-            font-size: 15px;
-            line-height: 1.7;
-            margin: 0;
-            text-align: left;
-        }
-        .note {
-            font-size: 13px;
-            color: #666;
-            display: block;
-            margin-top: 8px;
-        }
-        .arrow-divider {
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 15px solid #ffeb00;
-        }
-        .payment-bold { font-weight: bold; }
+        .step-title { font-size: 19px; font-weight: bold; margin: 0 0 10px 0; color: #000; text-align: left; }
+        .step-desc { font-size: 15px; line-height: 1.7; margin: 0; text-align: left; }
+        
+        .arrow-divider { height: 40px; display: flex; justify-content: center; align-items: center; }
+        .arrow-down { width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 15px solid #ffeb00; }
 
-        /* --- 5. FAQ --- */
-        .faq-section {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .faq-header { text-align: center; margin-bottom: 30px; }
+        /* FAQ */
+        .faq-section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
         .faq-container { display: flex; flex-direction: column; gap: 12px; }
-        .faq-item {
-            background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            overflow: hidden; border: 1px solid #eee;
-        }
-
-        .faq-question {
-            width: 100%; padding: 18px 20px; display: flex; align-items: center;
-            cursor: pointer; background: none; border: none; text-align: left;
-            font-size: 16px; font-weight: bold; color: var(--text-dark);
-            position: relative; transition: background 0.2s; outline: none;
-        }
-
-        .faq-question:hover { background-color: #fff9f0; }
-        .faq-question::before {
-            content: "Q"; color: var(--main-color); font-size: 20px;
-            margin-right: 15px; font-family: 'Arial Black', sans-serif;
-        }
-        .faq-question::after {
-            content: "＋"; position: absolute; right: 20px; color: #ccc;
-            font-size: 18px; transition: transform 0.3s;
-        }
-
+        .faq-item { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #eee; }
+        .faq-question { width: 100%; padding: 18px 20px; display: flex; align-items: center; cursor: pointer; background: none; border: none; text-align: left; font-size: 16px; font-weight: bold; position: relative; }
+        .faq-question::before { content: "Q"; color: var(--main-color); font-size: 20px; margin-right: 15px; font-family: 'Arial Black', sans-serif; }
+        .faq-question::after { content: "＋"; position: absolute; right: 20px; color: #ccc; font-size: 18px; transition: transform 0.3s; }
         .faq-item.open .faq-question::after { transform: rotate(45deg); color: var(--main-color); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #fff; }
         .faq-item.open .faq-answer { max-height: 1000px; }
+        .answer-inner { padding: 0 20px 20px 52px; line-height: 1.8; font-size: 15px; color: #555; border-top: 1px solid #fafafa; padding-top: 15px; }
 
-        .answer-inner {
-            padding: 0 20px 20px 52px; line-height: 1.8; font-size: 15px;
-            color: #555; border-top: 1px solid #fafafa; padding-top: 15px;
-        }
-
-        /* --- 6. お問い合わせ & 会社概要 (統合セクション) --- */
-        .contact-company-section {
-            background-color: var(--form-bg);
-            padding: 80px 20px;
-        }
-
-        .form-company-container {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .section-wrapper {
-            background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-        }
-
-        .rb-title {
-            font-size: 1.4rem; font-weight: bold; margin-bottom: 30px;
-            text-align: center; letter-spacing: 0.1em; position: relative; padding-bottom: 15px;
-        }
-
-        .rb-title::after {
-            content: ''; position: absolute; bottom: 0; left: 50%;
-            transform: translateX(-50%); width: 50px; height: 3px; background-color: var(--link-blue);
-        }
-
+        /* お問い合わせ & 会社概要 */
+        .contact-company-section { background-color: var(--form-bg); padding: 80px 20px; }
+        .form-company-container { max-width: 750px; margin: 0 auto; }
+        .section-wrapper { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        .rb-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 30px; text-align: center; position: relative; padding-bottom: 15px; }
+        .rb-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background-color: var(--link-blue); }
         .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 10px; font-weight: bold; font-size: 0.95rem; }
-        .form-group label span {
-            color: #d9534f; font-size: 0.75rem; margin-left: 10px;
-            background: #fff1f0; padding: 2px 6px; border-radius: 3px; border: 1px solid #ffa39e;
-        }
-
-        input, textarea {
-            width: 100%; padding: 14px; border: 1px solid #d9d9d9;
-            border-radius: 6px; box-sizing: border-box; font-size: 16px; transition: all 0.3s;
-        }
-
-        input:focus, textarea:focus { outline: none; border-color: var(--link-blue); box-shadow: 0 0 0 3px rgba(0,123,255,0.1); }
-
-        .submit-btn {
-            width: 100%; padding: 18px; background: var(--link-blue); color: #fff;
-            border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer;
-            font-weight: bold; transition: background 0.3s, transform 0.1s;
-        }
-
-        .submit-btn:hover { background: #0056b3; }
-        .submit-btn:active { transform: scale(0.98); }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: bold; }
+        .form-group label span { color: #d9534f; font-size: 0.75rem; margin-left: 10px; background: #fff1f0; padding: 2px 6px; border-radius: 3px; }
+        input, textarea { width: 100%; padding: 14px; border: 1px solid #d9d9d9; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        .submit-btn { width: 100%; padding: 18px; background: var(--link-blue); color: #fff; border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
 
         .rb-info-table { width: 100%; border-collapse: collapse; }
-        .rb-info-table tr { border-bottom: 1px solid #f0f0f0; }
-        .rb-info-table th {
-            width: 30%; text-align: left; padding: 20px 15px; font-size: 0.9rem;
-            background-color: #fafafa; color: #666; vertical-align: middle;
-        }
-        .rb-info-table td { width: 70%; padding: 20px 15px; font-size: 0.95rem; }
-        .rb-tel-link { color: var(--link-blue); text-decoration: none; font-weight: bold; }
+        .rb-info-table th { width: 30%; text-align: left; padding: 20px 15px; background-color: #fafafa; color: #666; }
+        .rb-info-table td { width: 70%; padding: 20px 15px; }
 
-        /* --- 7. フッター --- */
-        .footer-cta { background-color: var(--bg-dark-blue); padding: 60px 20px; text-align: center; }
-        
+        .footer-cta { background-color: var(--bg-dark-blue); padding: 40px 20px; text-align: center; }
         .cta-button {
             display: inline-block;
             background: linear-gradient(to bottom, #ff4e00, #d00);
@@ -443,26 +348,13 @@
             font-size: 1.5rem; font-weight: bold;
             text-decoration: none; border-radius: 50px;
             box-shadow: 0 5px 0 #900; transition: 0.3s;
-            margin-top: 20px;
         }
 
-        .cta-button:hover { transform: translateY(3px); box-shadow: 0 2px 0 #900; }
-
-        /* レスポンシブ */
         @media (max-width: 768px) {
-            .reason-card { flex-direction: column; padding-top: 40px; }
-            .warning-area { clip-path: none; }
-            .cta-button { width: 90%; padding: 15px 0; font-size: 1.2rem; box-sizing: border-box; }
-            .faq-question { font-size: 15px; padding: 15px; }
-            .answer-inner { padding-left: 45px; font-size: 14px; }
-            .section-wrapper { padding: 30px 20px; }
-            .rb-info-table th, .rb-info-table td { display: block; width: 100%; padding: 15px 10px; }
-            .rb-info-table th { background-color: transparent; padding-bottom: 0; font-size: 0.8rem; }
-            .rb-info-table td { padding-top: 5px; }
-            
-            /* 施工の流れレスポンシブ */
+            .reason-card { flex-direction: column; }
+            .cta-button { width: 90%; font-size: 1.2rem; }
+            .rb-info-table th, .rb-info-table td { display: block; width: 100%; }
             .step-content { flex-direction: column; align-items: center; text-align: center; }
-            .step-title, .step-desc { text-align: center; }
         }
     </style>
 </head>
@@ -471,18 +363,18 @@
     <section class="lp-hero">
         <div class="content-inner">
             <header class="catch-copy">
-                <h2>こんな<span class="yellow">症状</span>、出ていませんか？</h2>
-                <span class="sub-message">一つでも当てはまる方は、被害が拡大する前にご相談ください</span>
+                <h2>猛毒の<span class="yellow">ムカデ</span>、出ていませんか？</h2>
+                <span class="sub-message">夜も眠れない恐怖、プロが最短15分で解決します</span>
             </header>
             <div class="check-box">
                 <ul class="check-list">
-                    <li class="check-item"><div class="check-icon"></div><span>家の中で<span class="red-text">ムカデや害虫</span>を見かけた...</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>夜中にカサカサ動く音がして<span class="red-text">眠れない...</span></span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>お子様やペットが<span class="red-text">刺されないか不安...</span></span></li>
                     <li class="check-item"><div class="check-icon"></div><span>市販の薬を使っても、<span class="red-text">またすぐに現れる...</span></span></li>
-                    <li class="check-item"><div class="check-icon"></div><span>一度駆除したはずなのに、<span class="red-text">再発して困っている...</span></span></li>
-                    <li class="check-item"><div class="check-icon"></div><span>二度と出ないための<span class="red-text">侵入対策・予防</span>をプロに頼みたい</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>二度と出ないための<span class="red-text">侵入経路対策</span>を頼みたい</span></li>
                 </ul>
             </div>
-            <div class="btn-area" style="text-align: center;">
+            <div class="btn-area" style="text-align: center; margin-top: 30px;">
                 <a href="#contact" class="cta-button">無料でプロに相談する</a>
             </div>
         </div>
@@ -494,16 +386,26 @@
             <div class="reason-label">理由 1</div>
             <div class="reason-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=80" alt="無料見積もり"></div>
             <div class="reason-text">
-                <h3>お見積りは完全無料！明朗会計で安心です</h3>
-                <p>現地にて詳細な状況を調査し、追加費用なしの確定見積りをご提示します。</p>
+                <h3>お見積りは完全無料！追加料金ゼロ</h3>
+                <p>現地にて詳細な状況を調査し、追加費用なしの確定見積りをご提示します。バナー記載の通り、明朗会計をお約束します。</p>
             </div>
         </div>
         <div class="reason-card">
             <div class="reason-label">理由 2</div>
             <div class="reason-image"><img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=400&q=80" alt="即日対応"></div>
             <div class="reason-text">
-                <h3>24時間365日 即日対応いたします！</h3>
-                <p>最短15分で到着。深夜・早朝のパニックもプロが即座に解決します。</p>
+                <h3>最短15分で到着！24時間即日対応</h3>
+                <p>ムカデの出現は待ってくれません。深夜・早朝のパニックも、経験豊富なプロが即座に駆けつけ解決します。</p>
+            </div>
+        </div>
+
+        <div class="pro-banner">
+            <div class="pro-banner-text">
+                <h4>お子様・ペットがいるご家庭も安心！</h4>
+                <p>人体への影響を最小限に抑えた、安全性の高い薬剤のみを使用。ムカデの猛毒被害から、大切なご家族を守ります。</p>
+            </div>
+            <div class="pro-banner-img">
+                <i class="fas fa-shield-alt"></i>
             </div>
         </div>
     </section>
@@ -511,15 +413,26 @@
     <section class="warning-area">
         <div class="warning-title"><span>悪徳業者</span>を許しません</div>
         <ul class="warning-list">
-            <li class="warning-item">会社情報がない業者は悪徳業者です！</li>
-            <li class="warning-item">見積もりが曖昧な業者は悪徳業者です！</li>
-            <li class="warning-item">調査結果が不明瞭な業者は悪徳業者です！</li>
+            <li class="warning-item">会社情報が不明な業者は危険です！</li>
+            <li class="warning-item">見積もりが曖昧な業者は危険です！</li>
+            <li class="warning-item">施工後の保証がない業者は危険です！</li>
         </ul>
     </section>
 
     <section class="service-section">
         <h2 class="section-sub-title">駆除料金のご案内</h2>
         <div class="service-grid">
+            <div class="service-card">
+                <div class="photo-box"><img src="https://images.unsplash.com/photo-1520218508822-998633d997e6?auto=format&fit=crop&w=400&q=80" alt="ムカデ"></div>
+                <div class="card-content">
+                    <div class="service-name">ムカデ駆除・対策</div>
+                    <span class="service-price">5,500円〜</span>
+                    <ul class="feature-list">
+                        <li class="feature-item">侵入経路を完全に遮断</li>
+                        <li class="feature-item">忌避剤による長期的なバリア</li>
+                    </ul>
+                </div>
+            </div>
             <div class="service-card">
                 <div class="photo-box"><img src="https://thumb.photo-ac.com/34/34c6f61fc5898a385ae6cf04cea4f22d_t.jpeg" alt="ゴキブリ"></div>
                 <div class="card-content">
@@ -537,157 +450,68 @@
                     <div class="service-name">ハチの巣駆除</div>
                     <span class="service-price">5,000円〜</span>
                     <ul class="feature-list">
-                        <li class="feature-item">危険なスズメバチもお任せ</li>
-                        <li class="feature-item">戻りバチ対策も万全</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="photo-box"><img src="https://thumb.photo-ac.com/86/86129804daf3eba5d81de56d066f85e4_t.jpeg" alt="ネズミ"></div>
-                <div class="card-content">
-                    <div class="service-name">ネズミ駆除</div>
-                    <span class="service-price">10,000円〜</span>
-                    <ul class="feature-list">
-                        <li class="feature-item">不衛生な環境を根本改善</li>
-                        <li class="feature-item">侵入経路を完全に遮断</li>
+                        <li class="feature-item">スズメバチも即日駆除</li>
+                        <li class="feature-item">戻りバチ対策も込み</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="list-box">
-            <p><strong>【その他対応一覧】</strong><br>
-            ノミ、ダニ、アリ、ムカデ、イタチ、ハクビシン等、あらゆる害虫・害獣に対応。</p>
             <p style="color:var(--danger-red); font-weight:bold; font-size:1.2rem;">現地調査・見積もりは完全無料！</p>
+            <p>※ムカデ以外の害虫・害獣もお任せください。</p>
         </div>
     </section>
 
     <section class="process-section">
         <div class="process-header">施工の流れ</div>
-
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-phone-alt"></i></div>
                 <div class="step-text-area">
-                    <h3 class="step-title">1.まずはお気軽にお電話ください</h3>
-                    <p class="step-desc">
-                        お電話にて現状の到着時間と概算お見積りをさせていただきます。内容がよろしければ、ご発注ください。
-                        <span class="note">※品質向上の為、通話内容は録音させていただいております。</span>
-                    </p>
+                    <h3 class="step-title">1.まずはお電話ください</h3>
+                    <p class="step-desc">現状を確認し、概算のお見積りと最短到着時間をお伝えします。</p>
                 </div>
             </div>
         </div>
-
         <div class="arrow-divider"><div class="arrow-down"></div></div>
-
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-search"></i></div>
                 <div class="step-text-area">
-                    <h3 class="step-title">2.到着後、侵入経路調査と駆除作業</h3>
-                    <p class="step-desc">
-                        到着後は、担当者のご挨拶と内容に相違がないかもう一度ご説明。害虫・害獣の発生源やスポットを徹底調査し、施工経路や有効成分の選定から薬剤散布・トラップ設置などの駆除作業で解決いたします。
-                    </p>
+                    <h3 class="step-title">2.徹底調査・迅速駆除</h3>
+                    <p class="step-desc">侵入経路を特定し、安全な薬剤で一気に駆除・封鎖します。</p>
                 </div>
             </div>
         </div>
-
         <div class="arrow-divider"><div class="arrow-down"></div></div>
-
-        <div class="step-box">
-            <div class="step-content">
-                <div class="step-icon-area"><i class="fas fa-clipboard-check"></i></div>
-                <div class="step-text-area">
-                    <h3 class="step-title">3.施工箇所のご確認と再発防止レクチャー</h3>
-                    <p class="step-desc">
-                        作業箇所を一緒にご確認いただき、ご説明させていただきます。再発を最小限にするために、今後気を付けなければいけない点などわかりやすくレクチャーさせていただきます。
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="arrow-divider"><div class="arrow-down"></div></div>
-
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-wallet"></i></div>
                 <div class="step-text-area">
-                    <h3 class="step-title">4.お支払い</h3>
-                    <p class="step-desc">
-                        施工完了引渡書にサインしていただき、料金のお支払いになります。<br>
-                        <span class="payment-bold">現金・クレジットカード</span><br>
-                        からお好きな決済方法でお支払いください。
-                    </p>
+                    <h3 class="step-title">3.お支払い</h3>
+                    <p class="step-desc">完了を確認後、現金・カードにてお支払いいただけます。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="faq-section">
-        <div class="faq-header">
-            <h2 class="section-sub-title">よくあるご質問</h2>
-        </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">駆除薬剤による小さなお子様への影響はありますか？</button>
-                <div class="faq-answer">
-                    <div class="answer-inner">
-                        人体に無害な薬剤を厳選して使用しております。また、強力な薬剤が必要な場合でも、施工後の適切な後始末と安全確認を最優先に行いますので、小さなお子様やペットがいるご家庭でもご安心ください。
-                    </div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">市販の薬剤では完全に駆除できないのでしょうか？</button>
-                <div class="faq-answer">
-                    <div class="answer-inner">
-                        市販薬は一時的な効果はありますが、卵には効かないものが多く、時間が経つと再発してしまいます。また、侵入口の封鎖など根本的な原因を解決しない限り、いたちごっこになるのが現状です。プロの技術で原因から断ち切ります。
-                    </div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">出張料や見積もり料はいくらですか？</button>
-                <div class="faq-answer">
-                    <div class="answer-inner">
-                        弊社では、出張料およびお見積もり料はすべて「0円」です。お客様にご提示するのは作業料金のみですので、ご安心ください。
-                    </div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">一度駆除しても、また出てくることはありますか？</button>
-                <div class="faq-answer">
-                    <div class="answer-inner">
-                        害虫の巣は屋根裏や床下など見えない場所にあります。弊社では「完全駆除＆徹底対策」を大切にしており、目に見える個体だけでなく侵入口の封鎖までしっかり行い、再発を防止します。
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section class="contact-company-section" id="contact">
         <div class="form-company-container">
             <section class="section-wrapper">
-                <h2 class="rb-title">お問い合わせ</h2>
+                <h2 class="rb-title">無料相談フォーム</h2>
                 <form action="https://formspree.io/f/xvgzlowj" method="POST">
-                    <input type="text" name="_gotcha" style="display:none">
                     <div class="form-group">
                         <label>お名前<span>必須</span></label>
                         <input type="text" name="name" required placeholder="例：山田 太郎">
                     </div>
                     <div class="form-group">
                         <label>電話番号<span>必須</span></label>
-                        <input type="tel" name="tel" required placeholder="例：09012345678" pattern="[0-9]*">
-                    </div>
-                    <div class="form-group">
-                        <label>メールアドレス<span>必須</span></label>
-                        <input type="email" name="_replyto" required placeholder="例：abc@example.com" autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label>住所<span>必須</span></label>
-                        <input type="text" name="address" required placeholder="例：大阪府大阪市...">
+                        <input type="tel" name="tel" required placeholder="例：09012345678">
                     </div>
                     <div class="form-group">
                         <label>お問い合わせ内容<span>必須</span></label>
-                        <textarea name="message" rows="6" required placeholder="ご質問やご相談内容を記入してください"></textarea>
+                        <textarea name="message" rows="4" required placeholder="例：ムカデが家の中に出て困っている。すぐ来てほしい。"></textarea>
                     </div>
                     <button type="submit" class="submit-btn">この内容で送信する</button>
                 </form>
@@ -696,18 +520,9 @@
             <section class="section-wrapper">
                 <h2 class="rb-title">会社概要</h2>
                 <table class="rb-info-table">
-                    <tr>
-                        <th>会社名</th>
-                        <td>株式会社Re:birth</td>
-                    </tr>
-                    <tr>
-                        <th>所在地</th>
-                        <td>〒530-0035<br>大阪府大阪市北区同心２丁目１３ー１８ ５０２</td>
-                    </tr>
-                    <tr>
-                        <th>電話番号</th>
-                        <td><a href="tel:05035280140" class="rb-tel-link">050-3528-0140</a></td>
-                    </tr>
+                    <tr><th>会社名</th><td>株式会社Re:birth</td></tr>
+                    <tr><th>所在地</th><td>〒530-0035 大阪府大阪市北区同心２丁目１３ー１８ ５０２</td></tr>
+                    <tr><th>電話番号</th><td><a href="tel:05035280140">050-3528-0140</a></td></tr>
                 </table>
             </section>
         </div>
@@ -718,7 +533,6 @@
     </footer>
 
     <script>
-        // FAQ アコーディオン制御
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
@@ -726,6 +540,6 @@
             });
         });
     </script>
-
 </body>
 </html>
+
