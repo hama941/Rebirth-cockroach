@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>害虫・害獣駆除サービス | 徹底駆除</title>
+    <title>害虫・害獣即日徹底駆除！ | 業界最安値挑戦中</title>
     <style>
         :root {
-            --bg-dark-blue: #1a2a4e;
+            --main-green: #4caf50;
+            --sub-blue: #1a2a4e;
+            --accent-red: #e63946;
             --accent-yellow: #ffff00;
-            --danger-red: #e63946;
-            --dot-green: #4ade80;
-            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --bg-light: #f4f7f9;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f4f6f8;
+            background-color: var(--bg-light);
             color: #333;
+            line-height: 1.6;
         }
 
         .lp-container {
@@ -26,94 +27,79 @@
             max-width: 500px;
             margin: 0 auto;
             background: #fff;
-            padding-bottom: 50px;
+            overflow: hidden;
         }
 
-        /* 警告ヘッダー */
-        .warning-header {
-            background: var(--bg-dark-blue);
-            color: #fff;
-            padding: 50px 20px;
-            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%);
-            margin-bottom: 40px;
+        /* メインビジュアル */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1506485338023-6ce5f36692df?auto=format&fit=crop&q=80&w=800');
+            background-size: cover;
+            background-position: center;
+            padding: 30px 15px;
             text-align: center;
-        }
-        .header-title {
-            font-size: 1.8rem;
-            font-style: italic;
-            font-weight: 900;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
-        .header-title span { color: var(--accent-yellow); }
-        .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
-        .header-item {
-            border-bottom: 1px dashed rgba(255,255,255,0.3);
-            padding: 12px 0;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-        }
-        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
-
-        /* セクション見出し */
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin: 50px 0 30px;
-            font-weight: bold;
-            color: var(--bg-dark-blue);
             position: relative;
         }
-        .section-title::after {
-            content: ""; display: block; width: 40px; height: 4px; background: var(--danger-red); margin: 8px auto 0;
+        .hero-badge-top {
+            display: flex; justify-content: center; gap: 5px; margin-bottom: 15px;
         }
+        .hero-badge-top span {
+            background: #fff; border: 1px solid #ddd; border-radius: 20px; padding: 2px 8px; font-size: 0.7rem; font-weight: bold;
+        }
+        .hero-main-copy {
+            font-size: 1.8rem; font-weight: 900; color: #333; line-height: 1.2; margin-bottom: 15px;
+        }
+        .hero-main-copy span {
+            color: #fff; background: var(--main-green); padding: 2px 8px; display: inline-block;
+        }
+        .hero-stats {
+            background: rgba(255,255,255,0.9); border: 2px solid #ffd700; border-radius: 10px;
+            padding: 10px; margin: 15px auto; width: 80%; font-weight: bold;
+        }
+        .hero-price-tag {
+            background: #fff; border: 3px solid var(--main-green); border-radius: 50px;
+            padding: 10px 20px; margin-top: 20px; display: inline-block;
+        }
+        .hero-price-tag b { color: var(--accent-red); font-size: 1.8rem; }
 
-        /* 駆除カード */
+        /* 警告セクション */
+        .warning-section {
+            background: var(--sub-blue); color: #fff; padding: 40px 20px;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+        .warning-title {
+            font-size: 1.6rem; font-weight: bold; text-align: center; margin-bottom: 25px;
+        }
+        .warning-title span { color: var(--accent-yellow); }
+        .warning-list { list-style: none; padding: 0; }
+        .warning-item {
+            display: flex; align-items: center; border-bottom: 1px dashed rgba(255,255,255,0.3);
+            padding: 12px 0; font-size: 0.9rem; font-weight: bold;
+        }
+        .warning-item img { width: 24px; margin-right: 10px; }
+
+        /* 生き物カード */
+        .section-header {
+            text-align: center; font-size: 1.8rem; font-weight: bold; margin: 40px 0 20px;
+        }
         .service-card {
-            background: #fff;
-            border-radius: 15px;
-            margin: 0 20px 40px;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            border: 1px solid #eee;
+            background: #fff; border-radius: 15px; margin: 0 15px 30px;
+            padding: 30px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;
         }
-
-        .photo-box {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            background-color: #eee;
-        }
-        .photo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-content { padding: 25px 20px 30px; }
-        .service-name { font-size: 1.6rem; font-weight: bold; margin-bottom: 5px; }
-        .service-price { color: var(--danger-red); font-size: 1.9rem; font-weight: bold; margin-bottom: 20px; display: block; }
-
-        .feature-list { text-align: left; list-style: none; padding: 0; margin: 0; }
+        .animal-icon { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; }
+        .service-name { font-size: 1.6rem; font-weight: bold; margin-bottom: 10px; }
+        .service-price { color: var(--accent-red); font-size: 1.7rem; font-weight: bold; display: block; margin-bottom: 20px; }
+        .feature-list { text-align: left; list-style: none; padding: 0; }
         .feature-item {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            font-weight: 500;
+            position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.9rem;
         }
         .feature-item::before {
-            content: ""; position: absolute; left: 0; top: 7px;
-            width: 10px; height: 10px; background-color: var(--dot-green); border-radius: 50%;
+            content: "●"; position: absolute; left: 0; color: var(--main-green);
         }
 
-        /* その他対応 */
+        /* 対応一覧ボックス */
         .list-box {
-            background: #fdfdfd; border: 1px solid #eee; border-radius: 12px; margin: 20px; padding: 25px;
-            font-size: 0.85rem; line-height: 2; color: #555; text-align: center;
+            background: #f9f9f9; border-radius: 10px; margin: 20px 15px; padding: 20px;
+            font-size: 0.85rem; color: #666; text-align: center; line-height: 2;
         }
     </style>
 </head>
@@ -121,104 +107,87 @@
 
 <div class="lp-container">
 
-    <section class="warning-header">
-        <div class="header-title"><span>悪徳業者</span>を許しません</div>
-        <ul class="header-list">
-            <li class="header-item">会社情報がない業者は悪徳業者です！</li>
-            <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
-            <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
-        </ul>
+    <section class="hero">
+        <div class="hero-badge-top">
+            <span>ゴキブリ</span><span>ノミ</span><span>トコジラミ</span><span>ハチ</span><span>ムカデ</span><span>シロアリ</span>
+        </div>
+        <div class="hero-main-copy">
+            しつこい害虫<br><span>即日徹底駆除！</span>
+        </div>
+        <div class="hero-stats">
+            おかげさまで対応実績<br><span style="color:var(--accent-red); font-size:1.4rem;">年間10,000件突破!!</span>
+        </div>
+        <div style="font-weight:bold; font-size:0.9rem; text-align:left; display:inline-block;">
+            ✅ 最短 <b>20分</b> で到着<br>
+            ✅ 安心の <b>再発対策</b> あり<br>
+            ✅ <b>出張見積もり</b> と調査 <b>無料</b>
+        </div>
+        <br>
+        <div class="hero-price-tag">
+            害虫駆除対応料金 <b>2,980円〜</b>
+        </div>
+        <div style="margin-top:10px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="50" style="margin-right:10px;">
+            <span style="font-size:0.7rem; vertical-align:middle;">各種クレジットカード利用可能！</span>
+        </div>
     </section>
 
-    <h2 class="section-title">害虫駆除</h2>
+    <section class="warning-section">
+        <div class="warning-title"><span>悪徳業者</span>を許しません</div>
+        <div class="warning-list">
+            <div class="warning-item">🚫 会社情報がない業者は悪徳業者です！</div>
+            <div class="warning-item">🚫 見積もりが曖昧な業者は悪徳業者です！</div>
+            <div class="warning-item">🚫 調査結果が不明瞭な業者は悪徳業者です！</div>
+        </div>
+    </section>
+
+    <h2 class="section-header">害虫駆除</h2>
 
     <div class="service-card">
-        <div class="photo-box">
-            <img src="https://thumb.photo-ac.com/34/34c6f61fc5898a385ae6cf04cea4f22d_t.jpeg"　alt="ゴキブリ イラスト">
-        </div>
-        <div class="card-content">
-            <div class="service-name">ゴキブリ駆除</div>　
-            <span class="service-price">2,980円〜</span>
-            <ul class="feature-list">
-                <li class="feature-item">市販の駆除剤が効かない</li>
-                <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-                <li class="feature-item">徹底的な除菌・消毒まで対応</li>
-            </ul>
-        </div>
+        <img src="https://images.unsplash.com/photo-1626308539824-00989336df76?auto=format&fit=crop&q=80&w=200" class="animal-icon" alt="ゴキブリ">
+        <div class="service-name">ゴキブリ駆除</div>
+        <span class="service-price">18,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">市販の駆除剤が効かない</li>
+            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
+            <li class="feature-item">不快感や恐怖感は、生活の質を低下させます</li>
+            <li class="feature-item">アレルギー性鼻炎や喘息の発症リスクが高まります</li>
+        </ul>
     </div>
 
     <div class="service-card">
-        <div class="photo-box">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYAryB8bR-5H-eRbbH_wqHZ2kNmWgmqg4Fw&s" alt="ハチ">
-        </div>
-        <div class="card-content">
-            <div class="service-name">ハチの巣駆除</div>
-            <span class="service-price">5,000円〜</span>
-            <ul class="feature-list">
-                <li class="feature-item">放っておくのは危険を伴います</li>
-                <li class="feature-item">即日対応で巣をまるごと除去</li>
-            </ul>
-        </div>
+        <img src="https://images.unsplash.com/photo-1559114062-0738242a3f78?auto=format&fit=crop&q=80&w=200" class="animal-icon" alt="ハチ">
+        <div class="service-name">ハチの巣駆除</div>
+        <span class="service-price">7,400円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">ハチに刺される被害は命に関わる危険を伴います</li>
+            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
+            <li class="feature-item">部屋で見かけて眠れない…</li>
+        </ul>
     </div>
 
-    <div class="service-card">
-        <div class="photo-box">
-            <img src="https://images.assetsdelivery.com/compings_v2/liudmilachernetska/liudmilachernetska2505/liudmilachernetska250524920.jpg" alt="トコジラミ">
-        </div>
-        <div class="card-content">
-            <div class="service-name">トコジラミ駆除</div>
-            <span class="service-price">10,000円〜</span>
-            <ul class="feature-list">
-                <li class="feature-item">猛烈なかゆみと繁殖力を根絶</li>
-                <li class="feature-item">プロの薬剤で完全に死滅させます</li>
-            </ul>
-        </div>
-    </div>
-
-    <h2 class="section-title">害獣駆除</h2>
+    <h2 class="section-header">害獣駆除</h2>
 
     <div class="service-card">
-        <div class="photo-box">
-            <img src="https://thumb.photo-ac.com/86/86129804daf3eba5d81de56d066f85e4_t.jpeg" alt="ネズミ対策">
-        </div>
-        <div class="card-content">
-            <div class="service-name">ネズミ駆除</div>
-            <span class="service-price">10,000円〜</span>
-            <ul class="feature-list">
-                <li class="feature-item">病原体による感染症の危険もある</li>
-                <li class="feature-item">侵入経路を完全に封鎖します</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="service-card">
-        <div class="photo-box">
-            <img src="https://thumb.photo-ac.com/77/775e8aa7f8c7cba4490c609370ac5809_t.jpeg" alt="ハクビシン">
-        </div>
-        <div class="card-content">
-            <div class="service-name">ハクビシン駆除</div>
-            <span class="service-price">10,000円〜</span>
-            <ul class="feature-list">
-                <li class="feature-item">天井のシミ・強烈な臭いを解決</li>
-                <li class="feature-item">再発防止策まで万全に行います</li>
-            </ul>
-        </div>
+        <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&q=80&w=200" class="animal-icon" alt="ネズミ">
+        <div class="service-name">ネズミ駆除</div>
+        <span class="service-price">15,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">1匹が1年で30匹になる可能性があります</li>
+            <li class="feature-item">屋根裏の配線をかじって火災になるケースもあります</li>
+            <li class="feature-item">毎晩ドタバタ走り回るため、精神的に追い込まれます</li>
+        </ul>
     </div>
 
     <div class="list-box">
-        <strong>【その他対応一覧】</strong><br>
-        ノミ、ダニ、アリ、ムカデ、イタチ、アライグマ等、あらゆる害虫・害獣に対応します。
-        <p style="color:var(--danger-red); font-weight:bold; margin-top:10px;">現地調査・見積もりは完全無料です！</p>
+        上記以外にも、以下のような害虫・害獣に対応しております：<br><br>
+        <b>【害虫】</b> チョウバエ、ユスリカ、コバエ、ハエ、カメムシ、ケムシ、アリ、ダニ、ノミ、トコジラミ、クモ、ムカデ など<br>
+        <b>【害獣】</b> イタチ、ハクビシン、アライグマ、タヌキ、モグラ など<br><br>
+        ※まずはお気軽にご相談ください。
     </div>
 
 </div>
 
 </body>
 </html>
-
-
-
-
-
-
 
