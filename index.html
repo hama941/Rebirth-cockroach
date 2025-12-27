@@ -3,205 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>害虫・害獣駆除サービス</title>
+    <title>害虫・害獣駆除サービス | プロの技術で徹底駆除</title>
     <style>
         :root {
             --bg-dark-blue: #1a2a4e;
             --accent-yellow: #ffff00;
             --danger-red: #e63946;
             --dot-green: #4ade80;
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f8f8f8;
+            background-color: #f4f7f9;
             color: #333;
         }
 
         .lp-container {
             width: 100%;
-            max-width: 500px; /* スマホ幅に最適化 */
+            max-width: 500px;
             margin: 0 auto;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
-        /* 1. 悪徳業者を許しませんセクション */
+        /* 悪徳業者への警告セクション */
         .warning-header {
             background: var(--bg-dark-blue);
             color: #fff;
-            padding: 40px 20px;
-            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+            padding: 45px 20px;
+            clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
             margin-bottom: 30px;
         }
         .header-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-style: italic;
             font-weight: 900;
             text-align: center;
             margin-bottom: 25px;
+            line-height: 1.4;
         }
         .header-title span { color: var(--accent-yellow); }
-        
         .header-list { list-style: none; padding: 0; }
         .header-item {
-            border-bottom: 1px dashed rgba(255,255,255,0.4);
+            border-bottom: 1px dashed rgba(255,255,255,0.3);
             padding: 12px 0;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             font-weight: bold;
         }
-        .header-item::before {
-            content: "🚫";
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
+        .header-item::before { content: "×"; color: var(--danger-red); font-size: 1.5rem; margin-right: 12px; font-weight: 900; }
 
-        /* 2. 各駆除カード共通スタイル */
+        /* セクション見出し */
         .service-section-title {
             text-align: center;
-            font-size: 1.5rem;
-            margin: 40px 0 20px;
+            font-size: 1.6rem;
+            margin: 50px 0 25px;
             font-weight: bold;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .service-section-title::after {
+            content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 50px; height: 3px; background: var(--bg-dark-blue);
         }
 
+        /* 駆除カード */
         .service-card {
             background: #fff;
-            border-radius: 12px;
-            margin: 0 15px 25px;
-            padding: 35px 20px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-        }
-        .service-icon { font-size: 50px; margin-bottom: 15px; }
-        .service-name { font-size: 1.6rem; font-weight: bold; margin-bottom: 10px; }
-        .service-price { color: var(--danger-red); font-size: 1.5rem; font-weight: bold; margin-bottom: 25px; }
+            border-radius: 15px;
+            margin: 0 15px 30px;
+            padding: 40px 2
 
-        .feature-list { text-align: left; list-style: none; padding: 0; margin: 0; }
-        .feature-item {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .feature-item::before {
-            content: "";
-            position: absolute;
-            left: 0; top: 8px;
-            width: 8px; height: 8px;
-            background-color: var(--dot-green);
-            border-radius: 50%;
-        }
-
-        /* 3. 対応一覧ボックス */
-        .list-box {
-            background: #fff;
-            border-radius: 12px;
-            margin: 20px 15px;
-            padding: 30px 20px;
-            box-shadow: var(--card-shadow);
-            font-size: 0.85rem;
-            line-height: 2;
-            color: #666;
-            text-align: center;
-        }
-        .list-category { font-weight: bold; color: #333; display: block; margin-top: 15px; }
-
-    </style>
-</head>
-<body>
-
-<div class="lp-container">
-
-    <section class="warning-header">
-        <div class="header-title"><span>悪徳業者</span>を許しません</div>
-        <ul class="header-list">
-            <li class="header-item">会社情報がない業者は悪徳業者です！</li>
-            <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
-            <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
-        </ul>
-    </section>
-
-    <h2 class="service-section-title">害虫駆除</h2>
-
-    <div class="service-card">
-        <div class="service-icon">🪳</div>
-        <div class="service-name">ゴキブリ駆除</div>
-        <div class="service-price">18,000円〜</div>
-        <ul class="feature-list">
-            <li class="feature-item">市販の駆除剤が効かない</li>
-            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-            <li class="feature-item">精神的なストレスとなり、生活の質を低下させる可能性があります</li>
-        </ul>
-    </div>
-
-    <div class="service-card">
-        <div class="service-icon">🐝</div>
-        <div class="service-name">ハチの巣駆除</div>
-        <div class="service-price">7,400円〜</div>
-        <ul class="feature-list">
-            <li class="feature-item">アナフィラキシーショックなど命に関わる危険も伴います</li>
-            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-            <li class="feature-item">部屋で見かけて眠れない…</li>
-        </ul>
-    </div>
-
-    <div class="service-card">
-        <div class="service-icon">🪲</div>
-        <div class="service-name">トコジラミ駆除</div>
-        <div class="service-price">15,000円〜</div>
-        <ul class="feature-list">
-            <li class="feature-item">寝ている間に噛まれ赤い発疹ができ、猛烈なかゆみを引き起こします</li>
-            <li class="feature-item">繁殖力が強く、市販の対策では完全に駆除できません</li>
-        </ul>
-    </div>
-
-    <div class="service-card">
-        <div class="service-icon">🦟</div>
-        <div class="service-name">ノミ・ダニ駆除</div>
-        <div class="service-price">15,000円〜</div>
-        <ul class="feature-list">
-            <li class="feature-item">刺されると強いかゆみや腫れが生じ、アレルギーの原因となります</li>
-            <li class="feature-item">ペットに寄生し、吸血を繰り返すことで健康被害を引き起こします</li>
-        </ul>
-    </div>
-
-    <h2 class="service-section-title">害獣駆除</h2>
-
-    <div class="service-card">
-        <div class="service-icon">🐭</div>
-        <div class="service-name">ネズミ駆除</div>
-        <div class="service-price">15,000円〜</div>
-        <ul class="feature-list">
-            <li class="feature-item">1年で30匹に増える可能性があります</li>
-            <li class="feature-item">配線をかじってショートし、火災になるケースもあります</li>
-        </ul>
-    </div>
-
-    <div class="service-card">
-        <div class="service-icon">🦝</div>
-        <div class="service-name">ハクビシン駆除</div>
-        <div class="service-price">15,800円〜</div>
-        <ul class="feature-list">
-            <li class="feature-item">糞の重みで天井が抜け落ちる事があります</li>
-            <li class="feature-item">アンモニア臭がきつく、強烈な臭いが室内に充満します</li>
-        </ul>
-    </div>
-
-    <div class="list-box">
-        上記以外にも、以下のような害虫・害獣に対応しております：<br>
-        <span class="list-category">【害虫】</span>
-        チョウバエ、ユスリカ、コバエ、カメムシ、毛虫、ムカデ、ヤスデ、アリ、ダニ、他多数<br>
-        <span class="list-category">【害獣】</span>
-        イタチ、ハクビシン、アライグマ、タヌキ、モグラ、他多数<br><br>
-        <small>※まずはお気軽にご相談ください。</small>
-    </div>
-
-</div>
-
-</body>
-</html>
