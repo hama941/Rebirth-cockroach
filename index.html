@@ -3,191 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>害虫・害獣即日徹底駆除！ | 業界最安値挑戦中</title>
-    <style>
-        :root {
-            --main-green: #4caf50;
-            --sub-blue: #1a2a4e;
-            --accent-red: #e63946;
-            --accent-yellow: #ffff00;
-            --bg-light: #f4f7f9;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: var(--bg-light);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .lp-container {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            background: #fff;
-            overflow: hidden;
-        }
-
-        /* メインビジュアル */
-        .hero {
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1506485338023-6ce5f36692df?auto=format&fit=crop&q=80&w=800');
-            background-size: cover;
-            background-position: center;
-            padding: 30px 15px;
-            text-align: center;
-            position: relative;
-        }
-        .hero-badge-top {
-            display: flex; justify-content: center; gap: 5px; margin-bottom: 15px;
-        }
-        .hero-badge-top span {
-            background: #fff; border: 1px solid #ddd; border-radius: 20px; padding: 2px 8px; font-size: 0.7rem; font-weight: bold;
-        }
-        .hero-main-copy {
-            font-size: 1.8rem; font-weight: 900; color: #333; line-height: 1.2; margin-bottom: 15px;
-        }
-        .hero-main-copy span {
-            color: #fff; background: var(--main-green); padding: 2px 8px; display: inline-block;
-        }
-        .hero-stats {
-            background: rgba(255,255,255,0.9); border: 2px solid #ffd700; border-radius: 10px;
-            padding: 10px; margin: 15px auto; width: 80%; font-weight: bold;
-        }
-        .hero-price-tag {
-            background: #fff; border: 3px solid var(--main-green); border-radius: 50px;
-            padding: 10px 20px; margin-top: 20px; display: inline-block;
-        }
-        .hero-price-tag b { color: var(--accent-red); font-size: 1.8rem; }
-
-        /* 警告セクション */
-        .warning-section {
-            background: var(--sub-blue); color: #fff; padding: 40px 20px;
-            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
-        }
-        .warning-title {
-            font-size: 1.6rem; font-weight: bold; text-align: center; margin-bottom: 25px;
-        }
-        .warning-title span { color: var(--accent-yellow); }
-        .warning-list { list-style: none; padding: 0; }
-        .warning-item {
-            display: flex; align-items: center; border-bottom: 1px dashed rgba(255,255,255,0.3);
-            padding: 12px 0; font-size: 0.9rem; font-weight: bold;
-        }
-        .warning-item img { width: 24px; margin-right: 10px; }
-
-        /* 生き物カード */
-        .section-header {
-            text-align: center; font-size: 1.8rem; font-weight: bold; margin: 40px 0 20px;
-        }
-        .service-card {
-            background: #fff; border-radius: 15px; margin: 0 15px 30px;
-            padding: 30px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;
-        }
-        .animal-icon { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; }
-        .service-name { font-size: 1.6rem; font-weight: bold; margin-bottom: 10px; }
-        .service-price { color: var(--accent-red); font-size: 1.7rem; font-weight: bold; display: block; margin-bottom: 20px; }
-        .feature-list { text-align: left; list-style: none; padding: 0; }
-        .feature-item {
-            position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.9rem;
-        }
-        .feature-item::before {
-            content: "●"; position: absolute; left: 0; color: var(--main-green);
-        }
-
-        /* 対応一覧ボックス */
-        .list-box {
-            background: #f9f9f9; border-radius: 10px; margin: 20px 15px; padding: 20px;
-            font-size: 0.85rem; color: #666; text-align: center; line-height: 2;
-        }
-    </style>
+    <title>害虫駆除LP再現</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="lp-container">
+<section class="hero">
+    <div class="person-img"></div>
 
-    <section class="hero">
-        <div class="hero-badge-top">
-            <span>ゴキブリ</span><span>ノミ</span><span>トコジラミ</span><span>ハチ</span><span>ムカデ</span><span>シロアリ</span>
+    <div class="container">
+        <div class="pest-icons">
+            <div class="icon-item">ゴキブリ</div>
+            <div class="icon-item">ノミ</div>
+            <div class="icon-item">トコジラミ</div>
+            <div class="icon-item">ハチ</div>
+            <div class="icon-item">ムカデ</div>
+            <div class="icon-item">シロアリ</div>
         </div>
-        <div class="hero-main-copy">
-            しつこい害虫<br><span>即日徹底駆除！</span>
-        </div>
-        <div class="hero-stats">
-            おかげさまで対応実績<br><span style="color:var(--accent-red); font-size:1.4rem;">年間10,000件突破!!</span>
-        </div>
-        <div style="font-weight:bold; font-size:0.9rem; text-align:left; display:inline-block;">
-            ✅ 最短 <b>20分</b> で到着<br>
-            ✅ 安心の <b>再発対策</b> あり<br>
-            ✅ <b>出張見積もり</b> と調査 <b>無料</b>
-        </div>
-        <br>
-        <div class="hero-price-tag">
-            害虫駆除対応料金 <b>2,980円〜</b>
-        </div>
-        <div style="margin-top:10px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="50" style="margin-right:10px;">
-            <span style="font-size:0.7rem; vertical-align:middle;">各種クレジットカード利用可能！</span>
-        </div>
-    </section>
 
-    <section class="warning-section">
-        <div class="warning-title"><span>悪徳業者</span>を許しません</div>
-        <div class="warning-list">
-            <div class="warning-item">🚫 会社情報がない業者は悪徳業者です！</div>
-            <div class="warning-item">🚫 見積もりが曖昧な業者は悪徳業者です！</div>
-            <div class="warning-item">🚫 調査結果が不明瞭な業者は悪徳業者です！</div>
+        <div class="catch-copy">
+            <p class="sub-text">しつこい<span>害虫</span></p>
+            <h1 class="main-title">即日徹底駆除!</h1>
         </div>
-    </section>
 
-    <h2 class="section-header">害虫駆除</h2>
+        <div class="achievement-ribbon">
+            <p>おかげさまで対応実績</p>
+            <div class="number">年間<span>10,000</span>件突破!!</div>
+        </div>
 
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1626308539824-00989336df76?auto=format&fit=crop&q=80&w=200" class="animal-icon" alt="ゴキブリ">
-        <div class="service-name">ゴキブリ駆除</div>
-        <span class="service-price">18,000円〜</span>
-        <ul class="feature-list">
-            <li class="feature-item">市販の駆除剤が効かない</li>
-            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-            <li class="feature-item">不快感や恐怖感は、生活の質を低下させます</li>
-            <li class="feature-item">アレルギー性鼻炎や喘息の発症リスクが高まります</li>
-        </ul>
+        <div class="merit-list">
+            <div class="merit-item">最速<span>20</span>分で到着</div>
+            <div class="merit-item">安心の<span>再発</span>対策あり</div>
+            <div class="merit-item">出張見積りと<span>調査無料</span></div>
+            <div class="merit-item">23時以降でも<span>追加料金なし</span></div>
+        </div>
+
+        <div class="price-tag">
+            <p>害虫駆除対応料金</p>
+            <div class="price">2,980<span>円〜</span></div>
+        </div>
+
+        <div class="payment-icons">
+            <img src="visa-logo.png" alt="VISA">
+            </div>
     </div>
-
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1559114062-0738242a3f78?auto=format&fit=crop&q=80&w=200" class="animal-icon" alt="ハチ">
-        <div class="service-name">ハチの巣駆除</div>
-        <span class="service-price">7,400円〜</span>
-        <ul class="feature-list">
-            <li class="feature-item">ハチに刺される被害は命に関わる危険を伴います</li>
-            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-            <li class="feature-item">部屋で見かけて眠れない…</li>
-        </ul>
-    </div>
-
-    <h2 class="section-header">害獣駆除</h2>
-
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&q=80&w=200" class="animal-icon" alt="ネズミ">
-        <div class="service-name">ネズミ駆除</div>
-        <span class="service-price">15,000円〜</span>
-        <ul class="feature-list">
-            <li class="feature-item">1匹が1年で30匹になる可能性があります</li>
-            <li class="feature-item">屋根裏の配線をかじって火災になるケースもあります</li>
-            <li class="feature-item">毎晩ドタバタ走り回るため、精神的に追い込まれます</li>
-        </ul>
-    </div>
-
-    <div class="list-box">
-        上記以外にも、以下のような害虫・害獣に対応しております：<br><br>
-        <b>【害虫】</b> チョウバエ、ユスリカ、コバエ、ハエ、カメムシ、ケムシ、アリ、ダニ、ノミ、トコジラミ、クモ、ムカデ など<br>
-        <b>【害獣】</b> イタチ、ハクビシン、アライグマ、タヌキ、モグラ など<br><br>
-        ※まずはお気軽にご相談ください。
-    </div>
-
-</div>
+</section>
 
 </body>
 </html>
+
 
