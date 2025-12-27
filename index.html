@@ -27,26 +27,15 @@
             background-color: #f0f7ff;
             color: #333;
             scroll-behavior: smooth;
-        }
-
-        /* --- 追加：トップ画像セクション --- */
-        .top-banner {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            line-height: 0; /* 画像下の隙間排除 */
-        }
-        .top-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
+            /* 固定バーの分だけ下に余白を追加 */
+            padding-bottom: 80px;
         }
 
         /* --- 1. ヒーローセクション --- */
         .lp-hero {
             position: relative;
             width: 100%;
-            min-height: 80vh; /* 画像が上に入るため高さを微調整 */
+            min-height: 100vh;
             background-image: url('https://images.unsplash.com/photo-1592595820246-9779245af0ed?auto=format&fit=crop&q=80&w=1600');
             background-size: cover;
             background-position: center;
@@ -264,7 +253,7 @@
             margin: 40px 0; padding: 30px; text-align: center;
         }
 
-        /* --- 施工の流れ スタイル --- */
+        /* --- 追加：施工の流れ スタイル --- */
         .process-section {
             padding: 60px 20px;
             max-width: 640px;
@@ -385,7 +374,7 @@
             color: #555; border-top: 1px solid #fafafa; padding-top: 15px;
         }
 
-        /* --- 6. お問い合わせ & 会社概要 --- */
+        /* --- 6. お問い合わせ & 会社概要 (統合セクション) --- */
         .contact-company-section {
             background-color: var(--form-bg);
             padding: 80px 20px;
@@ -472,16 +461,14 @@
             .rb-info-table th, .rb-info-table td { display: block; width: 100%; padding: 15px 10px; }
             .rb-info-table th { background-color: transparent; padding-bottom: 0; font-size: 0.8rem; }
             .rb-info-table td { padding-top: 5px; }
+            
+            /* 施工の流れレスポンシブ */
             .step-content { flex-direction: column; align-items: center; text-align: center; }
             .step-title, .step-desc { text-align: center; }
         }
     </style>
 </head>
 <body>
-
-    <div class="top-banner">
-        <img src="ChatGPT Image 2025年12月27日 13_24_03.png" alt="害虫駆除 相談センター">
-    </div>
 
     <section class="lp-hero">
         <div class="content-inner">
@@ -514,7 +501,6 @@
             </div>
         </div>
         <div class="reason-card">
-            <div class="reason-label">理由 2</div>
             <div class="reason-label">理由 2</div>
             <div class="reason-image"><img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=400&q=80" alt="即日対応"></div>
             <div class="reason-text">
@@ -580,6 +566,7 @@
 
     <section class="process-section">
         <div class="process-header">施工の流れ</div>
+
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-phone-alt"></i></div>
@@ -592,7 +579,9 @@
                 </div>
             </div>
         </div>
+
         <div class="arrow-divider"><div class="arrow-down"></div></div>
+
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-search"></i></div>
@@ -604,7 +593,9 @@
                 </div>
             </div>
         </div>
+
         <div class="arrow-divider"><div class="arrow-down"></div></div>
+
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-clipboard-check"></i></div>
@@ -616,7 +607,9 @@
                 </div>
             </div>
         </div>
+
         <div class="arrow-divider"><div class="arrow-down"></div></div>
+
         <div class="step-box">
             <div class="step-content">
                 <div class="step-icon-area"><i class="fas fa-wallet"></i></div>
@@ -725,6 +718,16 @@
     <footer class="footer-cta">
         <p style="color:white; font-size: 0.8rem; opacity: 0.7;">&copy; 株式会社Re:birth All Rights Reserved.</p>
     </footer>
+
+    <div style="position: fixed; bottom: 0; left: 0; width: 100%; height: 75px; background-color: #f36d21; z-index: 9999; display: flex; align-items: center; justify-content: center; box-shadow: 0 -3px 10px rgba(0,0,0,0.2); font-family: sans-serif;">
+        <a href="tel:05035280140" style="display: flex; align-items: center; text-decoration: none; color: white;">
+            <span style="font-size: 30px; margin-right: 15px;">📞</span>
+            <div style="display: flex; flex-direction: column;">
+                <span style="font-size: 12px; font-weight: bold; margin-bottom: 2px;">24時間受付！お急ぎの方はこちら</span>
+                <span style="font-size: 24px; font-weight: bold; letter-spacing: 1px;">050-3528-0140</span>
+            </div>
+        </a>
+    </div>
 
     <script>
         // FAQ アコーディオン制御
