@@ -75,5 +75,151 @@
             background: #fff;
             border-radius: 15px;
             margin: 0 15px 30px;
-            padding: 40px 2
+            padding: 40px 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
 
+        /* リアルなイラストを表示するコンテナ */
+        .service-illustration {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #eee;
+        }
+        .service-illustration img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 画像を枠いっぱいに表示 */
+        }
+
+        .service-name { font-size: 1.5rem; font-weight: bold; margin-bottom: 8px; }
+        .service-price { color: var(--danger-red); font-size: 1.6rem; font-weight: bold; margin-bottom: 25px; display: block; }
+
+        .feature-list { text-align: left; list-style: none; padding: 0; margin: 0; }
+        .feature-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .feature-item::before {
+            content: ""; position: absolute; left: 0; top: 7px;
+            width: 9px; height: 9px; background-color: var(--dot-green); border-radius: 50%;
+        }
+
+        /* 対応一覧 */
+        .list-box {
+            background: #fff; border-radius: 12px; margin: 20px 15px; padding: 30px 20px;
+            box-shadow: var(--card-shadow); font-size: 0.85rem; line-height: 2; color: #555; text-align: center;
+        }
+        .list-category { font-weight: bold; color: #333; display: block; margin-top: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="lp-container">
+
+    <section class="warning-header">
+        <div class="header-title"><span>悪徳業者</span>を<br>許しません</div>
+        <ul class="header-list">
+            <li class="header-item">会社情報がない業者は悪徳業者です！</li>
+            <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
+            <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
+        </ul>
+    </section>
+
+    <h2 class="service-section-title">害虫駆除</h2>
+
+    <div class="service-card">
+        <div class="service-illustration">
+            <img src="https://images.unsplash.com/photo-1590422944372-230f1e828453?auto=format&fit=crop&q=80&w=200" alt="ゴキブリ駆除">
+        </div>
+        <div class="service-name">ゴキブリ駆除</div>
+        <span class="service-price">2,980円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">市販の駆除剤が効かない</li>
+            <li class="feature-item">一度業者に頼んだのにまた発生した</li>
+            <li class="feature-item">精神的なストレスは生活の質を低下させます</li>
+        </ul>
+    </div>
+
+    <div class="service-card">
+        <div class="service-illustration">
+            <img src="https://images.unsplash.com/photo-1559114062-0738242a3f78?auto=format&fit=crop&q=80&w=200" alt="ハチ駆除">
+        </div>
+        <div class="service-name">ハチの巣駆除</div>
+        <span class="service-price">5,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">アナフィラキシーなど命に関わる危険を伴います</li>
+            <li class="feature-item">高所の巣や土の中の巣も即日対応</li>
+        </ul>
+    </div>
+
+    <div class="service-card">
+        <div class="service-illustration">
+            <img src="https://images.unsplash.com/photo-1628109608112-b9ed93784013?auto=format&fit=crop&q=80&w=200" alt="トコジラミ">
+        </div>
+        <div class="service-name">トコジラミ駆除</div>
+        <span class="service-price">10,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">猛烈なかゆみや赤い発疹を引き起こします</li>
+            <li class="feature-item">驚異の繁殖力。プロの薬剤で根絶します</li>
+        </ul>
+    </div>
+
+    <div class="service-card">
+        <div class="service-illustration">
+            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=200" alt="ダニ">
+        </div>
+        <div class="service-name">ノミ・ダニ駆除</div>
+        <span class="service-price">10,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">刺されると強いかゆみやアレルギーの原因に</li>
+            <li class="feature-item">ペットへの寄生や室内の大量発生を防ぎます</li>
+        </ul>
+    </div>
+
+    <h2 class="service-section-title">害獣駆除</h2>
+
+    <div class="service-card">
+        <div class="service-illustration">
+            <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&q=80&w=200" alt="ネズミ">
+        </div>
+        <div class="service-name">ネズミ駆除</div>
+        <span class="service-price">10,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">配線をかじっての火災リスクを防止</li>
+            <li class="feature-item">天井裏の騒音や糞尿被害を徹底解決</li>
+        </ul>
+    </div>
+
+    <div class="service-card">
+        <div class="service-illustration">
+            <img src="https://images.unsplash.com/photo-1629898569904-669143896404?auto=format&fit=crop&q=80&w=200" alt="ハクビシン">
+        </div>
+        <div class="service-name">ハクビシン駆除</div>
+        <span class="service-price">10,000円〜</span>
+        <ul class="feature-list">
+            <li class="feature-item">天井の腐敗や抜け落ちる被害を防ぎます</li>
+            <li class="feature-item">強烈なアンモニア臭を特殊消臭</li>
+        </ul>
+    </div>
+
+    <div class="list-box">
+        上記以外にも多数対応しております： <br>
+        <span class="list-category">【害虫】</span>
+        チョウバエ、ユスリカ、コバエ、アリ、ムカデ 他 <br>
+        <span class="list-category">【害獣】</span>
+        イタチ、アライグマ、タヌキ、モグラ 他 <br><br>
+        <strong>※まずはお気軽にご相談ください！</strong>
+    </div>
+
+</div>
+
+</body>
+</html>
