@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>害虫・害獣駆除専門 | プロの徹底駆除</title>
+    <title>害虫・害獣駆除の専門家 | 徹底駆除お任せください</title>
     <style>
         :root {
             --bg-dark-blue: #1a2a4e;
             --accent-yellow: #ffff00;
             --danger-red: #e63946;
             --dot-green: #4ade80;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #f4f6f8;
             color: #333;
         }
 
@@ -26,15 +26,15 @@
             max-width: 500px;
             margin: 0 auto;
             background: #fff;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
-        /* 警告ヘッダー */
+        /* 1. 警告ヘッダー */
         .warning-header {
             background: var(--bg-dark-blue);
             color: #fff;
             padding: 50px 20px;
-            clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
+            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%);
             margin-bottom: 40px;
             text-align: center;
         }
@@ -43,6 +43,7 @@
             font-style: italic;
             font-weight: 900;
             margin-bottom: 25px;
+            line-height: 1.4;
         }
         .header-title span { color: var(--accent-yellow); }
         .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
@@ -54,50 +55,48 @@
             align-items: center;
             font-weight: bold;
         }
-        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; }
+        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
 
         /* セクション見出し */
         .section-title {
             text-align: center;
             font-size: 1.8rem;
-            margin: 60px 0 30px;
+            margin: 50px 0 30px;
             font-weight: bold;
             color: var(--bg-dark-blue);
+            position: relative;
+        }
+        .section-title::after {
+            content: ""; display: block; width: 40px; height: 4px; background: var(--danger-red); margin: 8px auto 0;
         }
 
         /* 駆除カード */
         .service-card {
             background: #fff;
-            border-radius: 20px;
+            border-radius: 15px;
             margin: 0 20px 40px;
-            padding: 0;
             box-shadow: var(--card-shadow);
-            overflow: hidden; /* 画像の角丸を適用 */
-            text-align: center;
+            overflow: hidden;
             border: 1px solid #eee;
         }
 
-        /* リアルな写真エリア */
         .photo-box {
             width: 100%;
-            height: 220px;
+            height: 240px;
             overflow: hidden;
+            background-color: #eee;
         }
         .photo-box img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 比率を維持して全画面表示 */
-            transition: transform 0.3s ease;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
-        .service-card:hover .photo-box img {
-            transform: scale(1.05); /* 軽くズームアップ */
-        }
+        .service-card:hover .photo-box img { transform: scale(1.08); }
 
-        .card-content {
-            padding: 25px 20px 35px;
-        }
+        .card-content { padding: 25px 20px 30px; }
         .service-name { font-size: 1.6rem; font-weight: bold; margin-bottom: 5px; }
-        .service-price { color: var(--danger-red); font-size: 1.8rem; font-weight: bold; margin-bottom: 25px; display: block; }
+        .service-price { color: var(--danger-red); font-size: 1.9rem; font-weight: bold; margin-bottom: 20px; display: block; }
 
         .feature-list { text-align: left; list-style: none; padding: 0; margin: 0; }
         .feature-item {
@@ -106,17 +105,38 @@
             margin-bottom: 12px;
             font-size: 0.95rem;
             line-height: 1.6;
+            font-weight: 500;
         }
         .feature-item::before {
             content: ""; position: absolute; left: 0; top: 7px;
             width: 10px; height: 10px; background-color: var(--dot-green); border-radius: 50%;
         }
 
-        /* 脚注 */
+        /* その他対応 */
         .list-box {
-            background: #f8f9fa; border-radius: 12px; margin: 20px; padding: 25px;
-            font-size: 0.85rem; line-height: 1.8; color: #555; text-align: center;
+            background: #fdfdfd; border: 1px solid #eee; border-radius: 12px; margin: 20px; padding: 25px;
+            font-size: 0.85rem; line-height: 2; color: #555; text-align: center;
         }
+
+        /* 追従ボタンフッター（スマホ用） */
+        .footer-cta {
+            position: fixed;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 500px;
+            display: flex; gap: 5px; padding: 10px;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        .btn {
+            flex: 1; border-radius: 8px; text-decoration: none; font-weight: bold;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            height: 55px; font-size: 0.9rem;
+        }
+        .btn-tel { background: #ff9800; color: #fff; }
+        .btn-web { background: var(--danger-red); color: #fff; }
+
     </style>
 </head>
 <body>
@@ -136,7 +156,7 @@
 
     <div class="service-card">
         <div class="photo-box">
-            <img src="https://images.unsplash.com/photo-1626308539824-00989336df76?auto=format&fit=crop&q=80&w=800" alt="ゴキブリ">
+            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=800" alt="ゴキブリ駆除イメージ">
         </div>
         <div class="card-content">
             <div class="service-name">ゴキブリ駆除</div>
@@ -144,7 +164,7 @@
             <ul class="feature-list">
                 <li class="feature-item">市販の駆除剤が効かない</li>
                 <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-                <li class="feature-item">精神的なストレスは生活の質を低下させます</li>
+                <li class="feature-item">不快感だけでなく病原菌を運びます</li>
             </ul>
         </div>
     </div>
@@ -157,36 +177,22 @@
             <div class="service-name">ハチの巣駆除</div>
             <span class="service-price">5,000円〜</span>
             <ul class="feature-list">
-                <li class="feature-item">アナフィラキシーなど命に関わる危険を伴います</li>
-                <li class="feature-item">高所の巣や土の中の巣も即日対応</li>
+                <li class="feature-item">命に関わる危険を伴います</li>
+                <li class="feature-item">即日対応で巣をまるごと除去</li>
             </ul>
         </div>
     </div>
 
     <div class="service-card">
         <div class="photo-box">
-            <img src="https://images.unsplash.com/photo-1584036533827-45bce166ad94?auto=format&fit=crop&q=80&w=800" alt="トコジラミ">
+            <img src="https://images.unsplash.com/photo-1626308539824-00989336df76?auto=format&fit=crop&q=80&w=800" alt="トコジラミ">
         </div>
         <div class="card-content">
             <div class="service-name">トコジラミ駆除</div>
             <span class="service-price">10,000円〜</span>
             <ul class="feature-list">
-                <li class="feature-item">猛烈なかゆみや赤い発疹を引き起こします</li>
-                <li class="feature-item">驚異の繁殖力。プロの薬剤で根絶します</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="service-card">
-        <div class="photo-box">
-            <img src="https://images.unsplash.com/photo-1628109608112-b9ed93784013?auto=format&fit=crop&q=80&w=800" alt="ダニ">
-        </div>
-        <div class="card-content">
-            <div class="service-name">ノミ・ダニ駆除</div>
-            <span class="service-price">10,000円〜</span>
-            <ul class="feature-list">
-                <li class="feature-item">刺されると強いかゆみやアレルギーの原因に</li>
-                <li class="feature-item">ペットへの寄生や室内の大量発生を防ぎます</li>
+                <li class="feature-item">猛烈なかゆみと繁殖力を根絶</li>
+                <li class="feature-item">プロの熱処理・薬剤で徹底除去</li>
             </ul>
         </div>
     </div>
@@ -195,14 +201,14 @@
 
     <div class="service-card">
         <div class="photo-box">
-            <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&q=80&w=800" alt="ネズミ">
+            <img src="https://images.unsplash.com/photo-1542358917-410a08e312f1?auto=format&fit=crop&q=80&w=800" alt="ネズミ被害">
         </div>
         <div class="card-content">
             <div class="service-name">ネズミ駆除</div>
             <span class="service-price">10,000円〜</span>
             <ul class="feature-list">
-                <li class="feature-item">配線をかじっての火災リスクを防止</li>
-                <li class="feature-item">天井裏の騒音や糞尿被害を徹底解決</li>
+                <li class="feature-item">夜間の騒音・足音をシャットアウト</li>
+                <li class="feature-item">配線をかじる火災リスクを防止</li>
             </ul>
         </div>
     </div>
@@ -215,19 +221,23 @@
             <div class="service-name">ハクビシン駆除</div>
             <span class="service-price">10,000円〜</span>
             <ul class="feature-list">
-                <li class="feature-item">天井の腐敗や抜け落ちる被害を防ぎます</li>
-                <li class="feature-item">強烈なアンモニア臭を特殊消臭</li>
+                <li class="feature-item">天井のシミ・強烈な臭いを解決</li>
+                <li class="feature-item">侵入経路の封鎖までしっかり対応</li>
             </ul>
         </div>
     </div>
 
     <div class="list-box">
-        上記以外にも対応しております： <br>
-        <strong>【害虫】</strong>コバエ、アリ、ムカデ、ケムシ、クモ <br>
-        <strong>【害獣】</strong>イタチ、アライグマ、コウモリ、モグラ <br><br>
-        <p style="color:var(--danger-red); font-weight:bold;">現地調査・お見積もりは完全無料です！</p>
+        <strong>【その他対応一覧】</strong><br>
+        ノミ、ダニ、コバエ、アリ、ムカデ、イタチ、アライグマ等、あらゆる害虫・害獣に対応します。
+        <p style="color:var(--danger-red); font-weight:bold; margin-top:10px;">現地調査・見積もりは0円です！</p>
     </div>
 
+</div>
+
+<div class="footer-cta">
+    <a href="tel:0000000000" class="btn btn-tel">📞 電話で相談<br><span style="font-size:0.7rem;">(24時間受付)</span></a>
+    <a href="#form" class="btn btn-web">📩 Webから無料相談<br><span style="font-size:0.7rem;">(2分で完了)</span></a>
 </div>
 
 </body>
