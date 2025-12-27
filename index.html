@@ -3,95 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社Re:birth | 会社概要・お問い合わせ</title>
     <style>
-        /* 全体のリセット */
+        /* --- 共通スタイル --- */
         body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa; /* 全体の背景を薄いグレーに */
             margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            padding: 0;
         }
 
-        /* メインコンテナ：全幅表示 */
-        .warning-section-full {
+        .main-container {
             max-width: 800px;
-            margin: 0 auto;
-            background-color: #6085a5; /* 画像と同じ青背景 */
-            padding: 40px 30px;
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-align: center; /* 中央揃え */
-            box-sizing: border-box;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        /* 警告アイコン */
-        .alert-icon {
-            width: 80px;
-            height: auto;
+        /* --- セクション共通装飾 --- */
+        .section-wrapper {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .rb-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 4px solid #333;
+            padding-left: 15px;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- 会社概要パート --- */
+        .rb-info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .rb-info-table tr {
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .rb-info-table th {
+            width: 30%;
+            text-align: left;
+            padding: 20px 10px;
+            font-size: 0.9rem;
+            vertical-align: top;
+            background-color: #fafafa;
+        }
+
+        .rb-info-table td {
+            width: 70%;
+            padding: 20px 10px;
+            font-size: 0.95rem;
+        }
+
+        .rb-tel-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* --- お問い合わせフォームパート --- */
+        .form-group {
             margin-bottom: 20px;
         }
 
-        /* 悪徳業者にご注意（縁取りタイトル） */
-        .title-warning {
-            color: #f39800; /* オレンジ色 */
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin: 0 0 25px 0;
-            line-height: 1.3;
-            display: inline-block;
-            /* 白い太い縁取りをCSSで再現 */
-            text-shadow: 
-                3px 3px 0 #fff, -3px -3px 0 #fff,
-                3px -3px 0 #fff, -3px 3px 0 #fff,
-                0 3px 0 #fff, 0 -3px 0 #fff,
-                3px 0 0 #fff, -3px 0 0 #fff;
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
 
-        /* 説明文 */
-        .description-text {
+        label span {
+            color: #e74c3c;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px; /* スマホでズームされないサイズ */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0,123,255,0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
             font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: left; /* 文章は左揃えが見やすい */
-            max-width: 600px;
-            margin: 0 auto;
-            word-break: break-all;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin-top: 10px;
         }
 
-        /* スマホ向けの微調整 */
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        /* --- レスポンシブ対応 (スマホ) --- */
         @media (max-width: 600px) {
-            .warning-section-full {
-                padding: 30px 20px;
+            .main-container {
+                margin: 20px auto;
             }
-            .title-warning {
-                font-size: 1.8rem;
-                text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+            .section-wrapper {
+                padding: 25px 20px;
             }
-            .description-text {
-                font-size: 0.95rem;
-                line-height: 1.6;
+            .rb-info-table th, .rb-info-table td {
+                display: block;
+                width: 100%;
+                padding: 10px;
             }
-            .alert-icon {
-                width: 60px;
+            .rb-info-table th {
+                background-color: transparent;
+                padding-bottom: 0;
+                color: #888;
+                font-size: 0.8rem;
+            }
+            .rb-info-table td {
+                padding-top: 5px;
+                border-bottom: none;
             }
         }
     </style>
 </head>
 <body>
 
-<section class="warning-section-full">
-    <svg class="alert-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 10L5 90H95L50 10Z" fill="#ffeb3b" stroke="#333" stroke-width="5"/>
-        <text x="50" y="78" fill="#333" font-size="50" font-weight="bold" text-anchor="middle">!</text>
-    </svg>
+<div class="main-container">
 
-    <h2 class="title-warning">悪徳業者にご注意</h2>
+    <section class="section-wrapper">
+        <h2 class="rb-title">会社概要</h2>
+        <table class="rb-info-table">
+            <tr>
+                <th>会社名</th>
+                <td>株式会社Re:birth</td>
+            </tr>
+            <tr>
+                <th>所在地</th>
+                <td>〒530-0035<br>大阪府大阪市北区同心２丁目１３ー１８ ５０２</td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td><a href="tel:05035280140" class="rb-tel-link">050-3528-0140</a></td>
+            </tr>
+        </table>
+    </section>
 
-    <div class="description-text">
-        最近、無料見積りと謳って依頼すると、何度もしつこい営業が行われたり、別途費用が発生したといった被害の話が絶えません。<br><br>
-        当社では、お客様のご要望に応じて誠実に対応し、説明した料金を超える費用は一切発生しません。無料見積りの後に、しつこい営業を行うことはありませんのでご安心ください。
-    </div>
-</section>
+    <section class="section-wrapper">
+        <h2 class="rb-title">お問い合わせ</h2>
+        <form action="https://formspree.io/f/xvgzlowj" method="POST">
+            <input type="text" name="_gotcha" style="display:none">
+
+            <div class="form-group">
+                <label>お名前<span>(必須)</span></label>
+                <input type="text" name="name" required placeholder="例：山田 太郎">
+            </div>
+
+            <div class="form-group">
+                <label>電話番号<span>(必須)</span></label>
+                <input type="tel" name="tel" required placeholder="例：09012345678" pattern="[0-9]*">
+            </div>
+
+            <div class="form-group">
+                <label>メールアドレス<span>(必須)</span></label>
+                <input type="email" name="_replyto" required placeholder="例：abc@example.com" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label>住所<span>(必須)</span></label>
+                <input type="text" name="address" required placeholder="例：大阪府大阪市...">
+            </div>
+
+            <div class="form-group">
+                <label>お問い合わせ内容<span>(必須)</span></label>
+                <textarea name="message" rows="6" required placeholder="ご質問などをご記入ください"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">この内容で送信する</button>
+        </form>
+    </section>
+
+</div>
 
 </body>
 </html>
-
