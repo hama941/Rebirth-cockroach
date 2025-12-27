@@ -3,207 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株式会社Re:birth | 会社概要・お問い合わせ</title>
     <style>
-        /* --- 共通スタイル --- */
+        :root {
+            --primary-blue: #00a0e9;
+            --danger-red: #e60012;
+            --accent-orange: #f39800;
+            --bg-gray: #f9f9f9;
+            --text-main: #333333;
+        }
+
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background-color: #f8f9fa; /* 全体の背景を薄いグレーに */
             margin: 0;
             padding: 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
-        .main-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px; /* フッター用余白 */
         }
 
-        /* --- セクション共通装飾 --- */
-        .section-wrapper {
+        /* 1. 比較表セクション */
+        .table-section {
             background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-        }
-
-        .rb-title {
-            font-size: 1.5rem;
-            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
             margin-bottom: 30px;
-            border-left: 4px solid #333;
-            padding-left: 15px;
-            letter-spacing: 0.05em;
+            overflow-x: auto;
         }
-
-        /* --- 会社概要パート --- */
-        .rb-info-table {
+        table {
             width: 100%;
             border-collapse: collapse;
+            font-size: 11px;
+            min-width: 450px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 4px;
+            text-align: center;
+        }
+        th { background: #f2f2f2; }
+        .our-service { background: #fff0f0; border: 2px solid var(--danger-red); font-weight: bold; }
+        .red-bold { color: var(--danger-red); font-weight: bold; }
+
+        /* 2. 注意喚起セクション */
+        .warning-box {
+            background-color: #6085a5;
+            color: #fff;
+            padding: 30px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .warning-title {
+            color: var(--accent-orange);
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
         }
 
-        .rb-info-table tr {
-            border-bottom: 1px solid #eeeeee;
+        /* 3. 駆除サービスカード (はち.jpg 再現) */
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            padding: 40px 25px;
+            text-align: center;
+            margin-bottom: 30px;
         }
-
-        .rb-info-table th {
-            width: 30%;
-            text-align: left;
-            padding: 20px 10px;
-            font-size: 0.9rem;
-            vertical-align: top;
-            background-color: #fafafa;
-        }
-
-        .rb-info-table td {
-            width: 70%;
-            padding: 20px 10px;
-            font-size: 0.95rem;
-        }
-
-        .rb-tel-link {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* --- お問い合わせフォームパート --- */
-        .form-group {
+        .service-card img {
+            width: 80px;
             margin-bottom: 20px;
         }
+        .service-name {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .price {
+            color: var(--danger-red);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        .check-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        .check-list li::before {
+            content: '●';
+            color: #4caf50;
+            position: absolute;
+            left: 0;
+        }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
+        /* 4. 固定フッター */
+        .footer-cta {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            padding: 10px;
+            background: rgba(255,255,255,0.95);
+            box-sizing: border-box;
+            gap: 8px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .btn-tel {
+            flex: 1;
+            background: var(--accent-orange);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
             font-size: 0.9rem;
         }
-
-        label span {
-            color: #e74c3c;
-            font-size: 0.8em;
-            margin-left: 8px;
+        .btn-web {
+            flex: 1.2;
+            background: #fff;
+            border: 2px solid var(--accent-orange);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            position: relative;
         }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px; /* スマホでズームされないサイズ */
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 8px rgba(0,123,255,0.15);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: #007bff;
+        .badge-60 {
+            background: var(--danger-red);
             color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s ease;
-            margin-top: 10px;
+            font-size: 10px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            line-height: 1.1;
         }
+        .web-text { font-size: 0.75rem; font-weight: bold; }
+        .web-text span { color: var(--danger-red); display: block; font-size: 0.9rem; }
 
-        .submit-btn:hover {
-            background: #0056b3;
-        }
-
-        /* --- レスポンシブ対応 (スマホ) --- */
-        @media (max-width: 600px) {
-            .main-container {
-                margin: 20px auto;
-            }
-            .section-wrapper {
-                padding: 25px 20px;
-            }
-            .rb-info-table th, .rb-info-table td {
-                display: block;
-                width: 100%;
-                padding: 10px;
-            }
-            .rb-info-table th {
-                background-color: transparent;
-                padding-bottom: 0;
-                color: #888;
-                font-size: 0.8rem;
-            }
-            .rb-info-table td {
-                padding-top: 5px;
-                border-bottom: none;
-            }
-        }
     </style>
 </head>
 <body>
 
-<div class="main-container">
-
-    <section class="section-wrapper">
-        <h2 class="rb-title">会社概要</h2>
-        <table class="rb-info-table">
+<div class="container">
+    
+    <div class="table-section">
+        <h3 style="text-align: center; font-size: 0.9rem;">他社との比較</h3>
+        <table>
             <tr>
-                <th>会社名</th>
-                <td>株式会社Re:birth</td>
+                <th>項目</th>
+                <td>他社A</td>
+                <td>他社B</td>
+                <td class="our-service">当社</td>
             </tr>
             <tr>
-                <th>所在地</th>
-                <td>〒530-0035<br>大阪府大阪市北区同心２丁目１３ー１８ ５０２</td>
+                <th>カスタマー</th>
+                <td>なし</td>
+                <td>営業時間内</td>
+                <td class="our-service red-bold">24時間対応</td>
             </tr>
             <tr>
-                <th>電話番号</th>
-                <td><a href="tel:05035280140" class="rb-tel-link">050-3528-0140</a></td>
+                <th>満足度</th>
+                <td>4.0/5.0</td>
+                <td>4.2/5.0</td>
+                <td class="our-service">4.8/5.0</td>
             </tr>
         </table>
-    </section>
+    </div>
 
-    <section class="section-wrapper">
-        <h2 class="rb-title">お問い合わせ</h2>
-        <form action="https://formspree.io/f/xvgzlowj" method="POST">
-            <input type="text" name="_gotcha" style="display:none">
+    <div class="warning-box">
+        <div style="font-size: 3rem; margin-bottom: 10px;">⚠️</div>
+        <h2 class="warning-title">悪徳業者にご注意</h2>
+        <p style="text-align: left; font-size: 0.9rem;">
+            最近、無料見積りと謳って依頼すると、何度ももしつこい営業が行われたり、別途費用が発生したといった被害の話が絶えません。当社では、説明した料金を超える費用は一切発生しません。
+        </p>
+    </div>
 
-            <div class="form-group">
-                <label>お名前<span>(必須)</span></label>
-                <input type="text" name="name" required placeholder="例：山田 太郎">
-            </div>
+    <h2 style="text-align: center;">害虫駆除</h2>
+    <div class="service-card">
+        <div style="font-size: 50px;">🪳</div>
+        <div class="service-name">ゴキブリ駆除</div>
+        <div class="price">18,000円〜</div>
+        
+        <ul class="check-list">
+            <li>市販の駆除剤が効かない</li>
+            <li>一度業者に頼んだのにまた発生した</li>
+            <li>部屋で見かける不快感は精神的なストレスとなり、生活の質を低下させます</li>
+            <li>糞や脱皮した皮はアレルギー性鼻炎や喘息の発症リスクが高まります</li>
+        </ul>
+    </div>
 
-            <div class="form-group">
-                <label>電話番号<span>(必須)</span></label>
-                <input type="tel" name="tel" required placeholder="例：09012345678" pattern="[0-9]*">
-            </div>
+</div>
 
-            <div class="form-group">
-                <label>メールアドレス<span>(必須)</span></label>
-                <input type="email" name="_replyto" required placeholder="例：abc@example.com" autocomplete="email">
-            </div>
-
-            <div class="form-group">
-                <label>住所<span>(必須)</span></label>
-                <input type="text" name="address" required placeholder="例：大阪府大阪市...">
-            </div>
-
-            <div class="form-group">
-                <label>お問い合わせ内容<span>(必須)</span></label>
-                <textarea name="message" rows="6" required placeholder="ご質問などをご記入ください"></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">この内容で送信する</button>
-        </form>
-    </section>
-
+<div class="footer-cta">
+    <a href="tel:0335288090" class="btn-tel">
+        <span style="font-size: 0.7rem;">お電話でのご相談</span>
+        03-3528-8090
+    </a>
+    <a href="#contact" class="btn-web">
+        <div class="badge-60">簡単<br>60秒</div>
+        <div class="web-text">
+            <span>無料調査・無料相談をする</span>
+            年中無休・24時間受付
+        </div>
+    </a>
 </div>
 
 </body>
