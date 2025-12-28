@@ -50,7 +50,7 @@
             margin: 0 5px;
         }
 
-        /* --- 1. ヒーローセクション --- */
+        /* --- 1. ヒーローセクション (デザイン改修済み) --- */
         .lp-hero {
             position: relative;
             width: 100%;
@@ -65,11 +65,17 @@
             box-sizing: border-box;
         }
 
+        /* お洒落なオーバーレイ: 濃紺のグラデーションに微細なドットを重ねる */
         .lp-hero::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.65);
+            background: 
+                radial-gradient(circle, transparent 20%, rgba(26, 54, 93, 0.8) 100%),
+                linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(10, 20, 40, 0.8) 100%),
+                radial-gradient(#ffffff 0.5px, transparent 0.5px); /* 微細なドットパターン */
+            background-size: 100% 100%, 100% 100%, 20px 20px;
+            opacity: 0.95;
             z-index: 1;
         }
 
@@ -91,26 +97,43 @@
             line-height: 1.4;
             margin: 0;
             font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .catch-copy .yellow {
             color: var(--accent-yellow);
-            text-shadow: 0 0 10px rgba(255, 222, 0, 0.5);
+            text-shadow: 0 0 15px rgba(255, 222, 0, 0.6);
+            background: linear-gradient(transparent 70%, rgba(255, 222, 0, 0.3) 70%);
         }
 
         .sub-message {
-            display: block;
+            display: inline-block;
             font-size: clamp(1rem, 2.5vw, 1.3rem);
             margin-top: 15px;
             font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
+        /* チェックボックスエリアのデザイン強化 */
         .check-box {
             background: #fff;
-            border-radius: 12px;
-            padding: 30px 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border: 4px solid #333;
+            border-radius: 16px;
+            padding: 35px 25px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 装飾的なアクセントライン */
+        .check-box::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(to right, var(--accent-yellow), var(--danger-red));
         }
 
         .check-list { list-style: none; padding: 0; margin: 0; }
@@ -118,130 +141,91 @@
         .check-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px dotted #ccc;
-            font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: clamp(0.95rem, 2.2vw, 1.15rem);
             font-weight: bold;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .check-item:last-child { margin-bottom: 0; border-bottom: none; }
 
         .check-icon {
-            width: 24px; height: 24px;
-            border: 2px solid var(--danger-red);
-            background: #fff;
-            margin-right: 12px;
+            width: 26px; height: 26px;
+            background: var(--danger-red);
+            margin-right: 15px;
             flex-shrink: 0;
             position: relative;
-            border-radius: 4px;
+            border-radius: 50%; /* 丸くしてお洒落に */
             margin-top: 2px;
+            box-shadow: 0 3px 6px rgba(204, 0, 0, 0.2);
         }
 
         .check-icon::after {
             content: '';
             position: absolute;
-            left: 7px; top: 2px;
-            width: 6px; height: 11px;
-            border: solid var(--danger-red);
+            left: 9px; top: 5px;
+            width: 5px; height: 10px;
+            border: solid #fff;
             border-width: 0 3px 3px 0;
             transform: rotate(45deg);
         }
 
-        .red-text { color: var(--danger-red); }
+        .red-text { color: var(--danger-red); text-decoration: underline; text-underline-offset: 3px; }
 
-        /* --- 2. 選ばれる理由セクション (アップデート版) --- */
+        /* --- 2. 選ばれる理由セクション --- */
         .reasons-section {
-            padding: 100px 20px;
-            position: relative;
-            background-color: #f8fbff;
-            background-image: radial-gradient(#d1e4ff 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-
-        .reasons-inner {
-            max-width: 1000px;
+            padding: 80px 20px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .main-section-title {
             text-align: center;
-            background: linear-gradient(135deg, var(--bg-dark-blue), #2c5282);
+            background-color: var(--bg-dark-blue);
             color: white;
-            padding: 25px;
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            padding: 20px;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
             font-weight: bold;
-            margin-bottom: 70px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.2);
-            position: relative;
+            margin-bottom: 50px;
+            border-radius: 4px;
         }
 
         .reason-card {
             background: white;
-            margin-bottom: 60px;
+            border: 4px double var(--bg-dark-blue);
+            margin-bottom: 50px;
             position: relative;
-            padding: 40px;
+            padding: 30px;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            border: 4px solid #fff;
-            transition: transform 0.3s ease;
-        }
-        
-        .reason-card:hover {
-            transform: translateY(-5px);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
         }
 
         .reason-label {
             position: absolute;
-            top: -25px;
-            left: 30px;
-            background: linear-gradient(to right, var(--gold), #f6e05e);
-            color: #4a3b06;
-            padding: 10px 30px;
-            font-weight: 800;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            top: -20px; left: 20px;
+            background-color: var(--gold);
+            color: white;
+            padding: 8px 25px;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 4px;
         }
 
-        .reason-image { flex: 1; min-width: 280px; padding: 10px; }
-        .reason-image img { 
-            width: 100%; border-radius: 15px; 
-            aspect-ratio: 16/10; object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
+        .reason-image { flex: 1; min-width: 250px; padding: 15px; text-align: center; }
+        .reason-image img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
-        .reason-text { flex: 1.2; min-width: 300px; padding: 20px 30px; }
+        .reason-text { flex: 1.5; min-width: 280px; padding: 15px; }
         .reason-text h3 {
             color: var(--bg-dark-blue);
-            font-size: 24px;
+            font-size: 22px;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 12px;
             margin-top: 0;
-            margin-bottom: 15px;
-            line-height: 1.4;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .reason-text h3::after {
-            content: "";
-            width: 60px; height: 4px;
-            background: var(--gold);
-            margin-top: 10px; border-radius: 2px;
-        }
-
-        .reason-text p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #4a5568;
-            margin: 0;
         }
 
         /* --- 3. 警告エリア --- */
@@ -435,9 +419,7 @@
 
         /* レスポンシブ */
         @media (max-width: 768px) {
-            .reason-card { flex-direction: column; padding: 40px 20px 30px; }
-            .reason-text { padding: 20px 0 0; }
-            .reason-text h3 { font-size: 20px; }
+            .reason-card { flex-direction: column; padding-top: 40px; }
             .warning-area { clip-path: none; }
             .cta-button { width: 90%; padding: 15px 0; font-size: 1.2rem; }
             .step-content { flex-direction: column; align-items: center; text-align: center; }
@@ -484,40 +466,29 @@
     </section>
 
     <section class="reasons-section">
-        <div class="reasons-inner">
-            <div class="main-section-title">＼ 選ばれる理由があります ／</div>
-            
-            <div class="reason-card">
-                <div class="reason-label"><i class="fas fa-check-circle"></i>理由 1</div>
-                <div class="reason-image">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=80" alt="無料見積もり">
-                </div>
-                <div class="reason-text">
-                    <h3>お見積りは完全無料！<br>明朗会計で安心です</h3>
-                    <p>現地にて詳細な状況を調査し、追加費用なしの確定見積りをご提示します。ご納得いただいてからの作業となりますので、無理な勧誘は一切ありません。</p>
-                </div>
+        <div class="main-section-title">＼ 選ばれる理由があります ／</div>
+        <div class="reason-card">
+            <div class="reason-label">理由 1</div>
+            <div class="reason-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=80" alt="無料見積もり"></div>
+            <div class="reason-text">
+                <h3>お見積りは完全無料！明朗会計で安心です</h3>
+                <p>現地にて詳細な状況を調査し、追加費用なしの確定見積りをご提示します。</p>
             </div>
-
-            <div class="reason-card">
-                <div class="reason-label"><i class="fas fa-bolt"></i>理由 2</div>
-                <div class="reason-image">
-                    <img src="https://thumb.photo-ac.com/b5/b5d63dd6266c95ab7f6bbb8271079658_t.jpeg" alt="即日対応">
-                </div>
-                <div class="reason-text">
-                    <h3>24時間365日<br>即日対応いたします！</h3>
-                    <p>最短15分で駆けつけます。深夜のトラブルや、早朝の緊急事態など、お客様の「今すぐ助けて」にプロの技術で即座に応えます。</p>
-                </div>
+        </div>
+        <div class="reason-card">
+            <div class="reason-label">理由 2</div>
+            <div class="reason-image"><img src="https://thumb.photo-ac.com/b5/b5d63dd6266c95ab7f6bbb8271079658_t.jpeg" alt="即日対応"></div>
+            <div class="reason-text">
+                <h3>24時間365日 即日対応いたします！</h3>
+                <p>最短15分で到着. 深夜・早朝のパニックもプロが即座に解決します。</p>
             </div>
-
-            <div class="reason-card">
-                <div class="reason-label"><i class="fas fa-shield-alt"></i>理由 3</div>
-                <div class="reason-image">
-                    <img src="https://thumb.photo-ac.com/f9/f901b4c21782128e72b9867e7e70babb_t.jpeg" alt="アフターサービス">
-                </div>
-                <div class="reason-text">
-                    <h3>充実のアフターサービス<br>再発防止も徹底対応</h3>
-                    <p>施工後の侵入口封鎖までプロが完遂。万が一、保証期間内に再発した場合は無料で再調査・再施工を行います。駆除して終わりではない安心をお約束します。</p>
-                </div>
+        </div>
+        <div class="reason-card">
+            <div class="reason-label">理由 3</div>
+            <div class="reason-image"><img src="https://thumb.photo-ac.com/f9/f901b4c21782128e72b9867e7e70babb_t.jpeg" alt="アフターサービス"></div>
+            <div class="reason-text">
+                <h3>充実のアフターサービス</h3>
+                <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。</p>
             </div>
         </div>
     </section>
@@ -635,9 +606,9 @@
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">出張料や見積もり料はいくらですか？</button>
+                <button class="faq-question">どのエリアまで対応していますか？</button>
                 <div class="faq-answer">
-                    <div class="answer-inner">弊社では、出張料およびお見積もり料はすべて「0円」です。お客様にご提示するのは作業料金のみですので、ご安心ください。</div>
+                    <div class="answer-inner">大阪、兵庫、奈良、和歌山、京都の各府県に対応しております。</div>
                 </div>
             </div>
         </div>
@@ -647,17 +618,18 @@
         <section class="section-wrapper">
             <h2 class="rb-title">無料相談・お問い合わせ</h2>
             <form action="https://formspree.io/f/xvgzlowj" method="POST">
+                <input type="text" name="_gotcha" style="display:none">
                 <div class="form-group">
                     <label>お名前<span>必須</span></label>
                     <input type="text" name="name" required placeholder="例：山田 太郎">
                 </div>
                 <div class="form-group">
                     <label>電話番号<span>必須</span></label>
-                    <input type="tel" name="tel" required placeholder="例：09012345678">
+                    <input type="tel" name="tel" required placeholder="例：09012345678" pattern="[0-9]*">
                 </div>
                 <div class="form-group">
                     <label>メールアドレス<span>必須</span></label>
-                    <input type="email" name="_replyto" required placeholder="例：abc@example.com">
+                    <input type="email" name="_replyto" required placeholder="例：abc@example.com" autocomplete="email">
                 </div>
                 <div class="form-group">
                     <label>住所<span>必須</span></label>
@@ -703,25 +675,30 @@
             const d = now.getDate();
             const hh = String(now.getHours()).padStart(2, '0');
             const mm = String(now.getMinutes()).padStart(2, '0');
-            if(document.getElementById('current-date')) document.getElementById('current-date').textContent = `${y}年${m}月${d}日`;
-            if(document.getElementById('current-time')) document.getElementById('current-time').textContent = `${hh}:${mm}`;
+
+            if(document.getElementById('current-date')) {
+                document.getElementById('current-date').textContent = `${y}年${m}月${d}日`;
+            }
+            if(document.getElementById('current-time')) {
+                document.getElementById('current-time').textContent = `${hh}:${mm}`;
+            }
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
-                button.parentElement.classList.toggle('open');
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('open');
             });
         });
     </script>
-
-    <div id="fixed-tel-bar" style="position: fixed !important; bottom: 0 !important; left: 0 !important; width: 100% !important; height: 80px !important; background-color: #f36d21 !important; z-index: 2147483647 !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 -3px 15px rgba(0,0,0,0.3) !important; border-top: 2px solid #fff !important;">
+    <div id="fixed-tel-bar" style="position: fixed !important; bottom: 0 !important; left: 0 !important; width: 100% !important; height: 80px !important; background-color: #f36d21 !important; z-index: 2147483647 !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 -3px 15px rgba(0,0,0,0.3) !important; font-family: sans-serif !important; border-top: 2px solid #fff !important;">
         <a href="tel:05035280140" style="display: flex !important; align-items: center !important; text-decoration: none !important; color: white !important; width: 100% !important; justify-content: center !important; height: 100% !important;">
             <i class="fas fa-phone-alt" style="font-size: 30px !important; margin-right: 15px !important; transform: scaleX(-1);"></i>
             <div style="display: flex !important; flex-direction: column !important;">
-                <span style="font-size: 13px !important; font-weight: bold !important; margin-bottom: 2px !important;">24時間受付！お急ぎの方はこちら</span>
-                <span style="font-size: 26px !important; font-weight: bold !important; letter-spacing: 1px !important;">050-3528-0140</span>
+                <span style="font-size: 13px !important; font-weight: bold !important; margin-bottom: 2px !important; display: block !important;">24時間受付！お急ぎの方はこちら</span>
+                <span style="font-size: 26px !important; font-weight: bold !important; letter-spacing: 1px !important; display: block !important;">050-3528-0140</span>
             </div>
         </a>
     </div>
