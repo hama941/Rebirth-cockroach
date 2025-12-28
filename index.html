@@ -4,51 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* ページ全体の余白調整（バーに隠れないようにする） */
         body {
             margin: 0;
-            padding-top: 35px; 
+            padding-top: 40px; /* バーの高さに合わせて調整 */
         }
 
-        /* 固定バーの設定 */
+        /* 固定バーの外枠 */
         .status-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            height: 35px; /* 高さを固定 */
             background-color: #000;
             color: #fff;
-            padding: 6px 0;
             font-family: sans-serif;
             font-weight: bold;
-            font-size: 0.85rem; /* 文字を小さめに設定 */
+            font-size: 0.85rem;
             z-index: 10000;
-            overflow: hidden;
+            overflow: hidden; /* はみ出た文字を隠す */
+            display: flex;
+            align-items: center;
+        }
+
+        /* 流れるアニメーションのコンテナ */
+        .scroll-container {
             display: flex;
             white-space: nowrap;
         }
 
-        /* 途切れなく流すためのコンテナ */
-        .scroll-container {
+        /* アニメーション本体 */
+        .scroll-content {
             display: flex;
+            animation: scroll-left 25s linear infinite;
         }
 
-        /* アニメーションの設定 */
-        .scroll-text {
-            display: inline-block;
-            padding-right: 50px; /* 文末の余白 */
-            animation: scroll-seamless 20s linear infinite;
-        }
-
-        @keyframes scroll-seamless {
+        @keyframes scroll-left {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-50%); } /* 半分まで流れたらループ */
         }
 
-        /* 黄色の強調部分 */
+        /* テキストのひとかたまり */
+        .text-item {
+            padding-right: 100px; /* テキスト間の余白（重要） */
+            display: flex;
+            align-items: center;
+        }
+
         .highlight {
             color: #ffcc00;
-            margin: 0 3px;
+            margin: 0 5px;
         }
     </style>
 </head>
@@ -56,19 +61,21 @@
 
     <div class="status-bar">
         <div class="scroll-container">
-            <div class="scroll-text">
-                <span>【稼働状況】</span>
-                <span id="current-date-1"></span>
-                <span id="current-time-1" class="highlight"></span> 現在
-                <span style="margin-left: 30px;" class="highlight">受付可能！</span>
-                <span>（最短15分で到着可能です！）</span>
-            </div>
-            <div class="scroll-text">
-                <span>【稼働状況】</span>
-                <span id="current-date-2"></span>
-                <span id="current-time-2" class="highlight"></span> 現在
-                <span style="margin-left: 30px;" class="highlight">受付可能！</span>
-                <span>（最短15分で到着可能です！）</span>
+            <div id="scroll-target" class="scroll-content">
+                <div class="text-item">
+                    【稼働状況】
+                    <span class="current-date"></span>
+                    <span class="current-time highlight"></span> 現在
+                    <span style="margin-left: 30px;" class="highlight">受付可能！</span>
+                    <span>（最短15分で到着可能です！）</span>
+                </div>
+                <div class="text-item">
+                    【稼働状況】
+                    <span class="current-date"></span>
+                    <span class="current-time highlight"></span> 現在
+                    <span style="margin-left: 30px;" class="highlight">受付可能！</span>
+                    <span>（最短15分で到着可能です！）</span>
+                </div>
             </div>
         </div>
     </div>
@@ -82,28 +89,6 @@
             const hh = String(now.getHours()).padStart(2, '0');
             const mm = String(now.getMinutes()).padStart(2, '0');
 
-            const dateStr = `${y}年${m}月${d}日`;
-            const timeStr = `${hh}:${mm}`;
-
-            // 2つのテキストエリアを同時に更新
-            for (let i = 1; i <= 2; i++) {
-                const dateEl = document.getElementById(`current-date-${i}`);
-                const timeEl = document.getElementById(`current-time-${i}`);
-                if (dateEl) dateEl.textContent = dateStr;
-                if (timeEl) timeEl.textContent = timeStr;
-            }
-        }
-
-        // 1秒ごとに更新
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-    </script>
-
-</body>
-</html>
-
-
-
-
+            const dateStr = `${y}年${m}月${d
 
 
