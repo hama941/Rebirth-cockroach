@@ -404,20 +404,15 @@
             .rb-info-table th, .rb-info-table td { display: block; width: 100%; padding: 15px 10px; }
             .rb-info-table th { background-color: transparent; padding-bottom: 0; }
         }
-    </style>
-</head>
-<body>
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* ページ全体の余白調整 */
-        body { margin: 0; padding-top: 45px; } 
+        /* バーの分だけ余白を確保 */
+        body { margin: 0; padding-top: 35px; } 
 
-        /* 上部固定バーのスタイル */
         .status-bar {
             position: fixed;
             top: 0;
@@ -425,43 +420,81 @@
             width: 100%;
             background-color: #000;
             color: #fff;
-            padding: 10px 0;
+            padding: 6px 0; /* 上下幅を少し狭く */
             font-family: sans-serif;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.85rem; /* 文字サイズを小さく */
             z-index: 10000;
             overflow: hidden;
+            display: flex;
+        }
+
+        /* 途切れなく流すためのコンテナ */
+        .scroll-container {
+            display: flex;
             white-space: nowrap;
         }
 
-        /* 横に流れるアニメーションの設定 */
+        /* アニメーション本体 */
         .scroll-text {
             display: inline-block;
-            padding-left: 100%;
-            animation: scroll-left 15s linear infinite; /* 15秒で一周 */
+            padding-right: 50px; /* 文章と文章の間の余白 */
+            animation: scroll-seamless 20s linear infinite;
         }
 
-        @keyframes scroll-left {
+        @keyframes scroll-seamless {
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
         }
 
-        /* 黄色の強調文字 */
-        .highlight { color: #ffcc00; margin: 0 5px; }
+        .highlight { color: #ffcc00; margin: 0 3px; }
     </style>
 </head>
 <body>
 
     <div class="status-bar">
-        <div class="scroll-text">
-            <span>【稼働状況】</span>
-            <span id="current-date"></span>
-            <span id="current-time" class="highlight"></span> 現在
-            <span style="margin-left: 60px;" class="highlight">受付可能！</span>
-            <span style="margin-left: 10px;">（最短15分で到着可能です！）</span>
+        <div class="scroll-container">
+            <div class="scroll-text">
+                <span>【稼働状況】</span>
+                <span id="current-date-1"></span>
+                <span id="current-time-1" class="highlight"></span> 現在
+                <span style="margin-left: 30px;" class="highlight">受付可能！</span>
+                <span>（最短15分で到着可能です！）</span>
+            </div>
+            <div class="scroll-text">
+                <span>【稼働状況】</span>
+                <span id="current-date-2"></span>
+                <span id="current-time-2" class="highlight"></span> 現在
+                <span style="margin-left: 30px;" class="highlight">受付可能！</span>
+                <span>（最短15分で到着可能です！）</span>
+            </div>
         </div>
     </div>
 
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = now.getMonth() + 1;
+            const d = now.getDate();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            
+            const dateStr = `${y}年${m}月${d}日`;
+            const timeStr = `${hh}:${mm}`;
+
+            // 2つあるテキスト両方を更新する
+            for (let i = 1; i <= 2; i++) {
+                document.getElementById(`current-date-${i}`).textContent = dateStr;
+                document.getElementById(`current-time-${i}`).textContent = timeStr;
+            }
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+
+</body>
+    
     <script>
         function updateDateTime() {
             const now = new Date();
@@ -811,6 +844,7 @@
     </a>
 </div>
 </html>
+
 
 
 
