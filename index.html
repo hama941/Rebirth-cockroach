@@ -3,92 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            padding-top: 40px; /* バーの高さに合わせて調整 */
-        }
-
-        /* 固定バーの外枠 */
-        .status-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 35px; /* 高さを固定 */
-            background-color: #000;
-            color: #fff;
-            font-family: sans-serif;
-            font-weight: bold;
-            font-size: 0.85rem;
-            z-index: 10000;
-            overflow: hidden; /* はみ出た文字を隠す */
-            display: flex;
-            align-items: center;
-        }
-
-        /* 流れるアニメーションのコンテナ */
-        .scroll-container {
-            display: flex;
-            white-space: nowrap;
-        }
-
-        /* アニメーション本体 */
-        .scroll-content {
-            display: flex;
-            animation: scroll-left 25s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* 半分まで流れたらループ */
-        }
-
-        /* テキストのひとかたまり */
-        .text-item {
-            padding-right: 100px; /* テキスト間の余白（重要） */
-            display: flex;
-            align-items: center;
-        }
-
-        .highlight {
-            color: #ffcc00;
-            margin: 0 5px;
-        }
-    </style>
+    <title>LPセクション再現</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="status-bar">
-        <div class="scroll-container">
-            <div id="scroll-target" class="scroll-content">
-                <div class="text-item">
-                    【稼働状況】
-                    <span class="current-date"></span>
-                    <span class="current-time highlight"></span> 現在
-                    <span style="margin-left: 30px;" class="highlight">受付可能！</span>
-                    <span>（最短15分で到着可能です！）</span>
+    <section class="pest-control">
+        <div class="container">
+            <div class="header-text">
+                <h2>こんな<span class="highlight-yellow">症状</span>、出ていませんか？</h2>
+                <p>一つでもチェックが付く方は、<br>今すぐご相談ください</p>
+            </div>
+
+            <div class="checklist-box">
+                <ul class="checklist">
+                    <li><span class="check-icon">✔</span> <strong>ゴキブリ</strong>が出た...</li>
+                    <li><span class="check-icon">✔</span> 市販の駆除グッズを使っても<strong>なかなか減らない...</strong></li>
+                    <li><span class="check-icon">✔</span> 一度駆除したのに、<strong>また出た...</strong></li>
+                    <li><span class="check-icon">✔</span> 夏になる前に<strong>なんとかしたい...</strong></li>
+                    <li><span class="check-icon">✔</span> 店舗なので、<strong>定期的な駆除と対策をお願いいしたい</strong></li>
+                    <li><span class="check-icon">✔</span> 駆除後の<strong>予防方法</strong>も教えてほしい...</li>
+                    <li><span class="check-icon">✔</span> 他で見積りしたけど、<strong>費用が高くて頼めない...</strong></li>
+                    <li><span class="check-icon">✔</span> <strong>どのような対策をするのか</strong>話だけでも聞いてみたい...</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-footer">
+            <div class="cta-top-bar">
+                24時間対応いたします！ <span class="badge">出張費/見積り0円</span>
+            </div>
+            <div class="cta-main">
+                <div class="discount-badge">
+                    「HP見た」で<br>
+                    <span class="percent">20%<small>OFF</small></span><br>
+                    Web割
                 </div>
-                <div class="text-item">
-                    【稼働状況】
-                    <span class="current-date"></span>
-                    <span class="current-time highlight"></span> 現在
-                    <span style="margin-left: 30px;" class="highlight">受付可能！</span>
-                    <span>（最短15分で到着可能です！）</span>
+                <div class="cta-text">
+                    <p>お電話のみで解決サポートできる場合もございます。<br>まずはお気軽にご相談ください！</p>
+                    <a href="tel:0000000000" class="tel-button">電話でお問い合わせ</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            const y = now.getFullYear();
-            const m = now.getMonth() + 1;
-            const d = now.getDate();
-            const hh = String(now.getHours()).padStart(2, '0');
-            const mm = String(now.getMinutes()).padStart(2, '0');
-
-            const dateStr = `${y}年${m}月${d
-
-
+</body>
+</html>
