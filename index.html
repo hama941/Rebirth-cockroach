@@ -50,12 +50,13 @@
             margin: 0 5px;
         }
 
-        /* --- 1. ヒーローセクション (デザイン改修済み) --- */
+        /* --- 1. ヒーローセクション (画像に合わせて改修) --- */
         .lp-hero {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            background-image: url('https://images.unsplash.com/photo-1592595820246-9779245af0ed?auto=format&fit=crop&q=80&w=1600');
+            /* 画像のように濃いグレー〜黒の背景 */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1592595820246-9779245af0ed?auto=format&fit=crop&q=80&w=1600');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -63,20 +64,6 @@
             align-items: center;
             padding: 60px 15px;
             box-sizing: border-box;
-        }
-
-        /* お洒落なオーバーレイ: 濃紺のグラデーションに微細なドットを重ねる */
-        .lp-hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                radial-gradient(circle, transparent 20%, rgba(26, 54, 93, 0.8) 100%),
-                linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(10, 20, 40, 0.8) 100%),
-                radial-gradient(#ffffff 0.5px, transparent 0.5px); /* 微細なドットパターン */
-            background-size: 100% 100%, 100% 100%, 20px 20px;
-            opacity: 0.95;
-            z-index: 1;
         }
 
         .content-inner {
@@ -93,47 +80,33 @@
         }
 
         .catch-copy h2 {
-            font-size: clamp(1.6rem, 5vw, 2.6rem);
-            line-height: 1.4;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            line-height: 1.3;
             margin: 0;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 900;
+            letter-spacing: 0.05em;
         }
 
         .catch-copy .yellow {
             color: var(--accent-yellow);
-            text-shadow: 0 0 15px rgba(255, 222, 0, 0.6);
-            background: linear-gradient(transparent 70%, rgba(255, 222, 0, 0.3) 70%);
         }
 
         .sub-message {
-            display: inline-block;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            display: block;
+            font-size: clamp(1.1rem, 2.8vw, 1.5rem);
             margin-top: 15px;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 5px 15px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.3);
+            font-weight: 900;
         }
 
-        /* チェックボックスエリアのデザイン強化 */
+        /* 画像を再現したチェックボックスエリア */
         .check-box {
-            background: #fff;
-            border-radius: 16px;
-            padding: 35px 25px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* 装飾的なアクセントライン */
-        .check-box::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 6px;
-            background: linear-gradient(to right, var(--accent-yellow), var(--danger-red));
+            /* 画像のような薄いグレーのグラデーション */
+            background: linear-gradient(to bottom, #d9d9d9 0%, #ffffff 100%);
+            border-radius: 4px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            /* 画像のような太い黒枠 */
+            border: 4px solid #000;
         }
 
         .check-list { list-style: none; padding: 0; margin: 0; }
@@ -141,38 +114,50 @@
         .check-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 18px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-            font-weight: bold;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 900; /* 極太フォント */
+            line-height: 1.4;
+            color: #000;
         }
 
         .check-item:last-child { margin-bottom: 0; border-bottom: none; }
 
+        /* 画像のような赤背景のチェックマーク */
         .check-icon {
-            width: 26px; height: 26px;
-            background: var(--danger-red);
-            margin-right: 15px;
+            width: 28px; height: 28px;
+            background-color: #b31b1b; /* 濃い赤 */
+            border: 1px solid #000;
+            margin-right: 12px;
             flex-shrink: 0;
             position: relative;
-            border-radius: 50%; /* 丸くしてお洒落に */
+            border-radius: 2px;
             margin-top: 2px;
-            box-shadow: 0 3px 6px rgba(204, 0, 0, 0.2);
         }
 
+        /* 白いチェック部分 */
         .check-icon::after {
             content: '';
             position: absolute;
-            left: 9px; top: 5px;
-            width: 5px; height: 10px;
+            left: 8px; top: 3px;
+            width: 7px; height: 13px;
             border: solid #fff;
-            border-width: 0 3px 3px 0;
+            border-width: 0 4px 4px 0;
             transform: rotate(45deg);
         }
 
-        .red-text { color: var(--danger-red); text-decoration: underline; text-underline-offset: 3px; }
+        .red-text { color: #cc0000; font-weight: 900; }
+
+        /* 下向き矢印（画像参照） */
+        .arrow-indicator {
+            width: 0; height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-top: 25px solid var(--accent-yellow);
+            margin: 20px auto 0;
+        }
 
         /* --- 2. 選ばれる理由セクション --- */
         .reasons-section {
@@ -449,16 +434,21 @@
         <div class="content-inner">
             <header class="catch-copy">
                 <h2>こんな<span class="yellow">症状</span>、出ていませんか？</h2>
-                <span class="sub-message">一つでも当てはまる方は、被害が拡大する前にご相談ください</span>
+                <span class="sub-message">一つでもチェックが付く方は、今すぐご相談ください</span>
             </header>
             <div class="check-box">
                 <ul class="check-list">
-                    <li class="check-item"><div class="check-icon"></div><span>家の中で<span class="red-text">害虫や害獣</span>を見かけた...</span></li>
-                    <li class="check-item"><div class="check-icon"></div><span>市販の薬を使っても、<span class="red-text">またすぐに現れる...</span></span></li>
-                    <li class="check-item"><div class="check-icon"></div><span>一度駆除したはずなのに、<span class="red-text">再発して困っている...</span></span></li>
-                    <li class="check-item"><div class="check-icon"></div><span>二度と出ないための<span class="red-text">侵入対策・予防</span>をプロに頼みたい</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>イタチ、ハクビシン(<span class="red-text">ネズミなど</span>)を見かけた...</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>屋根裏や床下から<span class="red-text">物音</span>がする...何か住んでるんじゃ...</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>壁の<span class="red-text">シミや匂い</span>が気になる...<span class="red-text">アレルギー</span>もひどくなってきて何とかしたい！</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>庭やお店の<span class="red-text">敷地など</span>、広範囲を見てほしい...</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>駆除や対策だけでなく、<span class="red-text">掃除や消毒</span>もしてほしい...</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>駆除後の<span class="red-text">予防方法</span>も教えてほしい...</span></li>
+                    <li class="check-item"><div class="check-icon"></div><span>他で見積りしたけど、<span class="red-text">費用が高くて頼めない...</span></span></li>
+                    <li class="check-item"><div class="check-icon"></div><span><span class="red-text">どのような対策をするのか</span>話だけでも聞いてみたい...</span></li>
                 </ul>
             </div>
+            <div class="arrow-indicator"></div>
             <div class="btn-area" style="text-align:center; margin-top:30px;">
                 <a href="#contact" class="cta-button">無料でプロに相談する</a>
             </div>
@@ -484,6 +474,7 @@
             </div>
         </div>
         <div class="reason-card">
+            <div class="reason-label">理由 3</div>
             <div class="reason-label">理由 3</div>
             <div class="reason-image"><img src="https://thumb.photo-ac.com/f9/f901b4c21782128e72b9867e7e70babb_t.jpeg" alt="アフターサービス"></div>
             <div class="reason-text">
