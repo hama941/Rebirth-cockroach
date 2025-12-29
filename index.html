@@ -146,6 +146,23 @@
         }
 
         .lp-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding-bottom: 50px; }
+        
+        /* --- ★修正箇所：悪徳業者警告の背景色をきれいなグラデーションに変更 --- */
+        .warning-header {
+            /* 元の色: background: #1a2a4e; */
+            background: linear-gradient(135deg, #1a2a4e 0%, #2a4a7e 100%); /* グラデーションに変更 */
+            color: #fff; padding: 50px 20px; text-align: center;
+            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); margin-bottom: 40px;
+        }
+        .header-title-warn { font-size: 1.8rem; font-style: italic; font-weight: 900; margin-bottom: 25px; }
+        .header-title-warn span { color: #ffff00; }
+        .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
+        .header-item {
+            border-bottom: 1px dashed rgba(255,255,255,0.3); padding: 12px 0;
+            font-size: 0.95rem; display: flex; align-items: center; font-weight: bold; justify-content: center;
+        }
+        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
+
         .section-title-svc {
             text-align: center; font-size: 1.8rem; margin: 50px 0 30px;
             font-weight: bold; color: var(--bg-dark-blue); position: relative;
@@ -204,20 +221,6 @@
         .highlight { color: #e53e3e; font-weight: bold; font-size: 1.2em; }
         .small-note { font-size: 0.85em; color: #e53e3e; margin-top: 10px; display: block; }
         @media (max-width: 600px) { .reason-card { flex-direction: column; padding-top: 30px; } }
-
-        /* --- 7. 悪徳業者警告 --- */
-        .warning-header {
-            background: #1a2a4e; color: #fff; padding: 50px 20px; text-align: center;
-            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); margin-bottom: 40px;
-        }
-        .header-title-warn { font-size: 1.8rem; font-style: italic; font-weight: 900; margin-bottom: 25px; }
-        .header-title-warn span { color: #ffff00; }
-        .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
-        .header-item {
-            border-bottom: 1px dashed rgba(255,255,255,0.3); padding: 12px 0;
-            font-size: 0.95rem; display: flex; align-items: center; font-weight: bold; justify-content: center;
-        }
-        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
 
         /* --- 8. 施工の流れ (Flow Section) - 指定デザイン --- */
         .flow-section { max-width: 600px; margin: 60px auto; padding: 0 20px; }
@@ -420,6 +423,15 @@
         </div>
 
         <div class="lp-container">
+            <section class="warning-header">
+                <div class="header-title-warn"><span>悪徳業者</span>を許しません</div>
+                <ul class="header-list">
+                    <li class="header-item">会社情報がない業者は悪徳業者です！</li>
+                    <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
+                    <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
+                </ul>
+            </section>
+
             <h2 class="section-title-svc">害虫駆除</h2>
             <div class="service-card">
                 <div class="photo-box"><img src="https://thumb.photo-ac.com/34/34c6f61fc5898a385ae6cf04cea4f22d_t.jpeg" alt="ゴキブリ"></div>
@@ -516,15 +528,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="warning-header">
-        <div class="header-title-warn"><span>悪徳業者</span>を許しません</div>
-        <ul class="header-list">
-            <li class="header-item">会社情報がない業者は悪徳業者です！</li>
-            <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
-            <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
-        </ul>
     </section>
 
     <section class="flow-section">
