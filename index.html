@@ -3,43 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>害獣トラブル119 | 株式会社Re:birth 徹底駆除・再発防止</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>害獣トラブル119 | 株式会社Re:birth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- 共通設定 (Root Variables) --- */
+        /* --- 共通設定 --- */
         :root {
-            --bg-dark-blue: #1a365d;
-            --accent-yellow: #ffde00; /* 警告や強調 */
-            --flow-yellow: #ffeb00;   /* 流れセクション用 */
-            --danger-red: #cc0000;
-            --gold: #d4af37;
+            --bg-dark-blue: #1a2a4e;
+            --accent-yellow: #ffff00;
+            --danger-red: #e63946;
             --dot-green: #4ade80;
             --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            --primary-blue: #007bff;
+            --main-orange: #ff9800;
         }
 
-        /* --- 基本リセット --- */
-        body, html {
+        body {
             margin: 0; padding: 0;
+            padding-top: 35px; /* 固定ステータスバーの高さ分下げる */
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f0f7ff; color: #333; line-height: 1.6;
-            padding-top: 35px; /* 上部固定バーの高さ分 */
-            padding-bottom: 80px; /* 下部固定バーの高さ分 */
+            background-color: #f4f6f8; color: #333; line-height: 1.6;
         }
-        * { box-sizing: border-box; }
-        img { max-width: 100%; height: auto; vertical-align: bottom; }
 
-        /* --- 1. 上部固定ステータスバー --- */
+        /* --- 1. 稼働状況バー (固定) --- */
         .status-bar {
             position: fixed; top: 0; left: 0; width: 100%; height: 35px;
             background-color: #000; color: #fff; font-weight: bold; font-size: 0.85rem;
             z-index: 10000; overflow: hidden; display: flex; align-items: center;
         }
         .scroll-container { display: flex; white-space: nowrap; width: 100%; }
-        .scroll-content { display: flex; animation: scroll-left 20s linear infinite; }
+        .scroll-content { display: flex; animation: scroll-left 15s linear infinite; }
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .text-item { padding-right: 50px; display: flex; align-items: center; }
+        .text-item { padding-right: 100px; display: flex; align-items: center; }
         .bar-highlight { color: #ffcc00; margin: 0 5px; }
 
         /* --- 2. メインヘッダー (ロゴ・ボタン) --- */
@@ -49,6 +43,8 @@
             max-width: 1200px; margin: 0 auto;
         }
         .logo-section { display: flex; flex-direction: column; }
+        
+        /* キャッチコピー */
         .catch-copy {
             background: #FFD700; color: #000; font-weight: bold; font-size: 13px;
             padding: 2px 12px; border-radius: 4px; display: inline-block;
@@ -56,8 +52,11 @@
         }
         .catch-copy::after {
             content: ""; position: absolute; bottom: -5px; left: 15px;
-            border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #FFD700;
+            border-left: 5px solid transparent; border-right: 5px solid transparent;
+            border-top: 5px solid #FFD700;
         }
+
+        /* タイトルデザイン */
         .main-title {
             font-size: 32px; font-weight: 900; color: #d70000; margin: 0;
             font-style: italic; letter-spacing: -1px;
@@ -65,8 +64,11 @@
             line-height: 1.1; display: flex; align-items: baseline;
         }
         .main-title span {
-            font-size: 38px; color: #000; margin-left: 4px; -webkit-text-stroke: 1px #000;
+            font-size: 38px; color: #000; margin-left: 4px;
+            -webkit-text-stroke: 1px #000;
         }
+
+        /* 右側ボタン */
         .contact-buttons { display: flex; gap: 10px; }
         .btn {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -78,42 +80,47 @@
         .btn i { font-size: 28px; margin-bottom: 2px; }
 
         @media (max-width: 600px) {
-            .header-container { padding: 10px; }
-            .main-title { font-size: 22px; } .main-title span { font-size: 26px; }
+            .main-title { font-size: 22px; }
+            .main-title span { font-size: 26px; }
             .btn { width: 65px; height: 65px; font-size: 11px; }
+            .header-container { padding: 10px; }
         }
 
-        /* --- 3. チラシ写真 --- */
+        /* --- 3. チラシ写真エリア --- */
+        /* ヘッダーの下に来るのでmargin-topは不要 */
         .flyer-section { width: 100%; background: #000; display: flex; justify-content: center; }
-        .flyer-section img { width: 100%; max-width: 1200px; }
+        .flyer-section img { width: 100%; max-width: 1200px; height: auto; vertical-align: bottom; }
 
         /* --- 4. チェックリスト & 巨大バグ --- */
         #checklist-section {
             background: radial-gradient(circle, #444 0%, #222 100%);
-            padding: 60px 10px 80px 10px; display: flex; justify-content: center;
-            position: relative; overflow: hidden; min-height: 80vh;
+            padding: 60px 10px 80px 10px; /* 下に矢印用の余白を確保 */
+            display: flex; justify-content: center; position: relative; overflow: hidden;
+            min-height: 80vh;
         }
         #checklist-section .giant-bug {
             position: absolute; z-index: 0; fill: #000; opacity: 0.9; pointer-events: none;
         }
         #checklist-section .bug-center {
-            top: 50%; left: 50%; width: 800px; height: auto; transform: translate(-50%, -50%) rotate(25deg);
+            top: 50%; left: 50%; width: 800px; height: auto;
+            transform: translate(-50%, -50%) rotate(25deg);
         }
         #checklist-section .bug-corner {
             bottom: -50px; right: -50px; width: 400px; transform: rotate(-15deg);
         }
-        .checklist-container {
+        #checklist-section .checklist-container {
             position: relative; max-width: 500px; width: 100%;
-            background-color: rgba(235, 235, 235, 0.9);
+            background-color: rgba(235, 235, 235, 0.85);
             border: 4px solid #000; padding: 30px 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8); z-index: 10;
+            box-sizing: border-box; box-shadow: 0 20px 60px rgba(0,0,0,0.8); z-index: 10;
         }
         .check-header-title {
-            text-align: center; font-size: 1.4rem; font-weight: 900; line-height: 1.4; margin-bottom: 25px; color: #000;
+            text-align: center; font-size: 1.4rem; font-weight: 900; line-height: 1.4;
+            margin-bottom: 25px; color: #000;
         }
         .checklist { list-style: none; padding: 0; margin: 0; }
         .checklist-item {
-            display: flex; align-items: flex-start; margin-bottom: 15px;
+            display: flex; align-items: flex-start; margin-bottom: 18px;
             font-size: 1.1rem; font-weight: 800; color: #000; line-height: 1.4;
         }
         .check-box {
@@ -124,13 +131,28 @@
             content: ''; position: absolute; left: 5px; top: 1px; width: 11px; height: 11px;
             border-left: 4px solid #d00; border-bottom: 4px solid #d00; transform: rotate(-45deg);
         }
-        .red { color: var(--danger-red); }
+        .red { color: #d00; }
 
-        /* --- 5. 私たちにおまかせ（サービス） --- */
-        #service-area { background-color: #f4f6f8; color: #333; padding-bottom: 50px; }
+        /* 黄色い下矢印のアニメーション */
+        .scroll-arrow {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 20; animation: bounce 2s infinite; cursor: pointer;
+        }
+        .scroll-arrow span {
+            display: block; width: 30px; height: 30px;
+            border-bottom: 5px solid #fdd81d; border-right: 5px solid #fdd81d;
+            transform: rotate(45deg); margin: -10px auto 0;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* --- 5. 警告バナー --- */
         .banner-container {
             background-color: #fdd81d; padding: 40px 20px; text-align: center;
-            font-weight: bold; line-height: 1.5; margin-bottom: 40px;
+            font-weight: bold; line-height: 1.5; margin: 0 auto; max-width: 800px;
         }
         .text-top { font-size: 24px; color: #000; margin-bottom: 5px; }
         .text-accent { font-size: 32px; color: #b32014; margin-bottom: 5px; }
@@ -139,36 +161,81 @@
             font-size: 48px; color: #000; font-style: italic; line-height: 1.2;
             text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
-        @media (max-width: 600px) {
-            .text-top, .text-middle { font-size: 18px; }
-            .text-accent { font-size: 22px; }
-            .text-large { font-size: 34px; }
-        }
 
-        .lp-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding-bottom: 50px; }
-        
-        /* --- ★修正箇所：悪徳業者警告の背景色をきれいなグラデーションに変更 --- */
+        /* --- 6. 選ばれる理由 --- */
+        #reason-section { background-color: #f0f7ff; padding: 40px 20px; }
+        .reason-container { max-width: 800px; margin: 0 auto; }
+        .reason-sec-title {
+            text-align: center; background-color: #1a365d; color: white; padding: 15px;
+            font-size: 24px; font-weight: bold; margin-bottom: 30px; position: relative;
+        }
+        .reason-sec-title::before, .reason-sec-title::after {
+            content: ""; display: inline-block; width: 20px; height: 2px;
+            background: white; vertical-align: middle; margin: 0 15px; transform: rotate(-45deg);
+        }
+        .reason-card {
+            background: white; border: 4px double #1a365d; margin-bottom: 40px;
+            position: relative; padding: 20px; display: flex; align-items: center; flex-wrap: wrap;
+        }
+        .reason-label {
+            position: absolute; top: -15px; left: -10px; background-color: #d4af37;
+            color: white; padding: 5px 15px; font-weight: bold; font-size: 18px; z-index: 10;
+        }
+        .reason-image { flex: 1; min-width: 250px; padding: 10px; text-align: center; }
+        .reason-image img { max-width: 100%; height: auto; border-radius: 5px; }
+        .reason-text { flex: 1.5; min-width: 280px; padding: 10px; }
+        .reason-text h3 {
+            color: #1a365d; margin-top: 0; font-size: 22px;
+            border-bottom: 2px solid #d4af37; padding-bottom: 10px;
+        }
+        .highlight { color: #e53e3e; font-weight: bold; font-size: 1.2em; }
+        .small-note { font-size: 0.85em; color: #e53e3e; margin-top: 10px; display: block; }
+
+        /* --- 7. 駆除の流れ --- */
+        .flow-section { background-color: #fff; padding: 60px 20px; }
+        .flow-container { max-width: 800px; margin: 0 auto; }
+        .flow-title-main { text-align: center; font-size: 24px; font-weight: bold; color: #333; margin-bottom: 40px; }
+        .flow-item { display: flex; margin-bottom: 30px; position: relative; }
+        .flow-item:last-child { margin-bottom: 0; }
+        .flow-item:not(:last-child)::after {
+            content: "▼"; position: absolute; left: 25px; bottom: -28px; color: #ccc; font-size: 14px;
+        }
+        .flow-num {
+            width: 60px; height: 60px; background: #1a365d; color: #fff; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; font-weight: bold;
+            font-size: 1.2rem; flex-shrink: 0; margin-right: 20px;
+        }
+        .flow-content { flex: 1; background: #f9f9f9; padding: 20px; border-radius: 8px; }
+        .flow-head { font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; color: #1a365d; }
+
+        /* --- 8. サービスエリア & 警告 --- */
+        #service-area { background-color: #f4f6f8; color: #333; padding-bottom: 50px; }
+        .lp-container { width: 100%; max-width: 600px; margin: 0 auto; background: #fff; padding-bottom: 50px; }
         .warning-header {
-            /* 元の色: background: #1a2a4e; */
-            background: linear-gradient(135deg, #1a2a4e 0%, #2a4a7e 100%); /* グラデーションに変更 */
-            color: #fff; padding: 50px 20px; text-align: center;
+            background: #1a2a4e; color: #fff; padding: 50px 20px;
+            text-align: center; margin: 0;
             clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); margin-bottom: 40px;
         }
-        .header-title-warn { font-size: 1.8rem; font-style: italic; font-weight: 900; margin-bottom: 25px; }
+        .header-title-warn {
+            font-size: 1.8rem; font-style: italic; font-weight: 900;
+            margin-bottom: 25px; line-height: 1.4;
+        }
         .header-title-warn span { color: #ffff00; }
         .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
         .header-item {
             border-bottom: 1px dashed rgba(255,255,255,0.3); padding: 12px 0;
             font-size: 0.95rem; display: flex; align-items: center; font-weight: bold; justify-content: center;
         }
-        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
-
+        .header-item::before {
+            content: "✕"; color: #e63946; margin-right: 12px; font-weight: 900; font-size: 1.2rem;
+        }
         .section-title-svc {
             text-align: center; font-size: 1.8rem; margin: 50px 0 30px;
             font-weight: bold; color: var(--bg-dark-blue); position: relative;
         }
         .section-title-svc::after {
-            content: ""; display: block; width: 40px; height: 4px; background: var(--danger-red); margin: 8px auto 0;
+            content: ""; display: block; width: 40px; height: 4px;
+            background: var(--danger-red); margin: 8px auto 0;
         }
         .service-card {
             background: #fff; border-radius: 15px; margin: 0 20px 40px;
@@ -190,67 +257,7 @@
         }
         .list-box {
             background: #fdfdfd; border: 1px solid #eee; border-radius: 12px; margin: 20px; padding: 25px;
-            font-size: 0.9rem; line-height: 2; color: #555; text-align: center;
-        }
-
-        /* --- 6. 選ばれる理由 --- */
-        #reason-section { background-color: #f0f7ff; padding: 40px 20px; }
-        .reason-container { max-width: 800px; margin: 0 auto; }
-        .reason-sec-title {
-            text-align: center; background-color: #1a365d; color: white; padding: 15px;
-            font-size: 24px; font-weight: bold; margin-bottom: 30px; position: relative;
-        }
-        .reason-sec-title::before, .reason-sec-title::after {
-            content: ""; display: inline-block; width: 20px; height: 2px;
-            background: white; vertical-align: middle; margin: 0 15px; transform: rotate(-45deg);
-        }
-        .reason-card {
-            background: white; border: 4px double #1a365d; margin-bottom: 40px;
-            position: relative; padding: 20px; display: flex; align-items: center; flex-wrap: wrap;
-        }
-        .reason-label {
-            position: absolute; top: -15px; left: -10px; background-color: var(--gold);
-            color: white; padding: 5px 15px; font-weight: bold; font-size: 18px; z-index: 10;
-        }
-        .reason-image { flex: 1; min-width: 250px; padding: 10px; text-align: center; }
-        .reason-image img { max-width: 100%; border-radius: 5px; }
-        .reason-text { flex: 1.5; min-width: 280px; padding: 10px; }
-        .reason-text h3 {
-            color: #1a365d; margin-top: 0; font-size: 22px; border-bottom: 2px solid var(--gold); padding-bottom: 10px;
-        }
-        .highlight { color: #e53e3e; font-weight: bold; font-size: 1.2em; }
-        .small-note { font-size: 0.85em; color: #e53e3e; margin-top: 10px; display: block; }
-        @media (max-width: 600px) { .reason-card { flex-direction: column; padding-top: 30px; } }
-
-        /* --- 8. 施工の流れ (Flow Section) - 指定デザイン --- */
-        .flow-section { max-width: 600px; margin: 60px auto; padding: 0 20px; }
-        .main-header-flow {
-            display: flex; align-items: center; justify-content: center;
-            background-color: var(--flow-yellow); padding: 15px; font-size: 22px; font-weight: bold;
-            margin-bottom: 30px; border-radius: 5px; color: #333;
-        }
-        .step-box { background-color: var(--flow-yellow); padding: 12px; margin-bottom: 0; border-radius: 10px; }
-        .step-content {
-            background-color: #fff; padding: 20px; border-radius: 5px;
-            display: flex; align-items: flex-start; gap: 20px;
-        }
-        .step-icon-area {
-            flex-shrink: 0; width: 70px; height: 70px;
-            background-color: #fff9c4; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 35px; color: #fbc02d;
-        }
-        .step-text-area { flex: 1; }
-        .step-title { font-size: 19px; font-weight: bold; margin: 0 0 10px 0; color: #000; line-height: 1.4; }
-        .step-desc { font-size: 15px; line-height: 1.7; margin: 0; color: #555; }
-        .arrow-divider { height: 40px; display: flex; justify-content: center; align-items: center; }
-        .arrow-down {
-            width: 0; height: 0;
-            border-left: 15px solid transparent; border-right: 15px solid transparent;
-            border-top: 15px solid var(--flow-yellow);
-        }
-        @media (max-width: 768px) {
-            .step-content { flex-direction: column; align-items: center; text-align: center; }
+            font-size: 0.85rem; line-height: 2; color: #555; text-align: center;
         }
 
         /* --- 9. お客様の声 --- */
@@ -274,18 +281,25 @@
         }
         .faq-question:hover { background-color: #fff9f0; }
         .faq-question::before { content: "Q"; color: #ff9800; font-size: 20px; margin-right: 15px; }
-        .faq-question::after { content: "＋"; position: absolute; right: 20px; color: #ccc; font-size: 18px; transition: transform 0.3s; }
+        .faq-question::after {
+            content: "＋"; position: absolute; right: 20px; color: #ccc; font-size: 18px;
+        }
         .faq-item.open .faq-question::after { transform: rotate(45deg); color: #ff9800; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #fff; }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #fff;
+        }
         .faq-item.open .faq-answer { max-height: 1000px; }
-        .answer-inner { padding: 0 20px 20px 52px; line-height: 1.8; font-size: 15px; color: #555; border-top: 1px solid #fafafa; padding-top: 15px; }
+        .answer-inner {
+            padding: 0 20px 20px 52px; line-height: 1.8; font-size: 15px; color: #555;
+            border-top: 1px solid #fafafa; padding-top: 15px;
+        }
 
-        /* --- 11. お問い合わせ & 会社概要 --- */
+        /* --- 11. お問い合わせ --- */
         #contact-section { background-color: #f4f7f9; padding: 40px 20px; }
         .main-container { max-width: 750px; margin: 0 auto; }
         .section-wrapper {
             background: #fff; padding: 40px; border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #eee;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 40px;
         }
         .rb-title {
             font-size: 1.4rem; font-weight: bold; margin-bottom: 30px; text-align: center;
@@ -316,29 +330,15 @@
             background-color: #fafafa; color: #666;
         }
         .rb-info-table td { width: 70%; padding: 20px 15px; font-size: 0.95rem; }
+
         @media (max-width: 600px) {
+            #checklist-section .bug-center { width: 400px; }
+            .text-top, .text-middle { font-size: 18px; }
+            .text-accent { font-size: 22px; }
+            .text-large { font-size: 34px; }
+            .reason-card { flex-direction: column; padding-top: 30px; }
             .section-wrapper { padding: 30px 20px; }
             .rb-info-table th, .rb-info-table td { display: block; width: 100%; }
-        }
-
-        /* --- 12. フッターCTA --- */
-        .footer-cta { background-color: var(--bg-dark-blue); padding: 80px 20px; text-align: center; }
-        .cta-button {
-            display: inline-block; background: linear-gradient(to bottom, #ff4e00, #d00);
-            color: #fff; padding: 20px 60px; font-size: 1.5rem; font-weight: bold;
-            text-decoration: none; border-radius: 50px; box-shadow: 0 5px 0 #900;
-            transition: 0.3s;
-        }
-        .cta-button:hover { transform: translateY(3px); box-shadow: 0 2px 0 #900; }
-
-        /* --- 13. 下部固定電話バー --- */
-        #fixed-tel-bar {
-            position: fixed !important; bottom: 0 !important; left: 0 !important;
-            width: 100% !important; height: 80px !important;
-            background-color: #f36d21 !important; z-index: 2147483647 !important;
-            display: flex !important; align-items: center !important; justify-content: center !important;
-            box-shadow: 0 -3px 15px rgba(0,0,0,0.3) !important; font-family: sans-serif !important;
-            border-top: 2px solid #fff !important;
         }
     </style>
 </head>
@@ -360,6 +360,7 @@
                 害獣トラブル<span>119</span>
             </h1>
         </div>
+
         <div class="contact-buttons">
             <a href="tel:05035280140" class="btn btn-tel">
                 <i class="fas fa-phone-alt"></i>
@@ -412,16 +413,86 @@
                 <li class="checklist-item"><div class="check-box"></div><span><span class="red">どのような対策をするのか</span>話だけでも聞いてみたい…</span></li>
             </ul>
         </div>
+
+        <div class="scroll-arrow">
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+
+    <div class="banner-container">
+        <div class="text-top">放っておくと</div>
+        <div class="text-accent">被害が拡大するかもしれません</div>
+        <div class="text-middle">自分でなんとかしようとせず、</div>
+        <div class="text-large">私たちに<br>ご相談ください！</div>
+    </div>
+
+    <section id="reason-section">
+        <div class="reason-container">
+            <div class="reason-sec-title">＼ 選ばれる理由 ／</div>
+            <div class="reason-card">
+                <div class="reason-label">理由 1</div>
+                <div class="reason-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&q=80" alt="無料見積もり"></div>
+                <div class="reason-text">
+                    <h3><span class="highlight">お見積りは完全無料！</span><br>明朗会計で安心です</h3>
+                    <p>お客様にお立ち会いいただき、現地にて詳細な状況を調査。その場で正確なお見積りをご提示します。追加費用は一切かかりませんので、安心してご相談ください。</p>
+                    <span class="small-note">※別途、遠方出張費が発生する場合は事前にお伝えします。</span>
+                </div>
+            </div>
+            <div class="reason-card">
+                <div class="reason-label">理由 2</div>
+                <div class="reason-image"><img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=300&q=80" alt="24時間365日対応"></div>
+                <div class="reason-text">
+                    <h3>24時間365日<br><span class="highlight">即日対応いたします！</span></h3>
+                    <p>深夜や早朝に発生したトラブルも、専門スタッフが迅速に駆けつけます！最短15分で現場到着。お困りごとは、今すぐお電話でご相談ください。</p>
+                </div>
+            </div>
+            <div class="reason-card">
+                <div class="reason-label">理由 3</div>
+                <div class="reason-image"><img src="https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&w=300&q=80" alt="アフターサービス"></div>
+                <div class="reason-text">
+                    <h3>充実の<span class="highlight">アフターサービス</span></h3>
+                    <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。お客様の安心を第一に、最後までしっかり支えます！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="flow-section">
+        <div class="flow-container">
+            <div class="flow-title-main">お問い合わせから完了までの流れ</div>
+            <div class="flow-item">
+                <div class="flow-num">01</div>
+                <div class="flow-content">
+                    <div class="flow-head">お問い合わせ・ご相談</div>
+                    <div>まずはお電話またはメールフォームにてご連絡ください。専門スタッフが状況をお伺いし、最短の訪問日時をご案内します。</div>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-num">02</div>
+                <div class="flow-content">
+                    <div class="flow-head">現地調査・お見積り</div>
+                    <div>スタッフが現地へ伺い、被害状況や侵入経路を調査します。その場で作業内容と明確な料金（お見積り）をご提示します。</div>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-num">03</div>
+                <div class="flow-content">
+                    <div class="flow-head">作業実施</div>
+                    <div>お見積り内容にご納得いただけましたら作業を開始します。薬剤散布や巣の撤去、侵入防止対策など徹底的に行います。</div>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-num">04</div>
+                <div class="flow-content">
+                    <div class="flow-head">作業完了・お支払い</div>
+                    <div>お客様と一緒に作業箇所を確認し、問題なければ完了です。現金または各種クレジットカードでのお支払いが可能です。</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="service-area">
-        <div class="banner-container">
-            <div class="text-top">放っておくと</div>
-            <div class="text-accent">被害が拡大するかもしれません</div>
-            <div class="text-middle">自分でなんとかしようとせず、</div>
-            <div class="text-large">私たちに<br>ご相談ください！</div>
-        </div>
-
         <div class="lp-container">
             <section class="warning-header">
                 <div class="header-title-warn"><span>悪徳業者</span>を許しません</div>
@@ -500,79 +571,6 @@
         </div>
     </section>
 
-    <section id="reason-section">
-        <div class="reason-container">
-            <div class="reason-sec-title">＼ 選ばれる理由 ／</div>
-            <div class="reason-card">
-                <div class="reason-label">理由 1</div>
-                <div class="reason-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&q=80" alt="無料見積もり"></div>
-                <div class="reason-text">
-                    <h3><span class="highlight">お見積りは完全無料！</span><br>明朗会計で安心です</h3>
-                    <p>お客様にお立ち会いいただき、現地にて詳細な状況を調査。その場で正確なお見積りをご提示します。追加費用は一切かかりませんので、安心してご相談ください。</p>
-                </div>
-            </div>
-            <div class="reason-card">
-                <div class="reason-label">理由 2</div>
-                <div class="reason-image"><img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=300&q=80" alt="24時間365日対応"></div>
-                <div class="reason-text">
-                    <h3>24時間365日<br><span class="highlight">即日対応いたします！</span></h3>
-                    <p>深夜や早朝に発生したトラブルも、専門スタッフが迅速に駆けつけます！最短15分で現場到着。お困りごとは、今すぐお電話でご相談ください。</p>
-                </div>
-            </div>
-            <div class="reason-card">
-                <div class="reason-label">理由 3</div>
-                <div class="reason-image"><img src="https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&w=300&q=80" alt="アフターサービス"></div>
-                <div class="reason-text">
-                    <h3>充実の<span class="highlight">アフターサービス</span></h3>
-                    <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。お客様の安心を第一に、最後までしっかり支えます！</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="flow-section">
-        <div class="main-header-flow">施工の流れ</div>
-        <div class="step-box">
-            <div class="step-content">
-                <div class="step-icon-area"><i class="fas fa-phone-alt"></i></div>
-                <div class="step-text-area">
-                    <h3 class="step-title">1.まずはお気軽にお電話ください</h3>
-                    <p class="step-desc">お電話にて現状の到着時間と概算お見積りをさせていただきます。</p>
-                </div>
-            </div>
-        </div>
-        <div class="arrow-divider"><div class="arrow-down"></div></div>
-        <div class="step-box">
-            <div class="step-content">
-                <div class="step-icon-area"><i class="fas fa-search"></i></div>
-                <div class="step-text-area">
-                    <h3 class="step-title">2.到着後、侵入経路調査と駆除作業</h3>
-                    <p class="step-desc">発生源を徹底調査し、最適な方法で駆除・解決いたします。</p>
-                </div>
-            </div>
-        </div>
-        <div class="arrow-divider"><div class="arrow-down"></div></div>
-        <div class="step-box">
-            <div class="step-content">
-                <div class="step-icon-area"><i class="fas fa-clipboard-check"></i></div>
-                <div class="step-text-area">
-                    <h3 class="step-title">3.施工箇所のご確認と再発防止レクチャー</h3>
-                    <p class="step-desc">作業箇所を確認いただき、今後の対策をアドバイスいたします。</p>
-                </div>
-            </div>
-        </div>
-        <div class="arrow-divider"><div class="arrow-down"></div></div>
-        <div class="step-box">
-            <div class="step-content">
-                <div class="step-icon-area"><i class="fas fa-wallet"></i></div>
-                <div class="step-text-area">
-                    <h3 class="step-title">4.お支払い</h3>
-                    <p class="step-desc">現金・クレジットカードからお好きな方法でお支払いください。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="reviews-section">
         <h2 style="text-align: center; margin-bottom: 40px; color: #333; font-size: 28px;">お客様からの喜びの声</h2>
         <div class="review-container">
@@ -621,11 +619,71 @@
                 <h3 style="font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 12px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">安くて対応もよかったので大満足です</h3>
                 <p style="font-size: 14px; line-height: 1.8; color: #444; margin: 0;">深夜に見つけ電話したら、他社よりずっと安く対応してくれました。駆除後は全く出てこなくなったので、本当に助かりました。</p>
             </div>
+            <div class="review-card">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: #fff3e0; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>
+                    <div>
+                        <div style="font-size: 13px; color: #666; font-weight: bold;">60代 女性（戸建て）</div>
+                        <div style="color: #f1c40f; font-size: 18px;">★★★★☆</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                    <span style="background: #b91c1c; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 4px;">ネズミ駆除</span>
+                    <span style="border: 1px solid #333; color: #333; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 4px;">奈良県</span>
+                </div>
+                <h3 style="font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 12px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">電話口で対処法を教えてくれ、すぐ駆け付けてくれました</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #444; margin: 0;">天井裏の物音にパニックでしたが、電話で応急処置を教えてもらい心強かったです。駆除も迅速で、その日から安眠できています。</p>
+            </div>
+            <div class="review-card">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: #e1f5fe; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>
+                    <div>
+                        <div style="font-size: 13px; color: #666; font-weight: bold;">40代 男性（会社員）</div>
+                        <div style="color: #f1c40f; font-size: 18px;">★★★★★</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                    <span style="background: #b91c1c; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 4px;">シロアリ予防</span>
+                    <span style="border: 1px solid #333; color: #333; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 4px;">大阪府</span>
+                </div>
+                <h3 style="font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 12px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">5年保証が付いているのが決め手でした</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #444; margin: 0;">中古物件の購入にあたり予防を依頼。床下の写真を見せながら丁寧に現状を説明してくれました。保証もしっかりしていて安心です。</p>
+            </div>
+            <div class="review-card">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: #f3e5f5; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>
+                    <div>
+                        <div style="font-size: 13px; color: #666; font-weight: bold;">30代 女性（会社員）</div>
+                        <div style="color: #f1c40f; font-size: 18px;">★★★★★</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                    <span style="background: #b91c1c; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 4px;">ハチ駆除</span>
+                    <span style="border: 1px solid #333; color: #333; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 4px;">京都府</span>
+                </div>
+                <h3 style="font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 12px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">高所の巣もあっという間に撤去。プロは違います</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #444; margin: 0;">2階の軒下に大きな巣を発見。自分では不可能な場所でしたが、専用の機材で迅速に解決。戻りバチ対策も完璧でした。</p>
+            </div>
+            <div class="review-card">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: #efebe9; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>
+                    <div>
+                        <div style="font-size: 13px; color: #666; font-weight: bold;">40代 男性（自営業）</div>
+                        <div style="color: #f1c40f; font-size: 18px;">★★★★★</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                    <span style="background: #b91c1c; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 4px;">トコジラミ駆除</span>
+                    <span style="border: 1px solid #333; color: #333; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 4px;">兵庫県</span>
+                </div>
+                <h3 style="font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 12px; border-bottom: 1px dashed #ddd; padding-bottom: 10px;">徹底した作業で、ようやく痒みから解放されました</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #444; margin: 0;">市販の薬が効かず困り果てて相談。家具の裏まで徹底的に調査・処置していただき、根絶に成功しました。本当に感謝しています。</p>
+            </div>
         </div>
     </section>
 
     <section id="faq-section">
-        <div style="text-align:center; margin-bottom:30px;"><h2 style="font-size:28px; font-weight:bold;">よくあるご質問</h2></div>
+        <div class="faq-header"><h2>よくあるご質問</h2></div>
         <div class="faq-container">
             <div class="faq-item">
                 <button class="faq-question">駆除薬剤による小さなお子様への影響はありますか？</button>
@@ -648,8 +706,44 @@
                 <div class="faq-answer"><div class="answer-inner">はい、各種クレジットカード決済に対応しております（VISA・MasterCard・American Expressなど）。お気軽にご利用ください。</div></div>
             </div>
             <div class="faq-item">
+                <button class="faq-question">法人の依頼ですが、後日請求書払いは可能ですか？</button>
+                <div class="faq-answer"><div class="answer-inner">法人様のご依頼も柔軟に対応しております。後日の請求書払いについても、お電話や現地調査の際にお申し付けいただければ調整可能です。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">作業にあたって、こちらで準備することはありますか？</button>
+                <div class="faq-answer"><div class="answer-inner">お客様にご準備いただくことは一切ございません。事前の準備から作業後の片付けまで、すべて弊社の専門スタッフが責任を持って行います。</div></div>
+            </div>
+            <div class="faq-item">
                 <button class="faq-question">予約のキャンセルはできますか？</button>
                 <div class="faq-answer"><div class="answer-inner">可能です。お見積もり内容をしっかりご確認いただいた上で、ご納得いただけない場合は取り掛かる前にキャンセルいただけます。まずは安心してお見積もりをご依頼ください。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">どのエリアまで対応していますか？</button>
+                <div class="faq-answer"><div class="answer-inner">大阪、兵庫、奈良、和歌山、京都の各府県に対応しております。詳細な訪問時間などは、お電話の際にお伝えいたします。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">駆除後の清掃や消毒、糞尿の除去もお願いできますか？</button>
+                <div class="faq-answer"><div class="answer-inner">はい、お任せください。ゴキブリ等の駆除後の清掃・消毒はプランに含まれております。糞尿の除去など、菌による二次被害対策も徹底して行います。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">出張料や見積もり料はいくらですか？</button>
+                <div class="faq-answer"><div class="answer-inner">弊社では、出張料およびお見積もり料はすべて「0円」です。お客様にご提示するのは作業料金のみですので、ご安心ください。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">予算が決まっているのですが、その範囲内で駆除できますか？</button>
+                <div class="faq-answer"><div class="answer-inner">はい、お客様のご予算に合わせて最適なプランをご提案いたします。現地調査の結果を踏まえ、ご予算内で最大限の効果が出せる方法を一緒に検討させていただきます。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">他社の見積もりが高額でした。安くできますか？</button>
+                <div class="faq-answer"><div class="answer-inner">ぜひご相談ください！地域最安値を目指しておりますので、他社様のお見積もり内容を教えていただければ、それよりも低価格でご案内できるよう最大限努力いたします。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">今すぐ駆除してほしいのですが、可能ですか？</button>
+                <div class="faq-answer"><div class="answer-inner">対応エリアを絞ることで、迅速な訪問を可能にしています。現場の状況によりますが、最短即日でお伺いいたしますので、まずはお電話で現在の状況をお聞かせください。</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">一度駆除しても、また出てくることはありますか？</button>
+                <div class="faq-answer"><div class="answer-inner">害虫の巣は屋根裏や床下など見えない場所にあります。弊社では「完全駆除＆徹底対策」を大切にしており、目に見える個体だけでなく侵入口の封鎖までしっかり行い、再発を防止します。</div></div>
             </div>
         </div>
     </section>
@@ -704,21 +798,6 @@
         </div>
     </section>
 
-    <footer class="footer-cta">
-        <h2 style="color:white; margin-bottom:30px; font-weight:bold;">まずはお気軽にプロの無料診断を</h2>
-        <a href="#contact-section" class="cta-button">今すぐ無料で相談する</a>
-    </footer>
-
-    <div id="fixed-tel-bar">
-        <a href="tel:05035280140" style="display: flex !important; align-items: center !important; text-decoration: none !important; color: white !important; width: 100% !important; justify-content: center !important; height: 100% !important;">
-            <i class="fas fa-phone-alt" style="font-size: 30px !important; margin-right: 15px !important; transform: scaleX(-1);"></i>
-            <div style="display: flex !important; flex-direction: column !important;">
-                <span style="font-size: 13px !important; font-weight: bold !important; margin-bottom: 2px !important; display: block !important;">24時間受付！お急ぎの方はこちら</span>
-                <span style="font-size: 26px !important; font-weight: bold !important; letter-spacing: 1px !important; display: block !important;">050-3528-0140</span>
-            </div>
-        </a>
-    </div>
-
     <script>
         function updateDateTime() {
             const now = new Date();
@@ -740,6 +819,15 @@
                 const faqItem = button.parentElement;
                 faqItem.classList.toggle('open');
             });
+        });
+
+        // 矢印クリックで次のセクションへスクロール
+        document.querySelector('.scroll-arrow').addEventListener('click', () => {
+             // 矢印の親セクション(checklist-section)の次の要素へスクロール
+            const nextSection = document.querySelector('.banner-container');
+            if(nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     </script>
 </body>
