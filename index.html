@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>害獣トラブル119 | 株式会社Re:birth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         /* --- 共通設定 --- */
         :root {
@@ -17,11 +19,12 @@
 
         body {
             margin: 0; padding: 0;
+            padding-top: 35px; /* 固定ステータスバーの高さ分下げる */
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             background-color: #f4f6f8; color: #333; line-height: 1.6;
         }
 
-        /* --- 1. 稼働状況バー --- */
+        /* --- 1. 稼働状況バー (固定) --- */
         .status-bar {
             position: fixed; top: 0; left: 0; width: 100%; height: 35px;
             background-color: #000; color: #fff; font-weight: bold; font-size: 0.85rem;
@@ -33,11 +36,62 @@
         .text-item { padding-right: 100px; display: flex; align-items: center; }
         .bar-highlight { color: #ffcc00; margin: 0 5px; }
 
-        /* --- 2. メインビジュアル --- */
-        .flyer-section { margin-top: 35px; width: 100%; background: #000; display: flex; justify-content: center; }
+        /* --- 2. メインヘッダー (ロゴ・ボタン) --- */
+        .header-container {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 20px; background: #fff; border-bottom: 2px solid #f0f0f0;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .logo-section { display: flex; flex-direction: column; }
+        
+        /* キャッチコピー */
+        .catch-copy {
+            background: #FFD700; color: #000; font-weight: bold; font-size: 13px;
+            padding: 2px 12px; border-radius: 4px; display: inline-block;
+            width: fit-content; margin-bottom: 4px; position: relative;
+        }
+        .catch-copy::after {
+            content: ""; position: absolute; bottom: -5px; left: 15px;
+            border-left: 5px solid transparent; border-right: 5px solid transparent;
+            border-top: 5px solid #FFD700;
+        }
+
+        /* タイトルデザイン */
+        .main-title {
+            font-size: 32px; font-weight: 900; color: #d70000; margin: 0;
+            font-style: italic; letter-spacing: -1px;
+            text-shadow: 1px 1px 0 #fff, 2px 2px 0 #fff, 3px 3px 0 #ccc; 
+            line-height: 1.1; display: flex; align-items: baseline;
+        }
+        .main-title span {
+            font-size: 38px; color: #000; margin-left: 4px;
+            -webkit-text-stroke: 1px #000;
+        }
+
+        /* 右側ボタン */
+        .contact-buttons { display: flex; gap: 10px; }
+        .btn {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 75px; height: 75px; border-radius: 10px; text-decoration: none;
+            color: #fff; font-size: 13px; font-weight: bold;
+        }
+        .btn-tel { background-color: #FF8C00; }
+        .btn-mail { background-color: #228b22; }
+        .btn i { font-size: 28px; margin-bottom: 2px; }
+
+        @media (max-width: 600px) {
+            .main-title { font-size: 22px; }
+            .main-title span { font-size: 26px; }
+            .btn { width: 65px; height: 65px; font-size: 11px; }
+            .header-container { padding: 10px; }
+        }
+
+        /* --- 3. チラシ写真エリア --- */
+        /* ヘッダーの下に来るのでmargin-topは不要 */
+        .flyer-section { width: 100%; background: #000; display: flex; justify-content: center; }
         .flyer-section img { width: 100%; max-width: 1200px; height: auto; vertical-align: bottom; }
 
-        /* --- 3. チェックリスト & 巨大バグ & ★下矢印 --- */
+        /* --- 4. チェックリスト & 巨大バグ --- */
         #checklist-section {
             background: radial-gradient(circle, #444 0%, #222 100%);
             padding: 60px 10px 80px 10px; /* 下に矢印用の余白を確保 */
@@ -79,24 +133,15 @@
         }
         .red { color: #d00; }
 
-        /* ★追加：黄色い下矢印のアニメーション */
+        /* 黄色い下矢印のアニメーション */
         .scroll-arrow {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            animation: bounce 2s infinite;
-            cursor: pointer;
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 20; animation: bounce 2s infinite; cursor: pointer;
         }
         .scroll-arrow span {
-            display: block;
-            width: 30px;
-            height: 30px;
-            border-bottom: 5px solid #fdd81d;
-            border-right: 5px solid #fdd81d;
-            transform: rotate(45deg);
-            margin: -10px auto 0;
+            display: block; width: 30px; height: 30px;
+            border-bottom: 5px solid #fdd81d; border-right: 5px solid #fdd81d;
+            transform: rotate(45deg); margin: -10px auto 0;
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
@@ -104,7 +149,7 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
 
-        /* --- 4. 警告バナー --- */
+        /* --- 5. 警告バナー --- */
         .banner-container {
             background-color: #fdd81d; padding: 40px 20px; text-align: center;
             font-weight: bold; line-height: 1.5; margin: 0 auto; max-width: 800px;
@@ -117,7 +162,7 @@
             text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
 
-        /* --- 5. 選ばれる理由 --- */
+        /* --- 6. 選ばれる理由 --- */
         #reason-section { background-color: #f0f7ff; padding: 40px 20px; }
         .reason-container { max-width: 800px; margin: 0 auto; }
         .reason-sec-title {
@@ -146,7 +191,7 @@
         .highlight { color: #e53e3e; font-weight: bold; font-size: 1.2em; }
         .small-note { font-size: 0.85em; color: #e53e3e; margin-top: 10px; display: block; }
 
-        /* --- 6. 駆除の流れ (FLOW) --- */
+        /* --- 7. 駆除の流れ --- */
         .flow-section { background-color: #fff; padding: 60px 20px; }
         .flow-container { max-width: 800px; margin: 0 auto; }
         .flow-title-main { text-align: center; font-size: 24px; font-weight: bold; color: #333; margin-bottom: 40px; }
@@ -163,7 +208,7 @@
         .flow-content { flex: 1; background: #f9f9f9; padding: 20px; border-radius: 8px; }
         .flow-head { font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; color: #1a365d; }
 
-        /* --- 7. サービス (料金) --- */
+        /* --- 8. サービスエリア & 警告 --- */
         #service-area { background-color: #f4f6f8; color: #333; padding-bottom: 50px; }
         .lp-container { width: 100%; max-width: 600px; margin: 0 auto; background: #fff; padding-bottom: 50px; }
         .warning-header {
@@ -215,7 +260,7 @@
             font-size: 0.85rem; line-height: 2; color: #555; text-align: center;
         }
 
-        /* --- 8. お客様の声 --- */
+        /* --- 9. お客様の声 --- */
         #reviews-section { background-color: #f9f7f2; padding: 60px 20px; }
         .review-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto; }
         .review-card {
@@ -223,7 +268,7 @@
             max-width: 480px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); box-sizing: border-box;
         }
 
-        /* --- 9. FAQ --- */
+        /* --- 10. FAQ --- */
         #faq-section { max-width: 700px; margin: 0 auto; padding: 60px 20px; }
         .faq-item {
             background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -249,7 +294,7 @@
             border-top: 1px solid #fafafa; padding-top: 15px;
         }
 
-        /* --- 10. お問い合わせ --- */
+        /* --- 11. お問い合わせ --- */
         #contact-section { background-color: #f4f7f9; padding: 40px 20px; }
         .main-container { max-width: 750px; margin: 0 auto; }
         .section-wrapper {
@@ -308,10 +353,33 @@
         </div>
     </div>
 
+    <header class="header-container">
+        <div class="logo-section">
+            <div class="catch-copy">関西全域対応！！</div>
+            <h1 class="main-title">
+                害獣トラブル<span>119</span>
+            </h1>
+        </div>
+
+        <div class="contact-buttons">
+            <a href="tel:05035280140" class="btn btn-tel">
+                <i class="fas fa-phone-alt"></i>
+                <span>電話</span>
+            </a>
+            <a href="#contact-section" class="btn btn-mail">
+                <i class="fas fa-envelope"></i>
+                <span>メール</span>
+            </a>
+        </div>
+    </header>
+
     <section class="flyer-section">
         <picture>
-          <source srcset="ChatGPT-Image-2025-12-27-13_24_03.jpg" media="(max-width: 767px)">
-          <img src="ChatGPT-Image-2025-12-29-15_35_54.jpg" alt="しつこい害虫を即日徹底駆除！" width="1200" height="750" fetchpriority="high">
+            <source srcset="ChatGPT-Image-2025-12-27-13_24_03.jpg" media="(max-width: 767px)">
+            <img src="ChatGPT-Image-2025-12-29-15_35_54.jpg" 
+                 alt="しつこい害虫を即日徹底駆除！" 
+                 width="1200" height="750" 
+                 fetchpriority="high">
         </picture>
     </section>
 
@@ -752,7 +820,15 @@
                 faqItem.classList.toggle('open');
             });
         });
+
+        // 矢印クリックで次のセクションへスクロール
+        document.querySelector('.scroll-arrow').addEventListener('click', () => {
+             // 矢印の親セクション(checklist-section)の次の要素へスクロール
+            const nextSection = document.querySelector('.banner-container');
+            if(nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     </script>
 </body>
 </html>
-
