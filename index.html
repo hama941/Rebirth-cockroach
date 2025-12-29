@@ -24,7 +24,7 @@
             line-height: 1.6;
         }
 
-        /* --- 1. 固定稼働状況バー (旧一番下のコード) --- */
+        /* --- 1. 固定稼働状況バー --- */
         .status-bar {
             position: fixed;
             top: 0;
@@ -42,10 +42,7 @@
         }
         .scroll-container { display: flex; white-space: nowrap; }
         .scroll-content { display: flex; animation: scroll-left 15s linear infinite; }
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .text-item { padding-right: 100px; display: flex; align-items: center; }
         .status-bar .highlight { color: #ffcc00; margin: 0 5px; }
 
@@ -61,11 +58,9 @@
             overflow: hidden;
             display: flex;
             justify-content: center;
-            min-height: 600px;
         }
         .giant-bug { position: absolute; z-index: 0; fill: #000; opacity: 0.9; pointer-events: none; }
         .bug-center { top: 50%; left: 50%; width: 800px; transform: translate(-50%, -50%) rotate(25deg); }
-        .bug-corner { bottom: -50px; right: -50px; width: 400px; transform: rotate(-15deg); }
         .checklist-container {
             position: relative; max-width: 500px; width: 100%;
             background-color: rgba(235, 235, 235, 0.85);
@@ -73,104 +68,60 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.8); z-index: 10;
         }
         .checklist-container .header-title { text-align: center; font-size: 1.4rem; font-weight: 900; line-height: 1.4; margin-bottom: 25px; color: #000; }
-        .checklist { list-style: none; padding: 0; margin: 0; }
-        .checklist-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-size: 1.1rem; font-weight: 800; color: #000; line-height: 1.4; }
+        .checklist-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-size: 1.1rem; font-weight: 800; color: #000; }
         .check-box { flex-shrink: 0; width: 26px; height: 26px; border: 2px solid #000; background-color: #fff; margin-right: 12px; position: relative; margin-top: 2px; }
         .check-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 11px; height: 11px; border-left: 4px solid #d00; border-bottom: 4px solid #d00; transform: rotate(-45deg); }
         .red { color: #d00; }
 
         /* --- 4. 警告黄色バナー --- */
         .banner-container { background-color: #fdd81d; padding: 40px 20px; text-align: center; font-weight: bold; margin: 0 auto; max-width: 800px; }
-        .text-top { font-size: 24px; color: #000; margin-bottom: 5px; }
-        .text-accent { font-size: 32px; color: #b32014; margin-bottom: 5px; }
-        .text-middle { font-size: 24px; color: #000; margin-bottom: 30px; }
-        .text-large { font-size: 48px; color: #000; font-style: italic; line-height: 1.2; text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
+        .text-accent { font-size: 32px; color: #b32014; }
+        .text-large { font-size: 48px; font-style: italic; text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
 
         /* --- 5. 選ばれる理由 --- */
-        .reason-section { background-color: #f0f7ff; padding: 40px 20px; }
-        .reason-container { max-width: 800px; margin: 0 auto; }
-        .section-reason-title { text-align: center; background-color: #1a365d; color: white; padding: 15px; font-size: 24px; font-weight: bold; margin-bottom: 30px; position: relative; }
+        .reason-section { background-color: #f0f7ff; padding: 60px 20px; }
+        .container-reason { max-width: 800px; margin: 0 auto; }
         .reason-card { background: white; border: 4px double #1a365d; margin-bottom: 40px; position: relative; padding: 20px; display: flex; align-items: center; flex-wrap: wrap; }
-        .reason-label { position: absolute; top: -15px; left: -10px; background-color: #d4af37; color: white; padding: 5px 15px; font-weight: bold; font-size: 18px; z-index: 10; }
-        .reason-image { flex: 1; min-width: 250px; padding: 10px; text-align: center; }
-        .reason-image img { max-width: 100%; height: auto; border-radius: 5px; }
-        .reason-text { flex: 1.5; min-width: 280px; padding: 10px; }
-        .reason-text h3 { color: #1a365d; font-size: 22px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; margin-top: 0; }
-        .highlight-red { color: #e53e3e; font-weight: bold; font-size: 1.2em; }
-        .small-note { font-size: 0.85em; color: #e53e3e; margin-top: 10px; display: block; }
+        .reason-label { position: absolute; top: -15px; left: -10px; background-color: #d4af37; color: white; padding: 5px 15px; font-weight: bold; z-index: 10; }
+        .reason-text h3 { color: #1a365d; border-bottom: 2px solid #d4af37; padding-bottom: 10px; }
+        .highlight-reason { color: #e53e3e; font-weight: bold; font-size: 1.2em; }
 
-        /* --- 6. 駆除サービス一覧 --- */
-        .service-section { background: #fff; padding-bottom: 50px; }
+        /* --- 6. 電話してからの流れ (今回追加/復元) --- */
+        .flow-section { background-color: #fff; padding: 60px 20px; }
+        .flow-container { max-width: 800px; margin: 0 auto; }
+        .flow-step { display: flex; align-items: flex-start; margin-bottom: 30px; background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 5px solid var(--bg-dark-blue); }
+        .step-num { background: var(--bg-dark-blue); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 20px; flex-shrink: 0; }
+        .step-content h4 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--bg-dark-blue); }
+
+        /* --- 7. サービスプラン一覧 --- */
+        .service-section { background: #f4f6f8; padding-bottom: 50px; }
         .lp-container { max-width: 500px; margin: 0 auto; background: #fff; }
-        .warning-header { background: var(--bg-dark-blue); color: #fff; padding: 50px 20px; clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); margin-bottom: 40px; text-align: center; }
-        .header-title-warn { font-size: 1.8rem; font-style: italic; font-weight: 900; margin-bottom: 25px; line-height: 1.4; }
-        .header-title-warn span { color: var(--accent-yellow); }
-        .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
-        .header-item { border-bottom: 1px dashed rgba(255,255,255,0.3); padding: 12px 0; font-size: 0.95rem; display: flex; align-items: center; font-weight: bold; }
-        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
-        .section-title-blue { text-align: center; font-size: 1.8rem; margin: 50px 0 30px; font-weight: bold; color: var(--bg-dark-blue); position: relative; }
-        .section-title-blue::after { content: ""; display: block; width: 40px; height: 4px; background: var(--danger-red); margin: 8px auto 0; }
-        .service-card { background: #fff; border-radius: 15px; margin: 0 20px 40px; box-shadow: var(--card-shadow); overflow: hidden; border: 1px solid #eee; }
-        .photo-box { width: 100%; height: 240px; overflow: hidden; background-color: #eee; }
+        .warning-header { background: var(--bg-dark-blue); color: #fff; padding: 50px 20px; text-align: center; clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); }
+        .service-card { background: #fff; border-radius: 15px; margin: 20px; box-shadow: var(--card-shadow); overflow: hidden; }
+        .photo-box { height: 200px; background: #eee; }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
-        .card-content { padding: 25px 20px 30px; }
-        .service-name { font-size: 1.6rem; font-weight: bold; margin-bottom: 5px; }
-        .service-price { color: var(--danger-red); font-size: 1.9rem; font-weight: bold; margin-bottom: 20px; display: block; }
-        .feature-list { text-align: left; list-style: none; padding: 0; margin: 0; }
-        .feature-item { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; font-weight: 500; }
-        .feature-item::before { content: ""; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; background-color: var(--dot-green); border-radius: 50%; }
-        .list-box { background: #fdfdfd; border: 1px solid #eee; border-radius: 12px; margin: 20px; padding: 25px; font-size: 0.85rem; line-height: 2; color: #555; text-align: center; }
+        .service-price { color: var(--danger-red); font-size: 1.8rem; font-weight: bold; }
 
-        /* --- 7. お客様の声 --- */
+        /* --- 8. お客様の声 --- */
         .reviews-section { background-color: #f9f7f2; padding: 60px 20px; }
-        .reviews-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto; }
-        .review-card { background: #fff; border-radius: 12px; padding: 25px; width: 100%; max-width: 480px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); box-sizing: border-box; }
-        .review-header { display: flex; align-items: center; margin-bottom: 15px; }
-        .user-icon { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-        .stars { color: #f1c40f; font-size: 18px; }
-        .tag-row { display: flex; gap: 8px; margin-bottom: 15px; }
-        .tag-service { background: #b91c1c; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 4px; }
-        .tag-area { border: 1px solid #333; color: #333; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 4px; }
-        .review-title { font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 12px; border-bottom: 1px dashed #ddd; padding-bottom: 10px; }
+        .review-card { background: #fff; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-        /* --- 8. FAQ --- */
+        /* --- 9. FAQ --- */
         .faq-section { max-width: 700px; margin: 40px auto; padding: 0 20px; }
-        .faq-item { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #eee; margin-bottom: 12px; }
-        .faq-question { width: 100%; padding: 18px 20px; display: flex; align-items: center; cursor: pointer; background: none; border: none; text-align: left; font-size: 16px; font-weight: bold; color: #333; position: relative; outline: none; transition: background 0.2s; }
-        .faq-question:hover { background-color: #fff9f0; }
-        .faq-question::before { content: "Q"; color: var(--main-orange); font-size: 20px; margin-right: 15px; font-family: 'Arial Black', sans-serif; }
-        .faq-question::after { content: "＋"; position: absolute; right: 20px; color: #ccc; font-size: 18px; transition: transform 0.3s; }
-        .faq-item.open .faq-question::after { transform: rotate(45deg); color: var(--main-orange); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #fff; }
-        .faq-item.open .faq-answer { max-height: 1000px; }
-        .answer-inner { padding: 0 20px 20px 52px; line-height: 1.8; font-size: 15px; color: #555; border-top: 1px solid #fafafa; padding-top: 15px; }
+        .faq-item { border: 1px solid #eee; background: #fff; margin-bottom: 10px; border-radius: 8px; }
+        .faq-question { width: 100%; padding: 20px; text-align: left; background: none; border: none; font-weight: bold; cursor: pointer; display: flex; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+        .faq-item.open .faq-answer { max-height: 500px; padding: 0 20px 20px 52px; }
 
-        /* --- 9. お問い合わせ・会社概要 --- */
-        .contact-section { background-color: #f4f7f9; padding: 40px 10px; }
-        .contact-container { max-width: 750px; margin: 0 auto; }
-        .section-wrapper { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 40px; }
-        .rb-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 30px; text-align: center; letter-spacing: 0.1em; position: relative; padding-bottom: 15px; }
-        .rb-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background-color: #007bff; }
-        .form-group { margin-bottom: 25px; }
-        label { display: block; margin-bottom: 10px; font-weight: bold; font-size: 0.95rem; }
-        label span { color: #d9534f; font-size: 0.75rem; margin-left: 10px; background: #fff1f0; padding: 2px 6px; border-radius: 3px; border: 1px solid #ffa39e; }
-        input, textarea { width: 100%; padding: 14px; border: 1px solid #d9d9d9; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
-        .submit-btn { width: 100%; padding: 18px; background: #007bff; color: #fff; border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-        .rb-info-table { width: 100%; border-collapse: collapse; }
-        .rb-info-table th { width: 30%; text-align: left; padding: 20px 15px; background-color: #fafafa; color: #666; font-size: 0.9rem; }
-        .rb-info-table td { padding: 20px 15px; font-size: 0.95rem; border-bottom: 1px solid #f0f0f0; }
+        /* --- 10. お問い合わせ --- */
+        .contact-section { background: #f4f7f9; padding: 40px 20px; }
+        .form-wrapper { max-width: 700px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; }
+        input, textarea { width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .submit-btn { width: 100%; padding: 20px; background: #007bff; color: #fff; border: none; border-radius: 5px; font-weight: bold; margin-top: 20px; cursor: pointer; }
 
-        /* --- レスポンシブ調整 --- */
         @media (max-width: 600px) {
-            .text-top, .text-middle { font-size: 18px; }
-            .text-accent { font-size: 22px; }
-            .text-large { font-size: 34px; }
-            .reason-card { flex-direction: column; padding-top: 30px; }
-            .section-reason-title { font-size: 20px; }
-            .reason-text h3 { font-size: 18px; }
-            .bug-center { width: 400px; }
-            .rb-info-table th, .rb-info-table td { display: block; width: 100%; }
-            .section-wrapper { padding: 30px 20px; }
+            .reason-card { flex-direction: column; }
+            .text-large { font-size: 32px; }
         }
     </style>
 </head>
@@ -178,84 +129,75 @@
 
     <div class="status-bar">
         <div class="scroll-container">
-            <div id="scroll-target" class="scroll-content">
-                <div class="text-item">【稼働状況】 <span class="current-date"></span> <span class="current-time highlight"></span> 現在 <span class="highlight" style="margin-left: 30px;">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
-                <div class="text-item">【稼働状況】 <span class="current-date"></span> <span class="current-time highlight"></span> 現在 <span class="highlight" style="margin-left: 30px;">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
+            <div class="scroll-content">
+                <div class="text-item">【稼働状況】 <span class="current-date"></span> <span class="current-time highlight"></span> 現在 <span class="highlight">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
+                <div class="text-item">【稼働状況】 <span class="current-date"></span> <span class="current-time highlight"></span> 現在 <span class="highlight">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
             </div>
         </div>
     </div>
 
-    <div class="main-visual">
-        <picture>
-            <source srcset="ChatGPT-Image-2025-12-27-13_24_03.jpg" media="(max-width: 767px)">
-            <img src="ChatGPT-Image-2025-12-29-15_35_54.jpg" alt="しつこい害虫を即日徹底駆除！" width="1200" height="750" style="width: 100%; height: auto;" fetchpriority="high">
-        </picture>
+    <div class="main-visual" style="margin-top:35px;">
+        <img src="ChatGPT-Image-2025-12-29-15_35_54.jpg" alt="徹底駆除" style="width:100%;">
     </div>
 
     <section class="pain-section">
-        <svg class="giant-bug bug-center" viewBox="0 0 200 200">
-            <path d="M100,60 Q80,10 40,5 M100,60 Q120,10 160,5" fill="none" stroke="black" stroke-width="2" opacity="0.8"/>
-            <ellipse cx="100" cy="110" rx="35" ry="55" />
-            <ellipse cx="100" cy="65" rx="20" ry="15" />
-            <path d="M75,80 L40,60 M70,110 L30,110 M75,140 L40,165" stroke="black" stroke-width="5" stroke-linecap="round"/>
-            <path d="M125,80 L160,60 M130,110 L170,110 M125,140 L160,165" stroke="black" stroke-width="5" stroke-linecap="round"/>
-        </svg>
-        <svg class="giant-bug bug-corner" viewBox="0 0 200 200">
-            <ellipse cx="100" cy="110" rx="35" ry="55" />
-            <ellipse cx="100" cy="65" rx="20" ry="15" />
-            <path d="M75,80 L40,60 M70,110 L30,110 M75,140 L40,165" stroke="black" stroke-width="5"/>
-            <path d="M125,80 L160,60 M130,110 L170,110 M125,140 L160,165" stroke="black" stroke-width="5"/>
-        </svg>
         <div class="checklist-container">
-            <div class="header-title">一つでもチェックが付く方は、<br>今すぐご相談ください！</div>
-            <ul class="checklist">
-                <li class="checklist-item"><div class="check-box"></div><span>近所を<span class="red">ハチが飛んでて</span>、刺されそうで怖い…</span></li>
+            <div class="header-title">一つでもチェックが付く方は、今すぐご相談ください！</div>
+            <ul style="list-style:none; padding:0;">
                 <li class="checklist-item"><div class="check-box"></div><span>急に<span class="red">ゴキブリが現れた！</span>今すぐ駆除してほしい…</span></li>
-                <li class="checklist-item"><div class="check-box"></div><span><span class="red">市販の殺虫剤</span>で駆除したけど、また出てきた…</span></li>
-                <li class="checklist-item"><div class="check-box"></div><span>庭でムシが大量発生した…<span class="red">隣の家まで被害が…</span></span></li>
                 <li class="checklist-item"><div class="check-box"></div><span><span class="red">大きなハチの巣</span>があって、何とかしてほしい…</span></li>
-                <li class="checklist-item"><div class="check-box"></div><span><span class="red">毎年ムシが出る</span>ので、もう出ないようにしてほしい…</span></li>
-                <li class="checklist-item"><div class="check-box"></div><span><span class="red">床がギシギシ音がする…シロアリ</span>かもしれない…</span></li>
-                <li class="checklist-item"><div class="check-box"></div><span>駆除後の<span class="red">予防方法</span>も教えてほしい…</span></li>
                 <li class="checklist-item"><div class="check-box"></div><span>他で見積りしたけど、<span class="red">費用が高くて</span>頼めない…</span></li>
-                <li class="checklist-item"><div class="check-box"></div><span><span class="red">どのような対策をするのか</span>話だけでも聞いてみたい…</span></li>
-            </ul>
+                </ul>
         </div>
     </section>
 
     <div class="banner-container">
-        <div class="text-top">放っておくと</div>
         <div class="text-accent">被害が拡大するかもしれません</div>
-        <div class="text-middle">自分でなんとかしようとせず、</div>
         <div class="text-large">私たちに<br>ご相談ください！</div>
     </div>
 
     <section class="reason-section">
-        <div class="reason-container">
-            <div class="section-reason-title">＼ 選ばれる理由 ／</div>
+        <div class="container-reason">
+            <h2 style="text-align:center;">＼ 選ばれる理由 ／</h2>
             <div class="reason-card">
                 <div class="reason-label">理由 1</div>
-                <div class="reason-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&q=80" alt="無料見積もり"></div>
                 <div class="reason-text">
-                    <h3><span class="highlight-red">お見積りは完全無料！</span><br>明朗会計で安心です</h3>
-                    <p>お客様にお立ち会いいただき、現地にて詳細な状況を調査。その場で正確なお見積りをご提示します。追加費用は一切かかりませんので、安心してご相談ください。</p>
-                    <span class="small-note">※別途、遠方出張費が発生する場合は事前にお伝えします。</span>
+                    <h3><span class="highlight-reason">お見積りは完全無料！</span></h3>
+                    <p>現地にて詳細な状況を調査。正確なお見積りをご提示します。追加費用は一切かかりません。</p>
                 </div>
             </div>
-            <div class="reason-card">
-                <div class="reason-label">理由 2</div>
-                <div class="reason-image"><img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=300&q=80" alt="24時間365日対応"></div>
-                <div class="reason-text">
-                    <h3>24時間365日<br><span class="highlight-red">即日対応いたします！</span></h3>
-                    <p>深夜や早朝に発生したトラブルも、専門スタッフが迅速に駆けつけます！最短15分で現場到着。お困りごとは、今すぐお電話でご相談ください。</p>
+        </div>
+    </section>
+
+    <section class="flow-section">
+        <div class="flow-container">
+            <h2 style="text-align:center; margin-bottom:40px;">電話してからの流れ</h2>
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>お問い合わせ・受付</h4>
+                    <p>お電話またはメールフォームよりご相談ください。24時間365日受付しております。</p>
                 </div>
             </div>
-            <div class="reason-card">
-                <div class="reason-label">理由 3</div>
-                <div class="reason-image"><img src="https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&w=300&q=80" alt="アフターサービス"></div>
-                <div class="reason-text">
-                    <h3>充実の<span class="highlight-red">アフターサービス</span></h3>
-                    <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。お客様の安心を第一に、最後までしっかり支えます！</p>
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>現地調査・お見積り</h4>
+                    <p>専門スタッフが現場へ急行し、状況を確認。その場で無料でお見積りを作成します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>駆除作業・再発防止</h4>
+                    <p>内容にご納得いただければ作業開始。最新の薬剤と技術で徹底的に駆除し、侵入経路も封鎖します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h4>お支払い・アフターフォロー</h4>
+                    <p>作業完了をご確認いただき、お支払い。施工後の保証やアフターケアも万全です。</p>
                 </div>
             </div>
         </div>
@@ -263,208 +205,54 @@
 
     <section class="service-section">
         <div class="lp-container">
-            <section class="warning-header">
-                <div class="header-title-warn"><span>悪徳業者</span>を許しません</div>
-                <ul class="header-list">
-                    <li class="header-item">会社情報がない業者は悪徳業者です！</li>
-                    <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
-                    <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
-                </ul>
-            </section>
-            
-            <h2 class="section-title-blue">害虫駆除</h2>
+            <div class="warning-header"><h3><span>悪徳業者</span>を許しません</h3></div>
             <div class="service-card">
                 <div class="photo-box"><img src="https://thumb.photo-ac.com/34/34c6f61fc5898a385ae6cf04cea4f22d_t.jpeg" alt="ゴキブリ"></div>
                 <div class="card-content">
                     <div class="service-name">ゴキブリ駆除</div>
                     <span class="service-price">2,980円〜</span>
-                    <ul class="feature-list">
-                        <li class="feature-item">市販の駆除剤が効かない</li>
-                        <li class="feature-item">一度業者に頼んだのにまた発生した</li>
-                        <li class="feature-item">徹底的な除菌・消毒まで対応</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="service-card">
-                <div class="photo-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYAryB8bR-5H-eRbbH_wqHZ2kNmWgmqg4Fw&s" alt="ハチ"></div>
-                <div class="card-content">
-                    <div class="service-name">ハチの巣駆除</div>
-                    <span class="service-price">5,000円〜</span>
-                    <ul class="feature-list">
-                        <li class="feature-item">放っておくのは危険を伴います</li>
-                        <li class="feature-item">即日対応で巣をまるごと除去</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="photo-box"><img src="https://images.assetsdelivery.com/compings_v2/liudmilachernetska/liudmilachernetska2505/liudmilachernetska250524920.jpg" alt="トコジラミ"></div>
-                <div class="card-content">
-                    <div class="service-name">トコジラミ駆除</div>
-                    <span class="service-price">10,000円〜</span>
-                    <ul class="feature-list">
-                        <li class="feature-item">猛烈なかゆみと繁殖力を根絶</li>
-                        <li class="feature-item">プロの薬剤で完全に死滅させます</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h2 class="section-title-blue">害獣駆除</h2>
-            <div class="service-card">
-                <div class="photo-box"><img src="https://thumb.photo-ac.com/86/86129804daf3eba5d81de56d066f85e4_t.jpeg" alt="ネズミ"></div>
-                <div class="card-content">
-                    <div class="service-name">ネズミ駆除</div>
-                    <span class="service-price">10,000円〜</span>
-                    <ul class="feature-list">
-                        <li class="feature-item">病原体による感染症の危険もある</li>
-                        <li class="feature-item">侵入経路を完全に封鎖します</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="photo-box"><img src="https://thumb.photo-ac.com/77/775e8aa7f8c7cba4490c609370ac5809_t.jpeg" alt="ハクビシン"></div>
-                <div class="card-content">
-                    <div class="service-name">ハクビシン駆除</div>
-                    <span class="service-price">10,000円〜</span>
-                    <ul class="feature-list">
-                        <li class="feature-item">天井のシミ・強烈な臭いを解決</li>
-                        <li class="feature-item">再発防止策まで万全に行います</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="list-box">
-                <strong>【その他対応一覧】</strong><br>
-                ノミ、ダニ、アリ、ムカデ、イタチ、アライグマ等、あらゆる害虫・害獣に対応します。
-                <p style="color:var(--danger-red); font-weight:bold; margin-top:10px;">現地調査・見積もりは完全無料です！</p>
             </div>
         </div>
     </section>
 
     <section class="reviews-section">
-        <h2 style="text-align: center; margin-bottom: 40px; color: #333; font-size: 28px;">お客様からの喜びの声</h2>
+        <h2 style="text-align:center;">お客様の声</h2>
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #e0e0e0;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">50代 男性（持ち家）</div><div class="stars">★★★★★</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">シロアリ駆除</span><span class="tag-area">大阪府</span></div>
-                <h3 class="review-title">工務店が母体なので、修繕の相談もできて安心でした</h3>
-                <p style="font-size: 14px; line-height: 1.8; color: #444;">床のひずみが気になり調査を依頼。結果は老朽化でしたが、無理な駆除を勧めず最適なリフォーム案をくれました。誠実な対応に感謝しています。</p>
+                <div class="review-title">工務店が母体なので安心でした</div>
+                <p>床のひずみが気になり調査を依頼。誠実な対応に感謝しています。</p>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #fce4ec;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">30代 女性（主婦）</div><div class="stars">★★★★★</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">ハチ駆除</span><span class="tag-area">兵庫県</span></div>
-                <h3 class="review-title">事前説明が丁寧で、納得してから依頼できました</h3>
-                <p style="font-size: 14px; color: #444;">庭にハチの巣があり、子供がいて危険なのでプロに相談。薬剤や料金を事前にしっかり説明してもらい、安心してお任せできました。</p>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #e8f5e9;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">20代 男性</div><div class="stars">★★★★★</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">ゴキブリ駆除</span><span class="tag-area">京都府</span></div>
-                <h3 class="review-title">安くて対応もよかったので大満足です</h3>
-                <p style="font-size: 14px; color: #444;">深夜に見つけ電話したら、他社よりずっと安く対応してくれました。駆除後は全く出てこなくなったので、本当に助かりました。</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #fff3e0;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">60代 女性</div><div class="stars">★★★★☆</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">ネズミ駆除</span><span class="tag-area">奈良県</span></div>
-                <h3 class="review-title">電話口で対処法を教えてくれ、すぐ駆け付けてくれました</h3>
-                <p style="font-size: 14px; color: #444;">天井裏の物音にパニックでしたが、電話で応急処置を教えてもらい心強かったです。駆除も迅速で、その日から安眠できています。</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #e1f5fe;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">40代 男性</div><div class="stars">★★★★★</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">シロアリ予防</span><span class="tag-area">大阪府</span></div>
-                <h3 class="review-title">5年保証が付いているのが決め手でした</h3>
-                <p style="font-size: 14px; color: #444;">中古物件の購入にあたり予防を依頼。床下の写真を見せながら丁寧に現状を説明してくれました。保証もしっかりしていて安心です。</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #f3e5f5;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">30代 女性</div><div class="stars">★★★★★</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">ハチ駆除</span><span class="tag-area">京都府</span></div>
-                <h3 class="review-title">高所の巣もあっという間に撤去。プロは違います</h3>
-                <p style="font-size: 14px; color: #444;">2階の軒下に大きな巣を発見。自分では不可能な場所でしたが、専用の機材で迅速に解決。戻りバチ対策も完璧でした。</p>
-            </div>
-             <div class="review-card">
-                <div class="review-header">
-                    <div class="user-icon" style="background: #efebe9;">👤</div>
-                    <div><div style="font-size: 13px; color: #666; font-weight: bold;">40代 男性</div><div class="stars">★★★★★</div></div>
-                </div>
-                <div class="tag-row"><span class="tag-service">トコジラミ駆除</span><span class="tag-area">兵庫県</span></div>
-                <h3 class="review-title">徹底した作業で、ようやく痒みから解放されました</h3>
-                <p style="font-size: 14px; color: #444;">市販の薬が効かず困り果てて相談。家具の裏まで徹底的に調査・処置していただき、根絶に成功しました。本当に感謝しています。</p>
-            </div>
-        </div>
     </section>
 
     <section class="faq-section">
-        <h2 style="text-align: center; margin-bottom: 30px;">よくあるご質問</h2>
-        <div class="faq-container">
-            <div class="faq-item"><button class="faq-question">駆除薬剤による小さなお子様への影響はありますか？</button><div class="faq-answer"><div class="answer-inner">人体に無害な薬剤を厳選して使用しております。施工後の適切な後始末と安全確認を最優先に行います。</div></div></div>
-            <div class="faq-item"><button class="faq-question">市販の薬剤では完全に駆除できないのでしょうか？</button><div class="faq-answer"><div class="answer-inner">市販薬は一時的な効果はありますが、卵には効かないものが多く再発します。プロの技術で原因から断ち切ります。</div></div></div>
-            <div class="faq-item"><button class="faq-question">施工後、どれくらいで効果が出ますか？</button><div class="faq-answer"><div class="answer-inner">即効性を重視していますが、状況により異なります。現地調査の際に見通しを詳しくご説明します。</div></div></div>
-            <div class="faq-item"><button class="faq-question">作業後に見積もりより高い金額を請求されることはありますか？</button><div class="faq-answer"><div class="answer-inner">いいえ、ございません。作業前にご納得いただいてから作業に入りますのでご安心ください。</div></div></div>
-            <div class="faq-item"><button class="faq-question">クレジットカードでの支払いは可能ですか？</button><div class="faq-answer"><div class="answer-inner">はい、各種クレジットカード決済に対応しております（VISA・MasterCard・AMEXなど）。</div></div></div>
-            <div class="faq-item"><button class="faq-question">どのエリアまで対応していますか？</button><div class="faq-answer"><div class="answer-inner">大阪、兵庫、奈良、和歌山、京都の各府県に対応しております。</div></div></div>
-            <div class="faq-item"><button class="faq-question">出張料や見積もり料はいくらですか？</button><div class="faq-answer"><div class="answer-inner">弊社では、出張料およびお見積もり料はすべて「0円」です。</div></div></div>
-            <div class="faq-item"><button class="faq-question">他社の見積もりが高額でした。安くできますか？</button><div class="faq-answer"><div class="answer-inner">ぜひご相談ください！他社様の見積もりよりも低価格でご案内できるよう最大限努力いたします。</div></div></div>
+        <div class="faq-item">
+            <button class="faq-question">出張料や見積もり料はいくらですか？</button>
+            <div class="faq-answer">弊社では、出張料およびお見積もり料はすべて「0円」です。</div>
         </div>
     </section>
 
     <section class="contact-section">
-        <div class="contact-container">
-            <section class="section-wrapper">
-                <h2 class="rb-title">お問い合わせ</h2>
-                <form action="https://formspree.io/f/xvgzlowj" method="POST">
-                    <div class="form-group"><label>お名前<span>必須</span></label><input type="text" name="name" required placeholder="例：山田 太郎"></div>
-                    <div class="form-group"><label>電話番号<span>必須</span></label><input type="tel" name="tel" required placeholder="例：09012345678"></div>
-                    <div class="form-group"><label>メールアドレス<span>必須</span></label><input type="email" name="_replyto" required placeholder="例：abc@example.com"></div>
-                    <div class="form-group"><label>住所<span>必須</span></label><input type="text" name="address" required placeholder="例：大阪府大阪市..."></div>
-                    <div class="form-group"><label>お問い合わせ内容<span>必須</span></label><textarea name="message" rows="6" required placeholder="ご相談内容を記入してください"></textarea></div>
-                    <button type="submit" class="submit-btn">この内容で送信する</button>
-                </form>
-            </section>
-            <section class="section-wrapper">
-                <h2 class="rb-title">会社概要</h2>
-                <table class="rb-info-table">
-                    <tr><th>会社名</th><td>株式会社Re:birth</td></tr>
-                    <tr><th>所在地</th><td>〒530-0035 大阪府大阪市北区同心２丁目１３ー１８ ５０２</td></tr>
-                    <tr><th>電話番号</th><td><a href="tel:05035280140" style="color: #007bff; text-decoration: none; font-weight: bold;">050-3528-0140</a></td></tr>
-                </table>
-            </section>
+        <div class="form-wrapper">
+            <h2 class="rb-title">お問い合わせ</h2>
+            <form action="https://formspree.io/f/xvgzlowj" method="POST">
+                <label>お名前<span>必須</span></label><input type="text" name="name" required>
+                <label>電話番号<span>必須</span></label><input type="tel" name="tel" required>
+                <label>内容<span>必須</span></label><textarea name="message" rows="5" required></textarea>
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
         </div>
     </section>
 
     <script>
-        // 日時更新
         function updateDateTime() {
             const now = new Date();
-            const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
-            const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-            document.querySelectorAll('.current-date').forEach(el => el.textContent = dateStr);
-            document.querySelectorAll('.current-time').forEach(el => el.textContent = timeStr);
+            document.querySelectorAll('.current-date').forEach(el => el.textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`);
+            document.querySelectorAll('.current-time').forEach(el => el.textContent = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`);
         }
-        updateDateTime();
-        setInterval(updateDateTime, 60000);
-
-        // FAQアコーディオン
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                button.parentElement.classList.toggle('open');
-            });
-        });
+        updateDateTime(); setInterval(updateDateTime, 60000);
+        document.querySelectorAll('.faq-question').forEach(b => b.addEventListener('click', () => b.parentElement.classList.toggle('open')));
     </script>
 </body>
 </html>
