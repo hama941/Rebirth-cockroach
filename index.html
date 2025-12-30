@@ -14,15 +14,68 @@
         box-shadow: 0 -3px 15px rgba(0,0,0,0.3) !important;
         font-family: sans-serif !important;
         border-top: 2px solid #fff !important;
+        cursor: pointer; /* クリックできることを示す */
+    }
+    
+    /* リンクのスタイル初期化 */
+    #fixed-tel-bar a {
+        display: flex !important;
+        align-items: center !important;
+        text-decoration: none !important;
+        color: white !important;
+        width: 100% !important;
+        justify-content: center !important;
+        height: 100% !important;
     }
 </style>
 
 <div id="fixed-tel-bar">
-    <a href="tel:05035280140" style="display: flex !important; align-items: center !important; text-decoration: none !important; color: white !important; width: 100% !important; justify-content: center !important; height: 100% !important;">
-        <i class="fas fa-phone-alt" style="font-size: 30px !important; margin-right: 15px !important; transform: scaleX(-1);"></i>
+    <a id="tel-link" href="#" style="display: flex !important; align-items: center !important; text-decoration: none !important; color: white !important; width: 100% !important; justify-content: center !important; height: 100% !important;">
+        <i id="tel-icon" class="fas fa-phone-alt" style="font-size: 30px !important; margin-right: 15px !important; transform: scaleX(-1);"></i>
+        
         <div style="display: flex !important; flex-direction: column !important;">
-            <span style="font-size: 13px !important; font-weight: bold !important; margin-bottom: 2px !important; display: block !important;">24時間受付！お急ぎの方はこちら</span>
-            <span style="font-size: 26px !important; font-weight: bold !important; letter-spacing: 1px !important; display: block !important;">050-3528-0140</span>
+            <span id="tel-sub-text" style="font-size: 13px !important; font-weight: bold !important; margin-bottom: 2px !important; display: block !important;">24時間受付！お急ぎの方はこちら</span>
+            <span id="tel-main-text" style="font-size: 26px !important; font-weight: bold !important; letter-spacing: 1px !important; display: block !important;">050-3528-0140</span>
         </div>
     </a>
 </div>
+
+<script>
+    function updateLinkDestination() {
+        const now = new Date();
+        const hour = now.getHours();
+        
+        const linkElement = document.getElementById('tel-link');
+        const iconElement = document.getElementById('tel-icon');
+        const subTextElement = document.getElementById('tel-sub-text');
+        const mainTextElement = document.getElementById('tel-main-text');
+
+        // 時間外判定 (20時以上 または 10時未満)
+        if (hour >= 20 || hour < 10) {
+            // --- 夜間・早朝モード（フォームへ移動） ---
+            linkElement.href = "#contact-section"; // お問い合わせフォームのIDを指定
+            
+            // 表示の変更（必要なければ削除してください）
+            iconElement.className = "fas fa-envelope"; // メールアイコンに変更
+            iconElement.style.transform = "none";      // アイコンの反転を解除
+            subTextElement.textContent = "時間外のためWeb受付中";
+            mainTextElement.textContent = "お問い合わせフォームへ";
+            
+        } else {
+            // --- 日中モード（電話発信） ---
+            linkElement.href = "tel:05035280140";
+            
+            // 表示を元に戻す
+            iconElement.className = "fas fa-phone-alt";
+            iconElement.style.transform = "scaleX(-1)";
+            subTextElement.textContent = "24時間受付！お急ぎの方はこちら";
+            mainTextElement.textContent = "050-3528-0140";
+        }
+    }
+
+    // 初回実行
+    updateLinkDestination();
+
+    // 1分ごとにチェックして切り替え（ページを開いたまま時間が経過した場合に対応）
+    setInterval(updateLinkDestination, 60000);
+</script>
