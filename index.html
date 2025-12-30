@@ -126,6 +126,20 @@
         }
         .red { color: var(--danger-red); }
 
+        /* ★追加：チェックリスト下の矢印アニメーション */
+        .arrow-area {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--danger-red);
+            font-size: 3rem;
+            animation: arrow-bounce 1.5s infinite;
+            line-height: 1;
+        }
+        @keyframes arrow-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
         /* --- 5. 私たちにおまかせ（サービス） --- */
         #service-area { background-color: #f4f6f8; color: #333; padding-bottom: 50px; }
         .banner-container {
@@ -408,7 +422,10 @@
                 <li class="checklist-item"><div class="check-box"></div><span>他で見積りしたけど、<span class="red">費用が高くて</span>頼めない…</span></li>
                 <li class="checklist-item"><div class="check-box"></div><span><span class="red">どのような対策をするのか</span>話だけでも聞いてみたい…</span></li>
             </ul>
-        </div>
+            <div class="arrow-area">
+                <i class="fas fa-angle-double-down"></i>
+            </div>
+            </div>
     </section>
 
     <section id="service-area">
