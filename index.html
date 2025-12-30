@@ -1,17 +1,17 @@
 <style>
     /* ステータスバー全体の枠 */
     .status-bar {
-        position: fixed; /* 画面上部に固定 */
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 50px; /* バーの高さ */
+        height: 35px;
         background-color: #000;
         color: #fff;
         font-family: sans-serif;
         font-weight: bold;
         font-size: 0.85rem;
-        z-index: 10000; /* 最前面に表示 */
+        z-index: 10000;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -20,25 +20,31 @@
     /* スクロールコンテナ */
     .scroll-container {
         display: flex;
-        white-space: nowrap;
         width: 100%;
+        overflow: hidden; /* コンテナからはみ出した部分は隠す */
     }
 
     /* アニメーション部分 */
     .scroll-content {
         display: flex;
-        /* 20秒かけて左へ流れるアニメーション */
-        animation: scroll-left 20s linear infinite;
+        white-space: nowrap; /* 文字を折り返さない */
+        width: max-content;  /* コンテンツの幅を文字量に合わせる（重要） */
+        will-change: transform; /* アニメーション描画の最適化 */
+        /* 4セットあるうちの1セット分(25%)を移動させる。
+           時間は文字量に合わせて調整してください（現在は40秒）
+        */
+        animation: scroll-left 40s linear infinite;
     }
 
     @keyframes scroll-left {
         0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        /* 4つの要素のうち1つ分が過ぎたらリセットするため -25% */
+        100% { transform: translateX(-25%); }
     }
 
     /* テキストアイテム */
     .text-item {
-        padding-right: 50px; /* 文章の間の余白 */
+        padding-right: 50px; /* 文章間の余白 */
         display: flex;
         align-items: center;
     }
@@ -63,12 +69,21 @@
                 <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
                 <span class="arrival-msg">（最短15分で到着可能です！）</span>
             </div>
+            <div class="text-item">
+                【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
+                <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
+                <span class="arrival-msg">（最短15分で到着可能です！）</span>
+            </div>
+            <div class="text-item">
+                【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
+                <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
+                <span class="arrival-msg">（最短15分で到着可能です！）</span>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    // 日時と表示内容を自動更新する関数
     function updateStatusBarDateTime() {
         const now = new Date();
         const y = now.getFullYear();
@@ -86,43 +101,22 @@
 
         // 2. 時間帯による表示切り替えロジック
         const currentHour = now.getHours();
-        
-        // 朝10時(10) 〜 夜8時(20)未満 かどうか判定
-        const isBusinessTime = (currentHour >= 10 && currentHour < 20);
+        const isBusinessTime = (currentHour >= 10 && currentHour < 20); // 10:00〜19:59
 
-        // 各要素を取得
-        const statusTexts = document.querySelectorAll('.status-text');
-        const arrivalMsgs = document.querySelectorAll('.arrival-msg');
-
-        statusTexts.forEach(el => {
-            if (isBusinessTime) {
-                // 10:00〜19:59
-                el.textContent = "受付可能！";
-            } else {
-                // 20:00〜09:59
-                el.textContent = "メールでの受付中";
-            }
+        // 表示テキストの切り替え
+        document.querySelectorAll('.status-text').forEach(el => {
+            el.textContent = isBusinessTime ? "受付可能！" : "メールでの受付中";
         });
 
-        arrivalMsgs.forEach(el => {
-            if (isBusinessTime) {
-                // 10:00〜19:59 は表示
-                el.style.display = "inline";
-            } else {
-                // 20:00〜09:59 は非表示
-                el.style.display = "none";
-            }
+        // 到着時間の表示/非表示切り替え
+        document.querySelectorAll('.arrival-msg').forEach(el => {
+            el.style.display = isBusinessTime ? "inline" : "none";
         });
     }
     
-    // ページ読み込み時に実行
     updateStatusBarDateTime();
-    // 以降、1分ごとに更新
     setInterval(updateStatusBarDateTime, 60000);
 </script>
-
-
-
 
 
 
