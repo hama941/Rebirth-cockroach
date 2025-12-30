@@ -5,12 +5,12 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 35px;
+        height: 100px;
         background-color: #000;
         color: #fff;
         font-family: sans-serif;
         font-weight: bold;
-        font-size: 0.85rem;
+        font-size: 3rem;
         z-index: 10000;
         overflow: hidden;
         display: flex;
@@ -33,7 +33,7 @@
         /* 4セットあるうちの1セット分(25%)を移動させる。
            時間は文字量に合わせて調整してください（現在は40秒）
         */
-        animation: scroll-left 40s linear infinite;
+        animation: scroll-left 20s linear infinite;
     }
 
     @keyframes scroll-left {
@@ -117,6 +117,7 @@
     updateStatusBarDateTime();
     setInterval(updateStatusBarDateTime, 60000);
 </script>
+
 
 
 
