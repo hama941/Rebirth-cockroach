@@ -1,14 +1,95 @@
+<style>
+    /* ステータスバー全体の枠 */
+    .status-bar {
+        position: fixed; /* 画面上部に固定 */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35px; /* バーの高さ */
+        background-color: #000;
+        color: #fff;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 0.85rem;
+        z-index: 10000; /* 最前面に表示 */
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    /* スクロールコンテナ */
+    .scroll-container {
+        display: flex;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    /* アニメーション部分 */
+    .scroll-content {
+        display: flex;
+        /* 20秒かけて左へ流れるアニメーション */
+        animation: scroll-left 20s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* テキストアイテム */
+    .text-item {
+        padding-right: 50px; /* 文章の間の余白 */
+        display: flex;
+        align-items: center;
+    }
+
+    /* 強調文字（黄色） */
+    .bar-highlight {
+        color: #ffcc00;
+        margin: 0 5px;
+    }
+</style>
+
 <div class="status-bar">
     <div class="scroll-container">
-        <div id="scroll-target" class="scroll-content">
-            <div class="text-item">【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 <span style="margin-left: 30px;" class="bar-highlight">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
-            <div class="text-item">【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 <span style="margin-left: 30px;" class="bar-highlight">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
+        <div class="scroll-content">
+            <div class="text-item">
+                【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
+                <span style="margin-left: 30px;" class="bar-highlight">受付可能！</span> 
+                <span>（最短15分で到着可能です！）</span>
+            </div>
+            <div class="text-item">
+                【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
+                <span style="margin-left: 30px;" class="bar-highlight">受付可能！</span> 
+                <span>（最短15分で到着可能です！）</span>
+            </div>
         </div>
     </div>
 </div>
 
-
-
+<script>
+    // 日時を自動更新する関数
+    function updateStatusBarDateTime() {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = now.getMonth() + 1;
+        const d = now.getDate();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        
+        const dateStr = `${y}年${m}月${d}日`;
+        const timeStr = `${hh}:${mm}`;
+        
+        // クラス名を持つすべての要素を書き換え
+        document.querySelectorAll('.current-date').forEach(el => el.textContent = dateStr);
+        document.querySelectorAll('.current-time').forEach(el => el.textContent = timeStr);
+    }
+    
+    // ページ読み込み時に実行
+    updateStatusBarDateTime();
+    // 以降、1分ごとに時刻を更新
+    setInterval(updateStatusBarDateTime, 60000);
+</script>
 
 
 
