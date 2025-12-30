@@ -24,65 +24,23 @@
             margin: 0; padding: 0;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             background-color: #f0f7ff; color: #333; line-height: 1.6;
-            padding-top: 20px; /* ★変更: 新しいステータスバーの高さ(100px)に合わせて調整 */
+            padding-top: 35px; /* 上部固定バーの高さ分 */
             padding-bottom: 80px; /* 下部固定バーの高さ分 */
         }
         * { box-sizing: border-box; }
         img { max-width: 100%; height: auto; vertical-align: bottom; }
 
-        /* --- 1. 上部固定ステータスバー (入替済み) --- */
+        /* --- 1. 上部固定ステータスバー --- */
         .status-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 35px;
-            background-color: #000;
-            color: #fff;
-            font-family: sans-serif;
-            font-weight: bold;
-            font-size: 0.85rem;
-            z-index: 10000;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 35px;
+            background-color: #000; color: #fff; font-weight: bold; font-size: 0.85rem;
+            z-index: 10000; overflow: hidden; display: flex; align-items: center;
         }
-
-        /* スクロールコンテナ */
-        .scroll-container {
-            display: flex;
-            width: 100%;
-            overflow: hidden; /* コンテナからはみ出した部分は隠す */
-        }
-
-        /* アニメーション部分 */
-        .scroll-content {
-            display: flex;
-            white-space: nowrap; /* 文字を折り返さない */
-            width: max-content;  /* コンテンツの幅を文字量に合わせる（重要） */
-            will-change: transform; /* アニメーション描画の最適化 */
-            /* 4セットあるうちの1セット分(25%)を移動させる */
-            animation: scroll-left 20s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            /* 4つの要素のうち1つ分が過ぎたらリセットするため -25% */
-            100% { transform: translateX(-25%); }
-        }
-
-        /* テキストアイテム */
-        .text-item {
-            padding-right: 50px; /* 文章間の余白 */
-            display: flex;
-            align-items: center;
-        }
-
-        /* 強調文字（黄色） */
-        .bar-highlight {
-            color: #ffcc00;
-            margin: 0 5px;
-        }
+        .scroll-container { display: flex; white-space: nowrap; width: 100%; }
+        .scroll-content { display: flex; animation: scroll-left 20s linear infinite; }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .text-item { padding-right: 50px; display: flex; align-items: center; }
+        .bar-highlight { color: #ffcc00; margin: 0 5px; }
 
         /* --- 2. メインヘッダー (ロゴ・ボタン) --- */
         .header-container {
@@ -168,21 +126,7 @@
         }
         .red { color: var(--danger-red); }
 
-        /* ★追加：チェックリスト下の矢印アニメーション */
-        .arrow-area {
-            text-align: center;
-            margin-top: 30px;
-            color: var(--danger-red);
-            font-size: 3rem;
-            animation: arrow-bounce 1.5s infinite;
-            line-height: 1;
-        }
-        @keyframes arrow-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-
-        /* --- 5. 私たちにおまかせ（サービス） --- */
+        /* --- 5. 私たちにおまかせ（サービス） + 悪徳業者警告 --- */
         #service-area { background-color: #f4f6f8; color: #333; padding-bottom: 50px; }
         .banner-container {
             background-color: #fdd81d; padding: 40px 20px; text-align: center;
@@ -202,6 +146,22 @@
         }
 
         .lp-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding-bottom: 50px; }
+        
+        /* 悪徳業者警告 (グラデーション青) */
+        .warning-header {
+            background: linear-gradient(135deg, #1a2a4e 0%, #2a4a7e 100%);
+            color: #fff; padding: 50px 20px; text-align: center;
+            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); margin-bottom: 40px;
+        }
+        .header-title-warn { font-size: 1.8rem; font-style: italic; font-weight: 900; margin-bottom: 25px; }
+        .header-title-warn span { color: #ffff00; }
+        .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
+        .header-item {
+            border-bottom: 1px dashed rgba(255,255,255,0.3); padding: 12px 0;
+            font-size: 0.95rem; display: flex; align-items: center; font-weight: bold; justify-content: center;
+        }
+        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
+
         .section-title-svc {
             text-align: center; font-size: 1.8rem; margin: 50px 0 30px;
             font-weight: bold; color: var(--bg-dark-blue); position: relative;
@@ -261,21 +221,7 @@
         .small-note { font-size: 0.85em; color: #e53e3e; margin-top: 10px; display: block; }
         @media (max-width: 600px) { .reason-card { flex-direction: column; padding-top: 30px; } }
 
-        /* --- 7. 悪徳業者警告 --- */
-        .warning-header {
-            background: #1a2a4e; color: #fff; padding: 50px 20px; text-align: center;
-            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); margin-bottom: 40px;
-        }
-        .header-title-warn { font-size: 1.8rem; font-style: italic; font-weight: 900; margin-bottom: 25px; }
-        .header-title-warn span { color: #ffff00; }
-        .header-list { list-style: none; padding: 0; margin: 0 auto; max-width: 90%; }
-        .header-item {
-            border-bottom: 1px dashed rgba(255,255,255,0.3); padding: 12px 0;
-            font-size: 0.95rem; display: flex; align-items: center; font-weight: bold; justify-content: center;
-        }
-        .header-item::before { content: "✕"; color: var(--danger-red); margin-right: 12px; font-weight: 900; font-size: 1.2rem; }
-
-        /* --- 8. 施工の流れ (Flow Section) - 指定デザイン --- */
+        /* --- 7. 施工の流れ (Flow Section) --- */
         .flow-section { max-width: 600px; margin: 60px auto; padding: 0 20px; }
         .main-header-flow {
             display: flex; align-items: center; justify-content: center;
@@ -306,7 +252,7 @@
             .step-content { flex-direction: column; align-items: center; text-align: center; }
         }
 
-        /* --- 9. お客様の声 --- */
+        /* --- 8. お客様の声 --- */
         #reviews-section { background-color: #f9f7f2; padding: 60px 20px; }
         .review-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto; }
         .review-card {
@@ -314,7 +260,7 @@
             max-width: 480px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); box-sizing: border-box;
         }
 
-        /* --- 10. FAQ --- */
+        /* --- 9. FAQ --- */
         #faq-section { max-width: 700px; margin: 0 auto; padding: 60px 20px; }
         .faq-item {
             background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -333,7 +279,7 @@
         .faq-item.open .faq-answer { max-height: 1000px; }
         .answer-inner { padding: 0 20px 20px 52px; line-height: 1.8; font-size: 15px; color: #555; border-top: 1px solid #fafafa; padding-top: 15px; }
 
-        /* --- 11. お問い合わせ & 会社概要 --- */
+        /* --- 10. お問い合わせ & 会社概要 --- */
         #contact-section { background-color: #f4f7f9; padding: 40px 20px; }
         .main-container { max-width: 750px; margin: 0 auto; }
         .section-wrapper {
@@ -374,7 +320,7 @@
             .rb-info-table th, .rb-info-table td { display: block; width: 100%; }
         }
 
-        /* --- 12. フッターCTA --- */
+        /* --- 11. フッターCTA --- */
         .footer-cta { background-color: var(--bg-dark-blue); padding: 80px 20px; text-align: center; }
         .cta-button {
             display: inline-block; background: linear-gradient(to bottom, #ff4e00, #d00);
@@ -384,7 +330,7 @@
         }
         .cta-button:hover { transform: translateY(3px); box-shadow: 0 2px 0 #900; }
 
-        /* --- 13. 下部固定電話バー --- */
+        /* --- 12. 下部固定電話バー --- */
         #fixed-tel-bar {
             position: fixed !important; bottom: 0 !important; left: 0 !important;
             width: 100% !important; height: 80px !important;
@@ -399,30 +345,13 @@
 
     <div class="status-bar">
         <div class="scroll-container">
-            <div class="scroll-content">
-                <div class="text-item">
-                    【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
-                    <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
-                    <span class="arrival-msg">（最短15分で到着可能です！）</span>
-                </div>
-                <div class="text-item">
-                    【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
-                    <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
-                    <span class="arrival-msg">（最短15分で到着可能です！）</span>
-                </div>
-                <div class="text-item">
-                    【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
-                    <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
-                    <span class="arrival-msg">（最短15分で到着可能です！）</span>
-                </div>
-                <div class="text-item">
-                    【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 
-                    <span style="margin-left: 30px;" class="status-text bar-highlight">受付可能！</span> 
-                    <span class="arrival-msg">（最短15分で到着可能です！）</span>
-                </div>
+            <div id="scroll-target" class="scroll-content">
+                <div class="text-item">【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 <span style="margin-left: 30px;" class="bar-highlight">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
+                <div class="text-item">【稼働状況】<span class="current-date"></span> <span class="current-time bar-highlight"></span> 現在 <span style="margin-left: 30px;" class="bar-highlight">受付可能！</span> <span>（最短15分で到着可能です！）</span></div>
             </div>
         </div>
     </div>
+
     <header class="header-container">
         <div class="logo-section">
             <div class="catch-copy">関西全域対応！！</div>
@@ -444,11 +373,11 @@
 
     <section class="flyer-section">
         <picture>
-            <source srcset="ChatGPT Image 2025年12月29日 15_35_54.png" media="(min-width: 768px)">
-
-            <img src="ChatGPT Image 2025年12月27日 13_24_03.png" 
-                 alt="害虫駆除" 
-                 style="width: 100%; height: auto; display: block;">
+            <source srcset="ChatGPT-Image-2025-12-27-13_24_03.jpg" media="(max-width: 767px)">
+            <img src="ChatGPT-Image-2025-12-29-15_35_54.jpg" 
+                 alt="しつこい害虫を即日徹底駆除！" 
+                 width="1200" height="750" 
+                 fetchpriority="high">
         </picture>
     </section>
 
@@ -481,10 +410,7 @@
                 <li class="checklist-item"><div class="check-box"></div><span>他で見積りしたけど、<span class="red">費用が高くて</span>頼めない…</span></li>
                 <li class="checklist-item"><div class="check-box"></div><span><span class="red">どのような対策をするのか</span>話だけでも聞いてみたい…</span></li>
             </ul>
-            <div class="arrow-area">
-                <i class="fas fa-angle-double-down"></i>
-            </div>
-            </div>
+        </div>
     </section>
 
     <section id="service-area">
@@ -496,6 +422,15 @@
         </div>
 
         <div class="lp-container">
+            <section class="warning-header">
+                <div class="header-title-warn"><span>悪徳業者</span>を許しません</div>
+                <ul class="header-list">
+                    <li class="header-item">会社情報がない業者は悪徳業者です！</li>
+                    <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
+                    <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
+                </ul>
+            </section>
+
             <h2 class="section-title-svc">害虫駆除</h2>
             <div class="service-card">
                 <div class="photo-box"><img src="https://thumb.photo-ac.com/34/34c6f61fc5898a385ae6cf04cea4f22d_t.jpeg" alt="ゴキブリ"></div>
@@ -577,7 +512,7 @@
             </div>
             <div class="reason-card">
                 <div class="reason-label">理由 2</div>
-                <div class="reason-image"><img src="data:image/jpeg;base64,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" alt="24時間365日対応"></div>
+                <div class="reason-image"><img src="https://images.unsplash.com/photo-1508962863846-517cdff6f4ad?auto=format&fit=crop&w=300&q=80" alt="24時間365日対応"></div>
                 <div class="reason-text">
                     <h3>24時間365日<br><span class="highlight">即日対応いたします！</span></h3>
                     <p>深夜や早朝に発生したトラブルも、専門スタッフが迅速に駆けつけます！最短15分で現場到着。お困りごとは、今すぐお電話でご相談ください。</p>
@@ -585,22 +520,13 @@
             </div>
             <div class="reason-card">
                 <div class="reason-label">理由 3</div>
-                <div class="reason-image"><img src="https://thumb.photo-ac.com/b3/b372a287b3587027707e219c2acab769_t.jpeg" alt="アフターサービス"></div>
+                <div class="reason-image"><img src="https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&w=300&q=80" alt="アフターサービス"></div>
                 <div class="reason-text">
                     <h3>充実の<span class="highlight">アフターサービス</span></h3>
                     <p>施工後の再発防止策も徹底対応。保証期間内であれば、万が一再発した場合でも無料で追加調査・再施工を行います。お客様の安心を第一に、最後までしっかり支えます！</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="warning-header">
-        <div class="header-title-warn"><span>悪徳業者</span>を許しません</div>
-        <ul class="header-list">
-            <li class="header-item">現地調査を丁寧に行わない業者は悪徳業者です！</li>
-            <li class="header-item">見積もりが曖昧な業者は悪徳業者です！</li>
-            <li class="header-item">調査結果が不明瞭な業者は悪徳業者です！</li>
-        </ul>
     </section>
 
     <section class="flow-section">
@@ -640,7 +566,7 @@
                 <div class="step-icon-area"><i class="fas fa-wallet"></i></div>
                 <div class="step-text-area">
                     <h3 class="step-title">4.お支払い</h3>
-                    <p class="step-desc">現金または振り込みでお支払いください。</p>
+                    <p class="step-desc">現金・クレジットカードからお好きな方法でお支払いください。</p>
                 </div>
             </div>
         </div>
@@ -717,37 +643,12 @@
                 <div class="faq-answer"><div class="answer-inner">いいえ、ございません。作業前に施工内容と料金の詳細を明確にご説明し、ご納得いただいてから作業に入りますので、どうぞご安心ください。</div></div>
             </div>
             <div class="faq-item">
+                <button class="faq-question">クレジットカードでの支払いは可能ですか？</button>
+                <div class="faq-answer"><div class="answer-inner">はい、各種クレジットカード決済に対応しております（VISA・MasterCard・American Expressなど）。お気軽にご利用ください。</div></div>
+            </div>
+            <div class="faq-item">
                 <button class="faq-question">予約のキャンセルはできますか？</button>
                 <div class="faq-answer"><div class="answer-inner">可能です。お見積もり内容をしっかりご確認いただいた上で、ご納得いただけない場合は取り掛かる前にキャンセルいただけます。まずは安心してお見積もりをご依頼ください。</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">法人の依頼ですが、後日請求書払いは可能ですか？</button>
-                <div class="faq-answer"><div class="answer-inner">法人様のご依頼も柔軟に対応しております。後日の請求書払いについても、お電話や現地調査の際にお申し付けいただければ調整可能です。
-                </div></div> </div>
-            <div class="faq-item">
-                <button class="faq-question">作業にあたって、こちらで準備することはありますか？</button>
-                <div class="faq-answer"><div class="answer-inner">お客様にご準備いただくことは一切ございません。事前の準備から作業後の片付けまで、すべて弊社の専門スタッフが責任を持って行います。
-                </div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">どのエリアまで対応していますか？</button>
-                <div class="faq-answer"><div class="answer-inner">大阪、兵庫、奈良、和歌山、京都の各府県に対応しております。詳細な訪問時間などは、お電話の際にお伝えいたします。
-                </div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">出張料や見積もり料はいくらですか？</button>
-                <div class="faq-answer"><div class="answer-inner">弊社では、出張料およびお見積もり料はすべて「0円」です。お客様にご提示するのは作業料金のみですので、ご安心ください。
-                </div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">他社の見積もりが高額でした。安くできますか？</button>
-                <div class="faq-answer"><div class="answer-inner">ぜひご相談ください！地域最安値を目指しておりますので、他社様のお見積もり内容を教えていただければ、それよりも低価格でご案内できるよう最大限努力いたします。
-                </div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">今すぐ駆除してほしいのですが、可能ですか？</button>
-                <div class="faq-answer"><div class="answer-inner">対応エリアを絞ることで、迅速な訪問を可能にしています。現場の状況によりますが、最短即日でお伺いいたしますので、まずはお電話で現在の状況をお聞かせください。
-                </div></div>
             </div>
         </div>
     </section>
@@ -781,6 +682,24 @@
                     <button type="submit" class="submit-btn">この内容で送信する</button>
                 </form>
             </div>
+
+            <div class="section-wrapper">
+                <h2 class="rb-title">会社概要</h2>
+                <table class="rb-info-table">
+                    <tr>
+                        <th>会社名</th>
+                        <td>株式会社Re:birth</td>
+                    </tr>
+                    <tr>
+                        <th>所在地</th>
+                        <td>〒530-0035<br>大阪府大阪市北区同心２丁目１３ー１８ ５０２</td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td><a href="tel:05035280140" style="color:#007bff; text-decoration:none;">050-3528-0140</a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
 
@@ -800,43 +719,21 @@
     </div>
 
     <script>
-        // 日時と表示内容を自動更新する関数 (ステータスバー用)
-        function updateStatusBarDateTime() {
+        function updateDateTime() {
             const now = new Date();
             const y = now.getFullYear();
             const m = now.getMonth() + 1;
             const d = now.getDate();
             const hh = String(now.getHours()).padStart(2, '0');
             const mm = String(now.getMinutes()).padStart(2, '0');
-            
             const dateStr = `${y}年${m}月${d}日`;
             const timeStr = `${hh}:${mm}`;
-            
-            // 1. 日付と時刻の更新
             document.querySelectorAll('.current-date').forEach(el => el.textContent = dateStr);
             document.querySelectorAll('.current-time').forEach(el => el.textContent = timeStr);
-
-            // 2. 時間帯による表示切り替えロジック
-            const currentHour = now.getHours();
-            const isBusinessTime = (currentHour >= 10 && currentHour < 20); // 10:00〜19:59
-
-            // 表示テキストの切り替え
-            document.querySelectorAll('.status-text').forEach(el => {
-                el.textContent = isBusinessTime ? "受付可能！" : "メールでの受付中";
-            });
-
-            // 到着時間の表示/非表示切り替え
-            document.querySelectorAll('.arrival-msg').forEach(el => {
-                el.style.display = isBusinessTime ? "inline" : "none";
-            });
         }
-        
-        // ページ読み込み時に実行
-        updateStatusBarDateTime();
-        // 以降、1分ごとに更新
-        setInterval(updateStatusBarDateTime, 60000);
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
 
-        // FAQのアコーディオン動作
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
