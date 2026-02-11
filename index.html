@@ -353,6 +353,27 @@
             display: flex !important; align-items: center !important; text-decoration: none !important;
             color: white !important; width: 100% !important; justify-content: center !important; height: 100% !important;
         }
+        
+        /* --- 14. 会社概要 (新規追加) --- */
+        #company-profile {
+            background: #fff; padding: 50px 20px 30px; text-align: center; font-size: 0.9rem; color: #666;
+            border-top: 1px solid #eee;
+        }
+        .company-container {
+            max-width: 600px; margin: 0 auto;
+        }
+        .company-title {
+            font-size: 1.2rem; margin-bottom: 25px; color: #333; font-weight: bold;
+        }
+        .company-table {
+            width: 100%; border-collapse: collapse; text-align: left; margin-bottom: 30px;
+        }
+        .company-table tr { border-bottom: 1px solid #f0f0f0; }
+        .company-table th {
+            padding: 15px; width: 30%; font-weight: normal; background: #fafafa;
+        }
+        .company-table td { padding: 15px; }
+        .copyright { font-size: 0.8rem; margin-top: 20px; color: #999; }
     </style>
 </head>
 <body>
@@ -738,6 +759,31 @@
         <a href="#contact-section" class="cta-button">今すぐ無料で相談する</a>
     </footer>
 
+    <section id="company-profile">
+        <div class="company-container">
+            <h2 class="company-title">会社概要</h2>
+            <table class="company-table">
+                <tr>
+                    <th>運営会社</th>
+                    <td>株式会社Rebirth</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>大阪市北区同心２ー１３ー１８</td>
+                </tr>
+                <tr>
+                    <th>連絡先</th>
+                    <td>050-3528-0140</td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>駆けつけサポート事業</td>
+                </tr>
+            </table>
+            <div class="copyright">&copy; 2024 Pest Trouble 119 All Rights Reserved.</div>
+        </div>
+    </section>
+
     <div id="fixed-tel-bar">
         <a id="tel-link" href="#" style="display: flex !important; align-items: center !important; text-decoration: none !important; color: white !important; width: 100% !important; justify-content: center !important; height: 100% !important;">
             <i id="tel-icon" class="fas fa-phone-alt" style="font-size: 30px !important; margin-right: 15px !important; transform: scaleX(-1);"></i>
@@ -820,13 +866,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
